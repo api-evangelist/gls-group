@@ -1,0 +1,315 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GLS.API (Version 1.0)",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ValidateLogin",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gls.nl/test/v1/api/Authentication/ValidateLogin",
+            "params": [
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "The requested API version"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "ValidateLogin"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Delivery",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CreateLabel",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gls.nl/test/v1/api/Label/Create",
+            "params": [
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "The requested API version"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CreateLabel"
+        },
+        {
+          "info": {
+            "name": "DeleteLabel",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gls.nl/test/v1/api/Label/Delete",
+            "params": [
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "The requested API version"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "DeleteLabel"
+        },
+        {
+          "info": {
+            "name": "ConfirmLabel",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gls.nl/test/v1/api/Label/Confirm",
+            "params": [
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "The requested API version"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "ConfirmLabel"
+        },
+        {
+          "info": {
+            "name": "ConfirmMultiple",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gls.nl/test/v1/api/Label/ConfirmMultiple",
+            "params": [
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "The requested API version"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "ConfirmMultiple"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "DeliveryOptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GetDeliveryOptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gls.nl/test/v1/api/DeliveryOptions/GetDeliveryOptions",
+            "params": [
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "The requested API version"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "GetDeliveryOptions"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Monitor",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "HealthProbe",
+            "type": "http"
+          },
+          "http": {
+            "method": "HEAD",
+            "url": "https://api.gls.nl/test/v1/api/Monitor/HealthProbe",
+            "params": [
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "The requested API version"
+              }
+            ]
+          },
+          "docs": "HealthProbe"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "ParcelShop",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GetParcelShops",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gls.nl/test/v1/api/ParcelShop/GetParcelShops",
+            "params": [
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "The requested API version"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "GetParcelShops"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Pickup",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CreatePickup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gls.nl/test/v1/api/Pickup/Create",
+            "params": [
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "The requested API version"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CreatePickup"
+        },
+        {
+          "info": {
+            "name": "DeletePickup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gls.nl/test/v1/api/Pickup/Delete",
+            "params": [
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "The requested API version"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "DeletePickup"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "ShopReturn",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CreateShopReturn",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gls.nl/test/v1/api/ShopReturn/Create",
+            "params": [
+              {
+                "name": "api-version",
+                "value": "",
+                "type": "query",
+                "description": "The requested API version"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "CreateShopReturn"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,6021 @@
+openapi: 3.0.1
+info:
+  title: GLS.API (Version 1.0)
+  version: v1
+servers:
+  - url: https://api.gls.nl/test/v1
+paths:
+  /api/Authentication/ValidateLogin:
+    post:
+      tags:
+        - Authentication
+      summary: ValidateLogin
+      operationId: ValidateLogin
+      parameters:
+        - name: api-version
+          in: query
+          description: The requested API version
+          schema:
+            type: string
+            default: '1.0'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/InboundLoginRequest'
+            example:
+              username: string
+              password: string
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InboundLoginRequest'
+            example:
+              username: string
+              password: string
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InboundLoginRequest'
+            example:
+              username: string
+              password: string
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InboundLoginRequest'
+            example:
+              username: string
+              password: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+  /api/Label/Create:
+    post:
+      tags:
+        - Delivery
+      summary: CreateLabel
+      operationId: CreateLabel
+      parameters:
+        - name: api-version
+          in: query
+          description: The requested API version
+          schema:
+            type: string
+            default: '1.0'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/InboundCreateDeliveryRequest'
+            example:
+              username: string
+              password: string
+              shippingSystemName: string
+              shippingSystemVersion: string
+              shiptype: p
+              incoterm: 0
+              customerNo: string
+              customerSubjectName: string
+              reference: string
+              trackingLinkType: u
+              units:
+                - unitId: string
+                  unitType: co
+                  customerUnitReference: string
+                  weight: 0
+                  dimensions:
+                    length: 0
+                    width: 0
+                    height: 0
+                  additionalInfo1: string
+                  additionalInfo2: string
+              labelType: zpl
+              labelA4StartPosition: 0
+              labelA4MoveXMm: 0
+              labelA4MoveYMm: 0
+              notificationEmail:
+                sendMail: true
+                senderName: string
+                senderReplyAddress: string
+                senderContactName: string
+                senderPhoneNo: string
+                emailSubject: string
+                emailAddressCC: string
+                emailAddressBCC: string
+              returnRoutingData: true
+              addresses:
+                pickupAddress:
+                  name1: string
+                  name2: string
+                  name3: string
+                  street: string
+                  houseNo: string
+                  houseNoExt: string
+                  zipCode: string
+                  city: string
+                  countryCode: string
+                  contact: string
+                  phone: string
+                  email: string
+                deliveryAddress:
+                  name1: string
+                  name2: string
+                  name3: string
+                  street: string
+                  houseNo: string
+                  houseNoExt: string
+                  zipCode: string
+                  city: string
+                  countryCode: string
+                  contact: string
+                  phone: string
+                  email: string
+                  addresseeType: b
+              shippingDate: string
+              services:
+                ageCheckService: true
+                addresseeOnlyService: true
+                expressService: none
+                expressConfirmSMS: string
+                economyParcel: true
+                letterBoxParcel: true
+                shopDeliveryService: true
+                shopDeliveryParcelShopId: string
+                shopDeliveryPlusService: true
+                shopReturnService: true
+                saturdayService: true
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InboundCreateDeliveryRequest'
+            example:
+              username: string
+              password: string
+              shippingSystemName: string
+              shippingSystemVersion: string
+              shiptype: p
+              incoterm: 0
+              customerNo: string
+              customerSubjectName: string
+              reference: string
+              trackingLinkType: u
+              units:
+                - unitId: string
+                  unitType: co
+                  customerUnitReference: string
+                  weight: 0
+                  dimensions:
+                    length: 0
+                    width: 0
+                    height: 0
+                  additionalInfo1: string
+                  additionalInfo2: string
+              labelType: zpl
+              labelA4StartPosition: 0
+              labelA4MoveXMm: 0
+              labelA4MoveYMm: 0
+              notificationEmail:
+                sendMail: true
+                senderName: string
+                senderReplyAddress: string
+                senderContactName: string
+                senderPhoneNo: string
+                emailSubject: string
+                emailAddressCC: string
+                emailAddressBCC: string
+              returnRoutingData: true
+              addresses:
+                pickupAddress:
+                  name1: string
+                  name2: string
+                  name3: string
+                  street: string
+                  houseNo: string
+                  houseNoExt: string
+                  zipCode: string
+                  city: string
+                  countryCode: string
+                  contact: string
+                  phone: string
+                  email: string
+                deliveryAddress:
+                  name1: string
+                  name2: string
+                  name3: string
+                  street: string
+                  houseNo: string
+                  houseNoExt: string
+                  zipCode: string
+                  city: string
+                  countryCode: string
+                  contact: string
+                  phone: string
+                  email: string
+                  addresseeType: b
+              shippingDate: string
+              services:
+                ageCheckService: true
+                addresseeOnlyService: true
+                expressService: none
+                expressConfirmSMS: string
+                economyParcel: true
+                letterBoxParcel: true
+                shopDeliveryService: true
+                shopDeliveryParcelShopId: string
+                shopDeliveryPlusService: true
+                shopReturnService: true
+                saturdayService: true
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InboundCreateDeliveryRequest'
+            example:
+              username: string
+              password: string
+              shippingSystemName: string
+              shippingSystemVersion: string
+              shiptype: p
+              incoterm: 0
+              customerNo: string
+              customerSubjectName: string
+              reference: string
+              trackingLinkType: u
+              units:
+                - unitId: string
+                  unitType: co
+                  customerUnitReference: string
+                  weight: 0
+                  dimensions:
+                    length: 0
+                    width: 0
+                    height: 0
+                  additionalInfo1: string
+                  additionalInfo2: string
+              labelType: zpl
+              labelA4StartPosition: 0
+              labelA4MoveXMm: 0
+              labelA4MoveYMm: 0
+              notificationEmail:
+                sendMail: true
+                senderName: string
+                senderReplyAddress: string
+                senderContactName: string
+                senderPhoneNo: string
+                emailSubject: string
+                emailAddressCC: string
+                emailAddressBCC: string
+              returnRoutingData: true
+              addresses:
+                pickupAddress:
+                  name1: string
+                  name2: string
+                  name3: string
+                  street: string
+                  houseNo: string
+                  houseNoExt: string
+                  zipCode: string
+                  city: string
+                  countryCode: string
+                  contact: string
+                  phone: string
+                  email: string
+                deliveryAddress:
+                  name1: string
+                  name2: string
+                  name3: string
+                  street: string
+                  houseNo: string
+                  houseNoExt: string
+                  zipCode: string
+                  city: string
+                  countryCode: string
+                  contact: string
+                  phone: string
+                  email: string
+                  addresseeType: b
+              shippingDate: string
+              services:
+                ageCheckService: true
+                addresseeOnlyService: true
+                expressService: none
+                expressConfirmSMS: string
+                economyParcel: true
+                letterBoxParcel: true
+                shopDeliveryService: true
+                shopDeliveryParcelShopId: string
+                shopDeliveryPlusService: true
+                shopReturnService: true
+                saturdayService: true
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InboundCreateDeliveryRequest'
+            example:
+              username: string
+              password: string
+              shippingSystemName: string
+              shippingSystemVersion: string
+              shiptype: p
+              incoterm: 0
+              customerNo: string
+              customerSubjectName: string
+              reference: string
+              trackingLinkType: u
+              units:
+                - unitId: string
+                  unitType: co
+                  customerUnitReference: string
+                  weight: 0
+                  dimensions:
+                    length: 0
+                    width: 0
+                    height: 0
+                  additionalInfo1: string
+                  additionalInfo2: string
+              labelType: zpl
+              labelA4StartPosition: 0
+              labelA4MoveXMm: 0
+              labelA4MoveYMm: 0
+              notificationEmail:
+                sendMail: true
+                senderName: string
+                senderReplyAddress: string
+                senderContactName: string
+                senderPhoneNo: string
+                emailSubject: string
+                emailAddressCC: string
+                emailAddressBCC: string
+              returnRoutingData: true
+              addresses:
+                pickupAddress:
+                  name1: string
+                  name2: string
+                  name3: string
+                  street: string
+                  houseNo: string
+                  houseNoExt: string
+                  zipCode: string
+                  city: string
+                  countryCode: string
+                  contact: string
+                  phone: string
+                  email: string
+                deliveryAddress:
+                  name1: string
+                  name2: string
+                  name3: string
+                  street: string
+                  houseNo: string
+                  houseNoExt: string
+                  zipCode: string
+                  city: string
+                  countryCode: string
+                  contact: string
+                  phone: string
+                  email: string
+                  addresseeType: b
+              shippingDate: string
+              services:
+                ageCheckService: true
+                addresseeOnlyService: true
+                expressService: none
+                expressConfirmSMS: string
+                economyParcel: true
+                letterBoxParcel: true
+                shopDeliveryService: true
+                shopDeliveryParcelShopId: string
+                shopDeliveryPlusService: true
+                shopReturnService: true
+                saturdayService: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiCreateLabelResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+                shipmentTrackingLink: string
+                labels: string
+                units:
+                  - unitId: string
+                    unitNo: string
+                    uniqueNo: string
+                    gpNo: string
+                    isEmergencyLabel: true
+                    label: string
+                    unitNoShopReturn: string
+                    uniqueNoShopReturn: string
+                    gpNoShopReturn: string
+                    labelShopReturn: string
+                    qrCodeShopReturn: string
+                    unitTrackingLink: string
+                    customerUnitReference: string
+                    routingData:
+                      outboundSortFlag: string
+                      inboundSortFlag: string
+                      finalCountry: string
+                      finalLocation: string
+                      tourNo: string
+                      geoTour: string
+                      loadingArea: string
+                      dispositionFlag: string
+                      zipCode: string
+                      handlingInfo1: string
+                      handlingInfo2: string
+                      handlingInfo3: string
+                      handlingInfo4: string
+                      handlingInfo5: string
+                      originLocation: string
+                      stationId: string
+                      printDateTime: string
+                      unitSequenceNo: string
+                      totalUnitCount: string
+                      routingInfo: string
+                      applicationName: string
+                      applicationVersion: string
+                      primaryDataMatrixContent: string
+                      secondaryDataMatrixContent: string
+                      gpNo: string
+                      gpNoText: string
+                      chNdiNo: string
+                      chNdiNoText: string
+                      gbNdiNo: string
+                      gbProductIdentifier: string
+                      gbZipcode: string
+                      gbPostOffice: string
+                      noNdiNo: string
+                      seNdiNo: string
+                      itNdiNo: string
+                      itDataMatrixContent: string
+                      itDepot: string
+                      itTour: string
+                      freightBarcodeNo: string
+                      freightSSCCBarcodeNo: string
+                      uniShipDataMatrixContent: string
+                      serviceField1: string
+                      serviceField2: string
+                      serviceField3: string
+                      serviceField4: string
+                      serviceField5: string
+                      serviceField6: string
+                      serviceField7: string
+                      serviceField8: string
+                      packagingName: string
+                      custNo: string
+                      contactId: string
+                      gdprLine1: string
+                      gdprLine2: string
+                      gdprLine3: string
+                      gdprLine4: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+        '424':
+          description: Failed Dependency
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+  /api/Label/Delete:
+    post:
+      tags:
+        - Delivery
+      summary: DeleteLabel
+      operationId: DeleteLabel
+      parameters:
+        - name: api-version
+          in: query
+          description: The requested API version
+          schema:
+            type: string
+            default: '1.0'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/InboundDeleteRequest'
+            example:
+              username: string
+              password: string
+              shippingSystemName: string
+              shippingSystemVersion: string
+              shiptype: p
+              incoterm: 0
+              unitNo: string
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InboundDeleteRequest'
+            example:
+              username: string
+              password: string
+              shippingSystemName: string
+              shippingSystemVersion: string
+              shiptype: p
+              incoterm: 0
+              unitNo: string
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InboundDeleteRequest'
+            example:
+              username: string
+              password: string
+              shippingSystemName: string
+              shippingSystemVersion: string
+              shiptype: p
+              incoterm: 0
+              unitNo: string
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InboundDeleteRequest'
+            example:
+              username: string
+              password: string
+              shippingSystemName: string
+              shippingSystemVersion: string
+              shiptype: p
+              incoterm: 0
+              unitNo: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDeleteLabelResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+        '424':
+          description: Failed Dependency
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+  /api/Label/Confirm:
+    post:
+      tags:
+        - Delivery
+      summary: ConfirmLabel
+      operationId: ConfirmLabel
+      parameters:
+        - name: api-version
+          in: query
+          description: The requested API version
+          schema:
+            type: string
+            default: '1.0'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/InboundConfirmRequest'
+            example:
+              username: string
+              password: string
+              shippingSystemName: string
+              shippingSystemVersion: string
+              shiptype: p
+              incoterm: 0
+              unitNo: string
+              shippingDate: string
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InboundConfirmRequest'
+            example:
+              username: string
+              password: string
+              shippingSystemName: string
+              shippingSystemVersion: string
+              shiptype: p
+              incoterm: 0
+              unitNo: string
+              shippingDate: string
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InboundConfirmRequest'
+            example:
+              username: string
+              password: string
+              shippingSystemName: string
+              shippingSystemVersion: string
+              shiptype: p
+              incoterm: 0
+              unitNo: string
+              shippingDate: string
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InboundConfirmRequest'
+            example:
+              username: string
+              password: string
+              shippingSystemName: string
+              shippingSystemVersion: string
+              shiptype: p
+              incoterm: 0
+              unitNo: string
+              shippingDate: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiConfirmLabelResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+        '424':
+          description: Failed Dependency
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+  /api/Label/ConfirmMultiple:
+    post:
+      tags:
+        - Delivery
+      summary: ConfirmMultiple
+      operationId: ConfirmMultiple
+      parameters:
+        - name: api-version
+          in: query
+          description: The requested API version
+          schema:
+            type: string
+            default: '1.0'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/InboundConfirmMultipleRequest'
+            example:
+              username: string
+              password: string
+              shippingSystemName: string
+              shippingSystemVersion: string
+              shiptype: p
+              incoterm: 0
+              unitNos:
+                - string
+              shippingDate: string
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InboundConfirmMultipleRequest'
+            example:
+              username: string
+              password: string
+              shippingSystemName: string
+              shippingSystemVersion: string
+              shiptype: p
+              incoterm: 0
+              unitNos:
+                - string
+              shippingDate: string
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InboundConfirmMultipleRequest'
+            example:
+              username: string
+              password: string
+              shippingSystemName: string
+              shippingSystemVersion: string
+              shiptype: p
+              incoterm: 0
+              unitNos:
+                - string
+              shippingDate: string
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InboundConfirmMultipleRequest'
+            example:
+              username: string
+              password: string
+              shippingSystemName: string
+              shippingSystemVersion: string
+              shiptype: p
+              incoterm: 0
+              unitNos:
+                - string
+              shippingDate: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiConfirmLabelResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+        '424':
+          description: Failed Dependency
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+  /api/DeliveryOptions/GetDeliveryOptions:
+    post:
+      tags:
+        - DeliveryOptions
+      summary: GetDeliveryOptions
+      operationId: GetDeliveryOptions
+      parameters:
+        - name: api-version
+          in: query
+          description: The requested API version
+          schema:
+            type: string
+            default: '1.0'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/InboundGetDeliveryOptionsRequest'
+            example:
+              username: string
+              password: string
+              countryCode: string
+              langCode: nl
+              zipCode: string
+              shippingDate: string
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InboundGetDeliveryOptionsRequest'
+            example:
+              username: string
+              password: string
+              countryCode: string
+              langCode: nl
+              zipCode: string
+              shippingDate: string
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InboundGetDeliveryOptionsRequest'
+            example:
+              username: string
+              password: string
+              countryCode: string
+              langCode: nl
+              zipCode: string
+              shippingDate: string
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InboundGetDeliveryOptionsRequest'
+            example:
+              username: string
+              password: string
+              countryCode: string
+              langCode: nl
+              zipCode: string
+              shippingDate: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiGetDeliveryOptionsResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+                deliveryOptions:
+                  - service: string
+                    title: string
+                    expectedDeliveryDate: string
+                    expectedDeliveryTime: string
+                    subDeliveryOptions:
+                      - service: string
+                        title: string
+                        expectedDeliveryDate: string
+                        expectedDeliveryTime: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+  /api/Monitor/HealthProbe:
+    head:
+      tags:
+        - Monitor
+      summary: HealthProbe
+      operationId: HealthProbe
+      parameters:
+        - name: api-version
+          in: query
+          description: The requested API version
+          schema:
+            type: string
+            default: '1.0'
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+              examples:
+                default:
+                  value: 
+            application/json:
+              schema:
+                type: string
+              example: string
+            text/json:
+              schema:
+                type: string
+              example: string
+  /api/ParcelShop/GetParcelShops:
+    post:
+      tags:
+        - ParcelShop
+      summary: GetParcelShops
+      operationId: GetParcelShops
+      parameters:
+        - name: api-version
+          in: query
+          description: The requested API version
+          schema:
+            type: string
+            default: '1.0'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/InboundGetParcelShopsRequest'
+            example:
+              username: string
+              password: string
+              countryCode: string
+              zipCode: string
+              street: string
+              houseNo: string
+              city: string
+              amountOfShops: 0
+              shippingDate: string
+              langCode: nl
+              glsPointType: all
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InboundGetParcelShopsRequest'
+            example:
+              username: string
+              password: string
+              countryCode: string
+              zipCode: string
+              street: string
+              houseNo: string
+              city: string
+              amountOfShops: 0
+              shippingDate: string
+              langCode: nl
+              glsPointType: all
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InboundGetParcelShopsRequest'
+            example:
+              username: string
+              password: string
+              countryCode: string
+              zipCode: string
+              street: string
+              houseNo: string
+              city: string
+              amountOfShops: 0
+              shippingDate: string
+              langCode: nl
+              glsPointType: all
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InboundGetParcelShopsRequest'
+            example:
+              username: string
+              password: string
+              countryCode: string
+              zipCode: string
+              street: string
+              houseNo: string
+              city: string
+              amountOfShops: 0
+              shippingDate: string
+              langCode: nl
+              glsPointType: all
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiGetParcelShopsResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+                parcelShops:
+                  - parcelShopId: string
+                    name: string
+                    street: string
+                    houseNo: string
+                    zipcode: string
+                    city: string
+                    countryCode: string
+                    webSite: string
+                    info1: string
+                    info2: string
+                    mapsUrl: string
+                    geoCoordinates:
+                      lat: 0
+                      lng: 0
+                    businessHours:
+                      - dayOfWeek: string
+                        openTime: string
+                        breakStartTime: string
+                        breakEndTime: string
+                        secondBreakStartTime: string
+                        secondBreakEndTime: string
+                        closedTime: string
+                    distanceMeters: 0
+                    distanceMinutes: 0
+                    vacations:
+                      - start: string
+                        end: string
+                    deliveryOptions:
+                      - service: string
+                        title: string
+                        expectedDeliveryDate: string
+                        expectedDeliveryTime: string
+                        subDeliveryOptions:
+                          - service: string
+                            title: string
+                            expectedDeliveryDate: string
+                            expectedDeliveryTime: string
+                    type: parcelShop
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+        '424':
+          description: Failed Dependency
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+  /api/Pickup/Create:
+    post:
+      tags:
+        - Pickup
+      summary: CreatePickup
+      operationId: CreatePickup
+      parameters:
+        - name: api-version
+          in: query
+          description: The requested API version
+          schema:
+            type: string
+            default: '1.0'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/InboundCreatePickupRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InboundCreatePickupRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InboundCreatePickupRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InboundCreatePickupRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiCreatePickupResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+                shipmentTrackingLink: string
+                units:
+                  - unitId: string
+                    unitNo: string
+                    uniqueNo: string
+                    gpNo: string
+                    isEmergencyLabel: true
+                    label: string
+                    unitNoShopReturn: string
+                    uniqueNoShopReturn: string
+                    gpNoShopReturn: string
+                    labelShopReturn: string
+                    qrCodeShopReturn: string
+                    unitTrackingLink: string
+                    customerUnitReference: string
+                    routingData:
+                      outboundSortFlag: string
+                      inboundSortFlag: string
+                      finalCountry: string
+                      finalLocation: string
+                      tourNo: string
+                      geoTour: string
+                      loadingArea: string
+                      dispositionFlag: string
+                      zipCode: string
+                      handlingInfo1: string
+                      handlingInfo2: string
+                      handlingInfo3: string
+                      handlingInfo4: string
+                      handlingInfo5: string
+                      originLocation: string
+                      stationId: string
+                      printDateTime: string
+                      unitSequenceNo: string
+                      totalUnitCount: string
+                      routingInfo: string
+                      applicationName: string
+                      applicationVersion: string
+                      primaryDataMatrixContent: string
+                      secondaryDataMatrixContent: string
+                      gpNo: string
+                      gpNoText: string
+                      chNdiNo: string
+                      chNdiNoText: string
+                      gbNdiNo: string
+                      gbProductIdentifier: string
+                      gbZipcode: string
+                      gbPostOffice: string
+                      noNdiNo: string
+                      seNdiNo: string
+                      itNdiNo: string
+                      itDataMatrixContent: string
+                      itDepot: string
+                      itTour: string
+                      freightBarcodeNo: string
+                      freightSSCCBarcodeNo: string
+                      uniShipDataMatrixContent: string
+                      serviceField1: string
+                      serviceField2: string
+                      serviceField3: string
+                      serviceField4: string
+                      serviceField5: string
+                      serviceField6: string
+                      serviceField7: string
+                      serviceField8: string
+                      packagingName: string
+                      custNo: string
+                      contactId: string
+                      gdprLine1: string
+                      gdprLine2: string
+                      gdprLine3: string
+                      gdprLine4: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+        '424':
+          description: Failed Dependency
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+  /api/Pickup/Delete:
+    post:
+      tags:
+        - Pickup
+      summary: DeletePickup
+      operationId: DeletePickup
+      parameters:
+        - name: api-version
+          in: query
+          description: The requested API version
+          schema:
+            type: string
+            default: '1.0'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/InboundDeleteRequest'
+            example:
+              username: string
+              password: string
+              shippingSystemName: string
+              shippingSystemVersion: string
+              shiptype: p
+              incoterm: 0
+              unitNo: string
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InboundDeleteRequest'
+            example:
+              username: string
+              password: string
+              shippingSystemName: string
+              shippingSystemVersion: string
+              shiptype: p
+              incoterm: 0
+              unitNo: string
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InboundDeleteRequest'
+            example:
+              username: string
+              password: string
+              shippingSystemName: string
+              shippingSystemVersion: string
+              shiptype: p
+              incoterm: 0
+              unitNo: string
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InboundDeleteRequest'
+            example:
+              username: string
+              password: string
+              shippingSystemName: string
+              shippingSystemVersion: string
+              shiptype: p
+              incoterm: 0
+              unitNo: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDeleteLabelResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+        '424':
+          description: Failed Dependency
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+  /api/ShopReturn/Create:
+    post:
+      tags:
+        - ShopReturn
+      summary: CreateShopReturn
+      operationId: CreateShopReturn
+      parameters:
+        - name: api-version
+          in: query
+          description: The requested API version
+          schema:
+            type: string
+            default: '1.0'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/InboundCreateShopReturnRequest'
+            example:
+              username: string
+              password: string
+              shippingSystemName: string
+              shippingSystemVersion: string
+              shiptype: p
+              incoterm: 0
+              customerNo: string
+              customerSubjectName: string
+              reference: string
+              trackingLinkType: u
+              units:
+                - unitId: string
+                  unitType: co
+                  customerUnitReference: string
+                  weight: 0
+                  dimensions:
+                    length: 0
+                    width: 0
+                    height: 0
+                  additionalInfo1: string
+                  additionalInfo2: string
+              labelType: zpl
+              labelA4StartPosition: 0
+              labelA4MoveXMm: 0
+              labelA4MoveYMm: 0
+              addresses:
+                pickupAddress:
+                  name1: string
+                  name2: string
+                  name3: string
+                  street: string
+                  houseNo: string
+                  houseNoExt: string
+                  zipCode: string
+                  city: string
+                  countryCode: string
+                  contact: string
+                  phone: string
+                  email: string
+                deliveryAddress:
+                  name1: string
+                  name2: string
+                  name3: string
+                  street: string
+                  houseNo: string
+                  houseNoExt: string
+                  zipCode: string
+                  city: string
+                  countryCode: string
+                  contact: string
+                  phone: string
+                  email: string
+                  addresseeType: b
+                requesterAddress:
+                  name1: string
+                  name2: string
+                  name3: string
+                  street: string
+                  houseNo: string
+                  houseNoExt: string
+                  zipCode: string
+                  city: string
+                  countryCode: string
+                  contact: string
+                  phone: string
+                  email: string
+              returnReason: string
+              sendLabelsByEmail: true
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InboundCreateShopReturnRequest'
+            example:
+              username: string
+              password: string
+              shippingSystemName: string
+              shippingSystemVersion: string
+              shiptype: p
+              incoterm: 0
+              customerNo: string
+              customerSubjectName: string
+              reference: string
+              trackingLinkType: u
+              units:
+                - unitId: string
+                  unitType: co
+                  customerUnitReference: string
+                  weight: 0
+                  dimensions:
+                    length: 0
+                    width: 0
+                    height: 0
+                  additionalInfo1: string
+                  additionalInfo2: string
+              labelType: zpl
+              labelA4StartPosition: 0
+              labelA4MoveXMm: 0
+              labelA4MoveYMm: 0
+              addresses:
+                pickupAddress:
+                  name1: string
+                  name2: string
+                  name3: string
+                  street: string
+                  houseNo: string
+                  houseNoExt: string
+                  zipCode: string
+                  city: string
+                  countryCode: string
+                  contact: string
+                  phone: string
+                  email: string
+                deliveryAddress:
+                  name1: string
+                  name2: string
+                  name3: string
+                  street: string
+                  houseNo: string
+                  houseNoExt: string
+                  zipCode: string
+                  city: string
+                  countryCode: string
+                  contact: string
+                  phone: string
+                  email: string
+                  addresseeType: b
+                requesterAddress:
+                  name1: string
+                  name2: string
+                  name3: string
+                  street: string
+                  houseNo: string
+                  houseNoExt: string
+                  zipCode: string
+                  city: string
+                  countryCode: string
+                  contact: string
+                  phone: string
+                  email: string
+              returnReason: string
+              sendLabelsByEmail: true
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InboundCreateShopReturnRequest'
+            example:
+              username: string
+              password: string
+              shippingSystemName: string
+              shippingSystemVersion: string
+              shiptype: p
+              incoterm: 0
+              customerNo: string
+              customerSubjectName: string
+              reference: string
+              trackingLinkType: u
+              units:
+                - unitId: string
+                  unitType: co
+                  customerUnitReference: string
+                  weight: 0
+                  dimensions:
+                    length: 0
+                    width: 0
+                    height: 0
+                  additionalInfo1: string
+                  additionalInfo2: string
+              labelType: zpl
+              labelA4StartPosition: 0
+              labelA4MoveXMm: 0
+              labelA4MoveYMm: 0
+              addresses:
+                pickupAddress:
+                  name1: string
+                  name2: string
+                  name3: string
+                  street: string
+                  houseNo: string
+                  houseNoExt: string
+                  zipCode: string
+                  city: string
+                  countryCode: string
+                  contact: string
+                  phone: string
+                  email: string
+                deliveryAddress:
+                  name1: string
+                  name2: string
+                  name3: string
+                  street: string
+                  houseNo: string
+                  houseNoExt: string
+                  zipCode: string
+                  city: string
+                  countryCode: string
+                  contact: string
+                  phone: string
+                  email: string
+                  addresseeType: b
+                requesterAddress:
+                  name1: string
+                  name2: string
+                  name3: string
+                  street: string
+                  houseNo: string
+                  houseNoExt: string
+                  zipCode: string
+                  city: string
+                  countryCode: string
+                  contact: string
+                  phone: string
+                  email: string
+              returnReason: string
+              sendLabelsByEmail: true
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InboundCreateShopReturnRequest'
+            example:
+              username: string
+              password: string
+              shippingSystemName: string
+              shippingSystemVersion: string
+              shiptype: p
+              incoterm: 0
+              customerNo: string
+              customerSubjectName: string
+              reference: string
+              trackingLinkType: u
+              units:
+                - unitId: string
+                  unitType: co
+                  customerUnitReference: string
+                  weight: 0
+                  dimensions:
+                    length: 0
+                    width: 0
+                    height: 0
+                  additionalInfo1: string
+                  additionalInfo2: string
+              labelType: zpl
+              labelA4StartPosition: 0
+              labelA4MoveXMm: 0
+              labelA4MoveYMm: 0
+              addresses:
+                pickupAddress:
+                  name1: string
+                  name2: string
+                  name3: string
+                  street: string
+                  houseNo: string
+                  houseNoExt: string
+                  zipCode: string
+                  city: string
+                  countryCode: string
+                  contact: string
+                  phone: string
+                  email: string
+                deliveryAddress:
+                  name1: string
+                  name2: string
+                  name3: string
+                  street: string
+                  houseNo: string
+                  houseNoExt: string
+                  zipCode: string
+                  city: string
+                  countryCode: string
+                  contact: string
+                  phone: string
+                  email: string
+                  addresseeType: b
+                requesterAddress:
+                  name1: string
+                  name2: string
+                  name3: string
+                  street: string
+                  houseNo: string
+                  houseNoExt: string
+                  zipCode: string
+                  city: string
+                  countryCode: string
+                  contact: string
+                  phone: string
+                  email: string
+              returnReason: string
+              sendLabelsByEmail: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiCreateLabelResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+                shipmentTrackingLink: string
+                labels: string
+                units:
+                  - unitId: string
+                    unitNo: string
+                    uniqueNo: string
+                    gpNo: string
+                    isEmergencyLabel: true
+                    label: string
+                    unitNoShopReturn: string
+                    uniqueNoShopReturn: string
+                    gpNoShopReturn: string
+                    labelShopReturn: string
+                    qrCodeShopReturn: string
+                    unitTrackingLink: string
+                    customerUnitReference: string
+                    routingData:
+                      outboundSortFlag: string
+                      inboundSortFlag: string
+                      finalCountry: string
+                      finalLocation: string
+                      tourNo: string
+                      geoTour: string
+                      loadingArea: string
+                      dispositionFlag: string
+                      zipCode: string
+                      handlingInfo1: string
+                      handlingInfo2: string
+                      handlingInfo3: string
+                      handlingInfo4: string
+                      handlingInfo5: string
+                      originLocation: string
+                      stationId: string
+                      printDateTime: string
+                      unitSequenceNo: string
+                      totalUnitCount: string
+                      routingInfo: string
+                      applicationName: string
+                      applicationVersion: string
+                      primaryDataMatrixContent: string
+                      secondaryDataMatrixContent: string
+                      gpNo: string
+                      gpNoText: string
+                      chNdiNo: string
+                      chNdiNoText: string
+                      gbNdiNo: string
+                      gbProductIdentifier: string
+                      gbZipcode: string
+                      gbPostOffice: string
+                      noNdiNo: string
+                      seNdiNo: string
+                      itNdiNo: string
+                      itDataMatrixContent: string
+                      itDepot: string
+                      itTour: string
+                      freightBarcodeNo: string
+                      freightSSCCBarcodeNo: string
+                      uniShipDataMatrixContent: string
+                      serviceField1: string
+                      serviceField2: string
+                      serviceField3: string
+                      serviceField4: string
+                      serviceField5: string
+                      serviceField6: string
+                      serviceField7: string
+                      serviceField8: string
+                      packagingName: string
+                      custNo: string
+                      contactId: string
+                      gdprLine1: string
+                      gdprLine2: string
+                      gdprLine3: string
+                      gdprLine4: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+        '424':
+          description: Failed Dependency
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: { }
+                transactionId: string
+components:
+  schemas:
+    AddressType:
+      enum:
+        - delAdr
+        - picAdr
+        - reqAdr
+        - retAdr
+        - gbRoyalMailReturnAdr
+      type: string
+    AdresseeType:
+      enum:
+        - b
+        - p
+      type: string
+    ApiConfirmLabelResponseObject:
+      type: object
+      properties:
+        error:
+          type: boolean
+          readOnly: true
+        status:
+          type: string
+          nullable: true
+        message:
+          type: string
+          nullable: true
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+            nullable: true
+          nullable: true
+        transactionId:
+          type: string
+          format: uuid
+          nullable: true
+      additionalProperties: false
+    ApiCreateLabelResponseObject:
+      type: object
+      properties:
+        error:
+          type: boolean
+          readOnly: true
+        status:
+          type: string
+          nullable: true
+        message:
+          type: string
+          nullable: true
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+            nullable: true
+          nullable: true
+        transactionId:
+          type: string
+          format: uuid
+          nullable: true
+        shipmentTrackingLink:
+          type: string
+          nullable: true
+        labels:
+          type: string
+          nullable: true
+        units:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApiUnit'
+          nullable: true
+      additionalProperties: false
+    ApiCreatePickupResponseObject:
+      type: object
+      properties:
+        error:
+          type: boolean
+          readOnly: true
+        status:
+          type: string
+          nullable: true
+        message:
+          type: string
+          nullable: true
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+            nullable: true
+          nullable: true
+        transactionId:
+          type: string
+          format: uuid
+          nullable: true
+        shipmentTrackingLink:
+          type: string
+          nullable: true
+        units:
+          type: array
+          items:
+            $ref: '#/components/schemas/ApiUnit'
+          nullable: true
+      additionalProperties: false
+    ApiDeleteLabelResponseObject:
+      type: object
+      properties:
+        error:
+          type: boolean
+          readOnly: true
+        status:
+          type: string
+          nullable: true
+        message:
+          type: string
+          nullable: true
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+            nullable: true
+          nullable: true
+        transactionId:
+          type: string
+          format: uuid
+          nullable: true
+      additionalProperties: false
+    ApiGetDeliveryOptionsResponseObject:
+      type: object
+      properties:
+        error:
+          type: boolean
+          readOnly: true
+        status:
+          type: string
+          nullable: true
+        message:
+          type: string
+          nullable: true
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+            nullable: true
+          nullable: true
+        transactionId:
+          type: string
+          format: uuid
+          nullable: true
+        deliveryOptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeliveryOptions'
+          nullable: true
+      additionalProperties: false
+    ApiGetParcelShopsResponseObject:
+      type: object
+      properties:
+        error:
+          type: boolean
+          readOnly: true
+        status:
+          type: string
+          nullable: true
+        message:
+          type: string
+          nullable: true
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+            nullable: true
+          nullable: true
+        transactionId:
+          type: string
+          format: uuid
+          nullable: true
+        parcelShops:
+          type: array
+          items:
+            $ref: '#/components/schemas/GlsPoint'
+          nullable: true
+      additionalProperties: false
+    ApiResponseObject:
+      type: object
+      properties:
+        error:
+          type: boolean
+          readOnly: true
+        status:
+          type: string
+          nullable: true
+        message:
+          type: string
+          nullable: true
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+            nullable: true
+          nullable: true
+        transactionId:
+          type: string
+          format: uuid
+          nullable: true
+      additionalProperties: false
+    ApiUnit:
+      type: object
+      properties:
+        unitId:
+          type: string
+          nullable: true
+        unitNo:
+          type: string
+          nullable: true
+        uniqueNo:
+          type: string
+          nullable: true
+        gpNo:
+          type: string
+          nullable: true
+        isEmergencyLabel:
+          type: boolean
+          nullable: true
+        label:
+          type: string
+          nullable: true
+        unitNoShopReturn:
+          type: string
+          nullable: true
+        uniqueNoShopReturn:
+          type: string
+          nullable: true
+        gpNoShopReturn:
+          type: string
+          nullable: true
+        labelShopReturn:
+          type: string
+          nullable: true
+        qrCodeShopReturn:
+          type: string
+          nullable: true
+        unitTrackingLink:
+          type: string
+          nullable: true
+        customerUnitReference:
+          type: string
+          nullable: true
+        routingData:
+          $ref: '#/components/schemas/RoutingDataBase'
+      additionalProperties: false
+    Assembly:
+      type: object
+      properties:
+        definedTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/TypeInfo'
+          nullable: true
+          readOnly: true
+        exportedTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Type'
+          nullable: true
+          readOnly: true
+        codeBase:
+          type: string
+          nullable: true
+          readOnly: true
+          deprecated: true
+        entryPoint:
+          $ref: '#/components/schemas/MethodInfo'
+        fullName:
+          type: string
+          nullable: true
+          readOnly: true
+        imageRuntimeVersion:
+          type: string
+          nullable: true
+          readOnly: true
+        isDynamic:
+          type: boolean
+          readOnly: true
+        location:
+          type: string
+          nullable: true
+          readOnly: true
+        reflectionOnly:
+          type: boolean
+          readOnly: true
+        isCollectible:
+          type: boolean
+          readOnly: true
+        isFullyTrusted:
+          type: boolean
+          readOnly: true
+        customAttributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          nullable: true
+          readOnly: true
+        escapedCodeBase:
+          type: string
+          nullable: true
+          readOnly: true
+          deprecated: true
+        manifestModule:
+          $ref: '#/components/schemas/Module'
+        modules:
+          type: array
+          items:
+            $ref: '#/components/schemas/Module'
+          nullable: true
+          readOnly: true
+        globalAssemblyCache:
+          type: boolean
+          readOnly: true
+          deprecated: true
+        hostContext:
+          type: integer
+          format: int64
+          readOnly: true
+        securityRuleSet:
+          $ref: '#/components/schemas/SecurityRuleSet'
+      additionalProperties: false
+    Calendar:
+      type: object
+      properties:
+        minSupportedDateTime:
+          type: string
+          format: date-time
+          readOnly: true
+        maxSupportedDateTime:
+          type: string
+          format: date-time
+          readOnly: true
+        algorithmType:
+          $ref: '#/components/schemas/CalendarAlgorithmType'
+        isReadOnly:
+          type: boolean
+          readOnly: true
+        eras:
+          type: array
+          items:
+            type: integer
+            format: int32
+          nullable: true
+          readOnly: true
+        twoDigitYearMax:
+          type: integer
+          format: int32
+      additionalProperties: false
+    CalendarAlgorithmType:
+      enum:
+        - unknown
+        - solarCalendar
+        - lunarCalendar
+        - lunisolarCalendar
+      type: string
+    CalendarWeekRule:
+      enum:
+        - firstDay
+        - firstFullWeek
+        - firstFourDayWeek
+      type: string
+    CallingConventions:
+      enum:
+        - standard
+        - varArgs
+        - any
+        - hasThis
+        - explicitThis
+      type: string
+    CompareInfo:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+          readOnly: true
+        version:
+          $ref: '#/components/schemas/SortVersion'
+        lcid:
+          type: integer
+          format: int32
+          readOnly: true
+      additionalProperties: false
+    ConstructorInfo:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+          readOnly: true
+        declaringType:
+          $ref: '#/components/schemas/Type'
+        reflectedType:
+          $ref: '#/components/schemas/Type'
+        module:
+          $ref: '#/components/schemas/Module'
+        customAttributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          nullable: true
+          readOnly: true
+        isCollectible:
+          type: boolean
+          readOnly: true
+        metadataToken:
+          type: integer
+          format: int32
+          readOnly: true
+        attributes:
+          $ref: '#/components/schemas/MethodAttributes'
+        methodImplementationFlags:
+          $ref: '#/components/schemas/MethodImplAttributes'
+        callingConvention:
+          $ref: '#/components/schemas/CallingConventions'
+        isAbstract:
+          type: boolean
+          readOnly: true
+        isConstructor:
+          type: boolean
+          readOnly: true
+        isFinal:
+          type: boolean
+          readOnly: true
+        isHideBySig:
+          type: boolean
+          readOnly: true
+        isSpecialName:
+          type: boolean
+          readOnly: true
+        isStatic:
+          type: boolean
+          readOnly: true
+        isVirtual:
+          type: boolean
+          readOnly: true
+        isAssembly:
+          type: boolean
+          readOnly: true
+        isFamily:
+          type: boolean
+          readOnly: true
+        isFamilyAndAssembly:
+          type: boolean
+          readOnly: true
+        isFamilyOrAssembly:
+          type: boolean
+          readOnly: true
+        isPrivate:
+          type: boolean
+          readOnly: true
+        isPublic:
+          type: boolean
+          readOnly: true
+        isConstructedGenericMethod:
+          type: boolean
+          readOnly: true
+        isGenericMethod:
+          type: boolean
+          readOnly: true
+        isGenericMethodDefinition:
+          type: boolean
+          readOnly: true
+        containsGenericParameters:
+          type: boolean
+          readOnly: true
+        methodHandle:
+          $ref: '#/components/schemas/RuntimeMethodHandle'
+        isSecurityCritical:
+          type: boolean
+          readOnly: true
+        isSecuritySafeCritical:
+          type: boolean
+          readOnly: true
+        isSecurityTransparent:
+          type: boolean
+          readOnly: true
+        memberType:
+          $ref: '#/components/schemas/MemberTypes'
+      additionalProperties: false
+    CultureInfo:
+      type: object
+      properties:
+        parent:
+          $ref: '#/components/schemas/CultureInfo'
+        lcid:
+          type: integer
+          format: int32
+          readOnly: true
+        keyboardLayoutId:
+          type: integer
+          format: int32
+          readOnly: true
+        name:
+          type: string
+          nullable: true
+        ietfLanguageTag:
+          type: string
+          nullable: true
+          readOnly: true
+        displayName:
+          type: string
+          nullable: true
+          readOnly: true
+        nativeName:
+          type: string
+          nullable: true
+          readOnly: true
+        englishName:
+          type: string
+          nullable: true
+          readOnly: true
+        twoLetterISOLanguageName:
+          type: string
+          nullable: true
+          readOnly: true
+        threeLetterISOLanguageName:
+          type: string
+          nullable: true
+          readOnly: true
+        threeLetterWindowsLanguageName:
+          type: string
+          nullable: true
+          readOnly: true
+        compareInfo:
+          $ref: '#/components/schemas/CompareInfo'
+        textInfo:
+          $ref: '#/components/schemas/TextInfo'
+        isNeutralCulture:
+          type: boolean
+          readOnly: true
+        cultureTypes:
+          $ref: '#/components/schemas/CultureTypes'
+        numberFormat:
+          $ref: '#/components/schemas/NumberFormatInfo'
+        dateTimeFormat:
+          $ref: '#/components/schemas/DateTimeFormatInfo'
+        calendar:
+          $ref: '#/components/schemas/Calendar'
+        optionalCalendars:
+          type: array
+          items:
+            $ref: '#/components/schemas/Calendar'
+          nullable: true
+          readOnly: true
+        useUserOverride:
+          type: boolean
+          readOnly: true
+        isReadOnly:
+          type: boolean
+          readOnly: true
+      additionalProperties: false
+    CultureTypes:
+      enum:
+        - neutralCultures
+        - specificCultures
+        - installedWin32Cultures
+        - allCultures
+        - userCustomCulture
+        - replacementCultures
+        - windowsOnlyCultures
+        - frameworkCultures
+      type: string
+    CustomAttributeData:
+      type: object
+      properties:
+        attributeType:
+          $ref: '#/components/schemas/Type'
+        constructor:
+          $ref: '#/components/schemas/ConstructorInfo'
+        constructorArguments:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomAttributeTypedArgument'
+          nullable: true
+          readOnly: true
+        namedArguments:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomAttributeNamedArgument'
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    CustomAttributeNamedArgument:
+      type: object
+      properties:
+        memberInfo:
+          $ref: '#/components/schemas/MemberInfo'
+        typedValue:
+          $ref: '#/components/schemas/CustomAttributeTypedArgument'
+        memberName:
+          type: string
+          nullable: true
+          readOnly: true
+        isField:
+          type: boolean
+          readOnly: true
+      additionalProperties: false
+    CustomAttributeTypedArgument:
+      type: object
+      properties:
+        argumentType:
+          $ref: '#/components/schemas/Type'
+        value:
+          nullable: true
+      additionalProperties: false
+    CustomerDetails:
+      type: object
+      properties:
+        operationalCustomer:
+          $ref: '#/components/schemas/TbApiCustOperation'
+        parcelCustomers:
+          type: array
+          items:
+            $ref: '#/components/schemas/TbApiCustomer'
+          nullable: true
+        freightCustomerNumbers:
+          $ref: '#/components/schemas/FreightCustomerNumbers'
+        customerSubjectName:
+          type: string
+          nullable: true
+        locCodeParcel:
+          type: string
+          nullable: true
+          readOnly: true
+        sapNo:
+          type: string
+          nullable: true
+          readOnly: true
+        contactId:
+          type: string
+          nullable: true
+          readOnly: true
+        hasUsableContactId:
+          type: boolean
+          readOnly: true
+      additionalProperties: false
+    CustomerNoType:
+      enum:
+        - custNo
+        - operationalCustNo
+        - baseCustNo
+        - freight
+      type: string
+    DateTimeFormatInfo:
+      type: object
+      properties:
+        amDesignator:
+          type: string
+          nullable: true
+        calendar:
+          $ref: '#/components/schemas/Calendar'
+        dateSeparator:
+          type: string
+          nullable: true
+        firstDayOfWeek:
+          $ref: '#/components/schemas/DayOfWeek'
+        calendarWeekRule:
+          $ref: '#/components/schemas/CalendarWeekRule'
+        fullDateTimePattern:
+          type: string
+          nullable: true
+        longDatePattern:
+          type: string
+          nullable: true
+        longTimePattern:
+          type: string
+          nullable: true
+        monthDayPattern:
+          type: string
+          nullable: true
+        pmDesignator:
+          type: string
+          nullable: true
+        rfC1123Pattern:
+          type: string
+          nullable: true
+          readOnly: true
+        shortDatePattern:
+          type: string
+          nullable: true
+        shortTimePattern:
+          type: string
+          nullable: true
+        sortableDateTimePattern:
+          type: string
+          nullable: true
+          readOnly: true
+        timeSeparator:
+          type: string
+          nullable: true
+        universalSortableDateTimePattern:
+          type: string
+          nullable: true
+          readOnly: true
+        yearMonthPattern:
+          type: string
+          nullable: true
+        abbreviatedDayNames:
+          type: array
+          items:
+            type: string
+          nullable: true
+        shortestDayNames:
+          type: array
+          items:
+            type: string
+          nullable: true
+        dayNames:
+          type: array
+          items:
+            type: string
+          nullable: true
+        abbreviatedMonthNames:
+          type: array
+          items:
+            type: string
+          nullable: true
+        monthNames:
+          type: array
+          items:
+            type: string
+          nullable: true
+        isReadOnly:
+          type: boolean
+          readOnly: true
+        nativeCalendarName:
+          type: string
+          nullable: true
+          readOnly: true
+        abbreviatedMonthGenitiveNames:
+          type: array
+          items:
+            type: string
+          nullable: true
+        monthGenitiveNames:
+          type: array
+          items:
+            type: string
+          nullable: true
+      additionalProperties: false
+    DayOfWeek:
+      enum:
+        - sunday
+        - monday
+        - tuesday
+        - wednesday
+        - thursday
+        - friday
+        - saturday
+      type: string
+    DeliveryAddress:
+      required:
+        - city
+        - countryCode
+        - name1
+        - street
+        - zipCode
+      type: object
+      properties:
+        name1:
+          maxLength: 30
+          minLength: 1
+          type: string
+        name2:
+          maxLength: 30
+          type: string
+          nullable: true
+        name3:
+          maxLength: 30
+          type: string
+          nullable: true
+        street:
+          maxLength: 40
+          minLength: 1
+          type: string
+        houseNo:
+          maxLength: 5
+          type: string
+          nullable: true
+        houseNoExt:
+          maxLength: 5
+          type: string
+          nullable: true
+        zipCode:
+          maxLength: 8
+          minLength: 1
+          type: string
+        city:
+          maxLength: 30
+          minLength: 1
+          type: string
+        countryCode:
+          maxLength: 2
+          minLength: 1
+          type: string
+        contact:
+          maxLength: 30
+          type: string
+          nullable: true
+        phone:
+          maxLength: 25
+          type: string
+          nullable: true
+        email:
+          maxLength: 320
+          type: string
+          nullable: true
+        addresseeType:
+          $ref: '#/components/schemas/AdresseeType'
+      additionalProperties: false
+    DeliveryAddresses:
+      type: object
+      properties:
+        pickupAddress:
+          $ref: '#/components/schemas/PickupAddress'
+        deliveryAddress:
+          $ref: '#/components/schemas/DeliveryAddress'
+      additionalProperties: false
+    DeliveryOption:
+      type: object
+      properties:
+        service:
+          type: string
+          nullable: true
+        title:
+          type: string
+          nullable: true
+        expectedDeliveryDate:
+          type: string
+          nullable: true
+        expectedDeliveryTime:
+          type: string
+          nullable: true
+      additionalProperties: false
+    DeliveryOptions:
+      type: object
+      properties:
+        service:
+          type: string
+          nullable: true
+        title:
+          type: string
+          nullable: true
+        expectedDeliveryDate:
+          type: string
+          nullable: true
+        expectedDeliveryTime:
+          type: string
+          nullable: true
+        subDeliveryOptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeliveryOption'
+          nullable: true
+      additionalProperties: false
+    DigitShapes:
+      enum:
+        - context
+        - none
+        - nativeNational
+      type: string
+    Dimensions:
+      type: object
+      properties:
+        length:
+          type: integer
+          format: int32
+        width:
+          type: integer
+          format: int32
+        height:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ErrorContext:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/Exception'
+        originalObject:
+          nullable: true
+          readOnly: true
+        member:
+          nullable: true
+          readOnly: true
+        path:
+          type: string
+          nullable: true
+          readOnly: true
+        handled:
+          type: boolean
+      additionalProperties: false
+    EventAttributes:
+      enum:
+        - none
+        - specialName
+        - rtSpecialName
+      type: string
+    EventInfo:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+          readOnly: true
+        declaringType:
+          $ref: '#/components/schemas/Type'
+        reflectedType:
+          $ref: '#/components/schemas/Type'
+        module:
+          $ref: '#/components/schemas/Module'
+        customAttributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          nullable: true
+          readOnly: true
+        isCollectible:
+          type: boolean
+          readOnly: true
+        metadataToken:
+          type: integer
+          format: int32
+          readOnly: true
+        memberType:
+          $ref: '#/components/schemas/MemberTypes'
+        attributes:
+          $ref: '#/components/schemas/EventAttributes'
+        isSpecialName:
+          type: boolean
+          readOnly: true
+        addMethod:
+          $ref: '#/components/schemas/MethodInfo'
+        removeMethod:
+          $ref: '#/components/schemas/MethodInfo'
+        raiseMethod:
+          $ref: '#/components/schemas/MethodInfo'
+        isMulticast:
+          type: boolean
+          readOnly: true
+        eventHandlerType:
+          $ref: '#/components/schemas/Type'
+      additionalProperties: false
+    Exception:
+      type: object
+      properties:
+        targetSite:
+          $ref: '#/components/schemas/MethodBase'
+        message:
+          type: string
+          nullable: true
+          readOnly: true
+        data:
+          type: object
+          additionalProperties: { }
+          nullable: true
+          readOnly: true
+        innerException:
+          $ref: '#/components/schemas/Exception'
+        helpLink:
+          type: string
+          nullable: true
+        source:
+          type: string
+          nullable: true
+        hResult:
+          type: integer
+          format: int32
+        stackTrace:
+          type: string
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    ExpressServiceType:
+      enum:
+        - none
+        - t9
+        - t10
+        - t12
+        - t17
+        - s9
+        - s10
+        - s12
+        - s17
+      type: string
+    FieldAttributes:
+      enum:
+        - privateScope
+        - private
+        - famANDAssem
+        - assembly
+        - family
+        - famORAssem
+        - public
+        - fieldAccessMask
+        - static
+        - initOnly
+        - literal
+        - notSerialized
+        - hasFieldRVA
+        - specialName
+        - rtSpecialName
+        - hasFieldMarshal
+        - pinvokeImpl
+        - hasDefault
+        - reservedMask
+      type: string
+    FieldInfo:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+          readOnly: true
+        declaringType:
+          $ref: '#/components/schemas/Type'
+        reflectedType:
+          $ref: '#/components/schemas/Type'
+        module:
+          $ref: '#/components/schemas/Module'
+        customAttributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          nullable: true
+          readOnly: true
+        isCollectible:
+          type: boolean
+          readOnly: true
+        metadataToken:
+          type: integer
+          format: int32
+          readOnly: true
+        memberType:
+          $ref: '#/components/schemas/MemberTypes'
+        attributes:
+          $ref: '#/components/schemas/FieldAttributes'
+        fieldType:
+          $ref: '#/components/schemas/Type'
+        isInitOnly:
+          type: boolean
+          readOnly: true
+        isLiteral:
+          type: boolean
+          readOnly: true
+        isNotSerialized:
+          type: boolean
+          readOnly: true
+          deprecated: true
+        isPinvokeImpl:
+          type: boolean
+          readOnly: true
+        isSpecialName:
+          type: boolean
+          readOnly: true
+        isStatic:
+          type: boolean
+          readOnly: true
+        isAssembly:
+          type: boolean
+          readOnly: true
+        isFamily:
+          type: boolean
+          readOnly: true
+        isFamilyAndAssembly:
+          type: boolean
+          readOnly: true
+        isFamilyOrAssembly:
+          type: boolean
+          readOnly: true
+        isPrivate:
+          type: boolean
+          readOnly: true
+        isPublic:
+          type: boolean
+          readOnly: true
+        isSecurityCritical:
+          type: boolean
+          readOnly: true
+        isSecuritySafeCritical:
+          type: boolean
+          readOnly: true
+        isSecurityTransparent:
+          type: boolean
+          readOnly: true
+        fieldHandle:
+          $ref: '#/components/schemas/RuntimeFieldHandle'
+      additionalProperties: false
+    FreightCustomerNumbers:
+      type: object
+      properties:
+        operationalCustNo:
+          type: string
+          nullable: true
+        blueRockCustNo:
+          type: string
+          nullable: true
+        sprintCustNo:
+          type: string
+          nullable: true
+      additionalProperties: false
+    GenericParameterAttributes:
+      enum:
+        - none
+        - covariant
+        - contravariant
+        - varianceMask
+        - referenceTypeConstraint
+        - notNullableValueTypeConstraint
+        - defaultConstructorConstraint
+        - specialConstraintMask
+      type: string
+    GeoCoordinates:
+      type: object
+      properties:
+        lat:
+          type: number
+          format: double
+          readOnly: true
+        lng:
+          type: number
+          format: double
+          readOnly: true
+      additionalProperties: false
+    GlsPoint:
+      type: object
+      properties:
+        parcelShopId:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        street:
+          type: string
+          nullable: true
+        houseNo:
+          type: string
+          nullable: true
+        zipcode:
+          type: string
+          nullable: true
+        city:
+          type: string
+          nullable: true
+        countryCode:
+          type: string
+          nullable: true
+        webSite:
+          type: string
+          nullable: true
+        info1:
+          type: string
+          nullable: true
+        info2:
+          type: string
+          nullable: true
+        mapsUrl:
+          type: string
+          nullable: true
+          readOnly: true
+        geoCoordinates:
+          $ref: '#/components/schemas/GeoCoordinates'
+        businessHours:
+          type: array
+          items:
+            $ref: '#/components/schemas/GlsPointBusinessHours'
+          nullable: true
+        distanceMeters:
+          type: integer
+          format: int32
+          nullable: true
+        distanceMinutes:
+          type: integer
+          format: int32
+          nullable: true
+        vacations:
+          type: array
+          items:
+            $ref: '#/components/schemas/GlsPointVacation'
+          nullable: true
+        deliveryOptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeliveryOptions'
+          nullable: true
+        type:
+          $ref: '#/components/schemas/GlsPointType'
+      additionalProperties: false
+    GlsPointBusinessHours:
+      type: object
+      properties:
+        dayOfWeek:
+          type: string
+          nullable: true
+        openTime:
+          type: string
+          nullable: true
+        breakStartTime:
+          type: string
+          nullable: true
+        breakEndTime:
+          type: string
+          nullable: true
+        secondBreakStartTime:
+          type: string
+          nullable: true
+        secondBreakEndTime:
+          type: string
+          nullable: true
+        closedTime:
+          type: string
+          nullable: true
+      additionalProperties: false
+    GlsPointType:
+      enum:
+        - parcelShop
+        - parcelLocker
+      type: string
+    GlsPointVacation:
+      type: object
+      properties:
+        start:
+          type: string
+          nullable: true
+        end:
+          type: string
+          nullable: true
+      additionalProperties: false
+    GlsPointsRequestType:
+      enum:
+        - all
+        - parcelShops
+        - parcelLockers
+      type: string
+    ICustomAttributeProvider:
+      type: object
+      additionalProperties: false
+    InboundConfirmMultipleRequest:
+      required:
+        - password
+        - unitNos
+        - username
+      type: object
+      properties:
+        username:
+          maxLength: 70
+          minLength: 1
+          type: string
+        password:
+          maxLength: 20
+          minLength: 1
+          type: string
+          writeOnly: true
+        shippingSystemName:
+          type: string
+          nullable: true
+        shippingSystemVersion:
+          type: string
+          nullable: true
+        shiptype:
+          $ref: '#/components/schemas/ShipType'
+        incoterm:
+          type: integer
+          format: int32
+          nullable: true
+        unitNos:
+          type: array
+          items:
+            type: string
+        shippingDate:
+          type: string
+          format: date-time
+          nullable: true
+      additionalProperties: false
+    InboundConfirmRequest:
+      required:
+        - password
+        - unitNo
+        - username
+      type: object
+      properties:
+        username:
+          maxLength: 70
+          minLength: 1
+          type: string
+        password:
+          maxLength: 20
+          minLength: 1
+          type: string
+          writeOnly: true
+        shippingSystemName:
+          type: string
+          nullable: true
+        shippingSystemVersion:
+          type: string
+          nullable: true
+        shiptype:
+          $ref: '#/components/schemas/ShipType'
+        incoterm:
+          type: integer
+          format: int32
+          nullable: true
+        unitNo:
+          maxLength: 14
+          minLength: 1
+          type: string
+        shippingDate:
+          type: string
+          format: date-time
+          nullable: true
+      additionalProperties: false
+    InboundCreateDeliveryRequest:
+      required:
+        - password
+        - username
+      type: object
+      properties:
+        username:
+          maxLength: 70
+          minLength: 1
+          type: string
+        password:
+          maxLength: 20
+          minLength: 1
+          type: string
+          writeOnly: true
+        shippingSystemName:
+          type: string
+          nullable: true
+        shippingSystemVersion:
+          type: string
+          nullable: true
+        shiptype:
+          $ref: '#/components/schemas/ShipType'
+        incoterm:
+          type: integer
+          format: int32
+          nullable: true
+        customerNo:
+          maxLength: 8
+          minLength: 7
+          type: string
+          nullable: true
+        customerSubjectName:
+          maxLength: 50
+          type: string
+          nullable: true
+        reference:
+          maxLength: 20
+          type: string
+          nullable: true
+        trackingLinkType:
+          $ref: '#/components/schemas/TrackingLinkType'
+        units:
+          type: array
+          items:
+            $ref: '#/components/schemas/Unit'
+          nullable: true
+        labelType:
+          $ref: '#/components/schemas/LabelResultType'
+        labelA4StartPosition:
+          type: integer
+          format: int32
+          nullable: true
+        labelA4MoveXMm:
+          type: integer
+          format: int32
+          nullable: true
+        labelA4MoveYMm:
+          type: integer
+          format: int32
+          nullable: true
+        notificationEmail:
+          $ref: '#/components/schemas/NotificationEmail'
+        returnRoutingData:
+          type: boolean
+        addresses:
+          $ref: '#/components/schemas/DeliveryAddresses'
+        shippingDate:
+          type: string
+          format: date-time
+          nullable: true
+        services:
+          $ref: '#/components/schemas/Services'
+      additionalProperties: false
+    InboundCreatePickupRequest:
+      required:
+        - password
+        - pickupDate
+        - username
+      type: object
+      properties:
+        username:
+          maxLength: 70
+          minLength: 1
+          type: string
+        password:
+          maxLength: 20
+          minLength: 1
+          type: string
+          writeOnly: true
+        shippingSystemName:
+          type: string
+          nullable: true
+        shippingSystemVersion:
+          type: string
+          nullable: true
+        shiptype:
+          $ref: '#/components/schemas/ShipType'
+        incoterm:
+          type: integer
+          format: int32
+          nullable: true
+        customerNo:
+          maxLength: 8
+          minLength: 7
+          type: string
+          nullable: true
+        customerSubjectName:
+          maxLength: 50
+          type: string
+          nullable: true
+        reference:
+          maxLength: 20
+          type: string
+          nullable: true
+        trackingLinkType:
+          $ref: '#/components/schemas/TrackingLinkType'
+        units:
+          type: array
+          items:
+            $ref: '#/components/schemas/Unit'
+          nullable: true
+        pickupDate:
+          type: string
+          format: date-time
+        addresses:
+          $ref: '#/components/schemas/PickupAddresses'
+        jSonErrors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorContext'
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    InboundCreateShopReturnRequest:
+      required:
+        - password
+        - username
+      type: object
+      properties:
+        username:
+          maxLength: 70
+          minLength: 1
+          type: string
+        password:
+          maxLength: 20
+          minLength: 1
+          type: string
+          writeOnly: true
+        shippingSystemName:
+          type: string
+          nullable: true
+        shippingSystemVersion:
+          type: string
+          nullable: true
+        shiptype:
+          $ref: '#/components/schemas/ShipType'
+        incoterm:
+          type: integer
+          format: int32
+          nullable: true
+        customerNo:
+          maxLength: 8
+          minLength: 7
+          type: string
+          nullable: true
+        customerSubjectName:
+          maxLength: 50
+          type: string
+          nullable: true
+        reference:
+          maxLength: 20
+          type: string
+          nullable: true
+        trackingLinkType:
+          $ref: '#/components/schemas/TrackingLinkType'
+        units:
+          type: array
+          items:
+            $ref: '#/components/schemas/Unit'
+          nullable: true
+        labelType:
+          $ref: '#/components/schemas/LabelResultType'
+        labelA4StartPosition:
+          type: integer
+          format: int32
+          nullable: true
+        labelA4MoveXMm:
+          type: integer
+          format: int32
+          nullable: true
+        labelA4MoveYMm:
+          type: integer
+          format: int32
+          nullable: true
+        addresses:
+          $ref: '#/components/schemas/PickupAddresses'
+        returnReason:
+          type: string
+          nullable: true
+        sendLabelsByEmail:
+          type: boolean
+      additionalProperties: false
+    InboundDeleteRequest:
+      required:
+        - password
+        - unitNo
+        - username
+      type: object
+      properties:
+        username:
+          maxLength: 70
+          minLength: 1
+          type: string
+        password:
+          maxLength: 20
+          minLength: 1
+          type: string
+          writeOnly: true
+        shippingSystemName:
+          type: string
+          nullable: true
+        shippingSystemVersion:
+          type: string
+          nullable: true
+        shiptype:
+          $ref: '#/components/schemas/ShipType'
+        incoterm:
+          type: integer
+          format: int32
+          nullable: true
+        unitNo:
+          maxLength: 14
+          minLength: 1
+          type: string
+      additionalProperties: false
+    InboundGetDeliveryOptionsRequest:
+      required:
+        - countryCode
+        - password
+        - username
+        - zipCode
+      type: object
+      properties:
+        username:
+          maxLength: 70
+          minLength: 1
+          type: string
+        password:
+          maxLength: 20
+          minLength: 1
+          type: string
+          writeOnly: true
+        countryCode:
+          maxLength: 2
+          minLength: 2
+          type: string
+        langCode:
+          $ref: '#/components/schemas/LangCode'
+        zipCode:
+          maxLength: 8
+          minLength: 1
+          type: string
+        shippingDate:
+          type: string
+          format: date-time
+      additionalProperties: false
+    InboundGetParcelShopsRequest:
+      required:
+        - amountOfShops
+        - password
+        - username
+        - zipCode
+      type: object
+      properties:
+        username:
+          maxLength: 70
+          minLength: 1
+          type: string
+        password:
+          maxLength: 20
+          minLength: 1
+          type: string
+          writeOnly: true
+        countryCode:
+          maxLength: 2
+          minLength: 2
+          type: string
+          nullable: true
+        zipCode:
+          maxLength: 8
+          minLength: 1
+          type: string
+        street:
+          type: string
+          nullable: true
+        houseNo:
+          type: string
+          nullable: true
+        city:
+          type: string
+          nullable: true
+        amountOfShops:
+          maximum: 10.0
+          minimum: 1.0
+          type: integer
+          format: int32
+        shippingDate:
+          type: string
+          format: date-time
+        langCode:
+          $ref: '#/components/schemas/LangCode'
+        glsPointType:
+          $ref: '#/components/schemas/GlsPointsRequestType'
+      additionalProperties: false
+    InboundLoginRequest:
+      required:
+        - password
+        - username
+      type: object
+      properties:
+        username:
+          maxLength: 70
+          minLength: 1
+          type: string
+        password:
+          maxLength: 20
+          minLength: 1
+          type: string
+          writeOnly: true
+      additionalProperties: false
+    IntPtr:
+      type: object
+      additionalProperties: false
+    LabelResultType:
+      enum:
+        - zpl
+        - zplUtf8
+        - zpl300
+        - zpl300Utf8
+        - pdf
+        - pdfRoutingOnly
+        - zplRoutingOnly
+        - zplUtf8RoutingOnly
+        - zpl300RoutingOnly
+        - zpl300Utf8RoutingOnly
+        - pdfA6U
+        - pdfA6S
+        - pdf2A4
+        - pdf4A4
+        - none
+      type: string
+    LangCode:
+      enum:
+        - nl
+        - en
+      type: string
+    LayoutKind:
+      enum:
+        - sequential
+        - explicit
+        - auto
+      type: string
+    MemberInfo:
+      type: object
+      properties:
+        memberType:
+          $ref: '#/components/schemas/MemberTypes'
+        name:
+          type: string
+          nullable: true
+          readOnly: true
+        declaringType:
+          $ref: '#/components/schemas/Type'
+        reflectedType:
+          $ref: '#/components/schemas/Type'
+        module:
+          $ref: '#/components/schemas/Module'
+        customAttributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          nullable: true
+          readOnly: true
+        isCollectible:
+          type: boolean
+          readOnly: true
+        metadataToken:
+          type: integer
+          format: int32
+          readOnly: true
+      additionalProperties: false
+    MemberTypes:
+      enum:
+        - constructor
+        - event
+        - field
+        - method
+        - property
+        - typeInfo
+        - custom
+        - nestedType
+        - all
+      type: string
+    MethodAttributes:
+      enum:
+        - privateScope
+        - private
+        - famANDAssem
+        - assembly
+        - family
+        - famORAssem
+        - public
+        - memberAccessMask
+        - unmanagedExport
+        - static
+        - final
+        - virtual
+        - hideBySig
+        - newSlot
+        - checkAccessOnOverride
+        - abstract
+        - specialName
+        - rtSpecialName
+        - pinvokeImpl
+        - hasSecurity
+        - requireSecObject
+        - reservedMask
+      type: string
+    MethodBase:
+      type: object
+      properties:
+        memberType:
+          $ref: '#/components/schemas/MemberTypes'
+        name:
+          type: string
+          nullable: true
+          readOnly: true
+        declaringType:
+          $ref: '#/components/schemas/Type'
+        reflectedType:
+          $ref: '#/components/schemas/Type'
+        module:
+          $ref: '#/components/schemas/Module'
+        customAttributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          nullable: true
+          readOnly: true
+        isCollectible:
+          type: boolean
+          readOnly: true
+        metadataToken:
+          type: integer
+          format: int32
+          readOnly: true
+        attributes:
+          $ref: '#/components/schemas/MethodAttributes'
+        methodImplementationFlags:
+          $ref: '#/components/schemas/MethodImplAttributes'
+        callingConvention:
+          $ref: '#/components/schemas/CallingConventions'
+        isAbstract:
+          type: boolean
+          readOnly: true
+        isConstructor:
+          type: boolean
+          readOnly: true
+        isFinal:
+          type: boolean
+          readOnly: true
+        isHideBySig:
+          type: boolean
+          readOnly: true
+        isSpecialName:
+          type: boolean
+          readOnly: true
+        isStatic:
+          type: boolean
+          readOnly: true
+        isVirtual:
+          type: boolean
+          readOnly: true
+        isAssembly:
+          type: boolean
+          readOnly: true
+        isFamily:
+          type: boolean
+          readOnly: true
+        isFamilyAndAssembly:
+          type: boolean
+          readOnly: true
+        isFamilyOrAssembly:
+          type: boolean
+          readOnly: true
+        isPrivate:
+          type: boolean
+          readOnly: true
+        isPublic:
+          type: boolean
+          readOnly: true
+        isConstructedGenericMethod:
+          type: boolean
+          readOnly: true
+        isGenericMethod:
+          type: boolean
+          readOnly: true
+        isGenericMethodDefinition:
+          type: boolean
+          readOnly: true
+        containsGenericParameters:
+          type: boolean
+          readOnly: true
+        methodHandle:
+          $ref: '#/components/schemas/RuntimeMethodHandle'
+        isSecurityCritical:
+          type: boolean
+          readOnly: true
+        isSecuritySafeCritical:
+          type: boolean
+          readOnly: true
+        isSecurityTransparent:
+          type: boolean
+          readOnly: true
+      additionalProperties: false
+    MethodImplAttributes:
+      enum:
+        - il
+        - native
+        - optil
+        - codeTypeMask
+        - managedMask
+        - noInlining
+        - forwardRef
+        - synchronized
+        - noOptimization
+        - preserveSig
+        - aggressiveInlining
+        - aggressiveOptimization
+        - internalCall
+        - maxMethodImplVal
+      type: string
+    MethodInfo:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+          readOnly: true
+        declaringType:
+          $ref: '#/components/schemas/Type'
+        reflectedType:
+          $ref: '#/components/schemas/Type'
+        module:
+          $ref: '#/components/schemas/Module'
+        customAttributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          nullable: true
+          readOnly: true
+        isCollectible:
+          type: boolean
+          readOnly: true
+        metadataToken:
+          type: integer
+          format: int32
+          readOnly: true
+        attributes:
+          $ref: '#/components/schemas/MethodAttributes'
+        methodImplementationFlags:
+          $ref: '#/components/schemas/MethodImplAttributes'
+        callingConvention:
+          $ref: '#/components/schemas/CallingConventions'
+        isAbstract:
+          type: boolean
+          readOnly: true
+        isConstructor:
+          type: boolean
+          readOnly: true
+        isFinal:
+          type: boolean
+          readOnly: true
+        isHideBySig:
+          type: boolean
+          readOnly: true
+        isSpecialName:
+          type: boolean
+          readOnly: true
+        isStatic:
+          type: boolean
+          readOnly: true
+        isVirtual:
+          type: boolean
+          readOnly: true
+        isAssembly:
+          type: boolean
+          readOnly: true
+        isFamily:
+          type: boolean
+          readOnly: true
+        isFamilyAndAssembly:
+          type: boolean
+          readOnly: true
+        isFamilyOrAssembly:
+          type: boolean
+          readOnly: true
+        isPrivate:
+          type: boolean
+          readOnly: true
+        isPublic:
+          type: boolean
+          readOnly: true
+        isConstructedGenericMethod:
+          type: boolean
+          readOnly: true
+        isGenericMethod:
+          type: boolean
+          readOnly: true
+        isGenericMethodDefinition:
+          type: boolean
+          readOnly: true
+        containsGenericParameters:
+          type: boolean
+          readOnly: true
+        methodHandle:
+          $ref: '#/components/schemas/RuntimeMethodHandle'
+        isSecurityCritical:
+          type: boolean
+          readOnly: true
+        isSecuritySafeCritical:
+          type: boolean
+          readOnly: true
+        isSecurityTransparent:
+          type: boolean
+          readOnly: true
+        memberType:
+          $ref: '#/components/schemas/MemberTypes'
+        returnParameter:
+          $ref: '#/components/schemas/ParameterInfo'
+        returnType:
+          $ref: '#/components/schemas/Type'
+        returnTypeCustomAttributes:
+          $ref: '#/components/schemas/ICustomAttributeProvider'
+      additionalProperties: false
+    Module:
+      type: object
+      properties:
+        assembly:
+          $ref: '#/components/schemas/Assembly'
+        fullyQualifiedName:
+          type: string
+          nullable: true
+          readOnly: true
+        name:
+          type: string
+          nullable: true
+          readOnly: true
+        mdStreamVersion:
+          type: integer
+          format: int32
+          readOnly: true
+        moduleVersionId:
+          type: string
+          format: uuid
+          readOnly: true
+        scopeName:
+          type: string
+          nullable: true
+          readOnly: true
+        moduleHandle:
+          $ref: '#/components/schemas/ModuleHandle'
+        customAttributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          nullable: true
+          readOnly: true
+        metadataToken:
+          type: integer
+          format: int32
+          readOnly: true
+      additionalProperties: false
+    ModuleHandle:
+      type: object
+      properties:
+        mdStreamVersion:
+          type: integer
+          format: int32
+          readOnly: true
+      additionalProperties: false
+    NotificationEmail:
+      type: object
+      properties:
+        sendMail:
+          type: boolean
+          nullable: true
+        senderName:
+          maxLength: 30
+          type: string
+          nullable: true
+        senderReplyAddress:
+          maxLength: 320
+          type: string
+          nullable: true
+        senderContactName:
+          maxLength: 30
+          type: string
+          nullable: true
+        senderPhoneNo:
+          maxLength: 25
+          type: string
+          nullable: true
+        emailSubject:
+          maxLength: 50
+          type: string
+          nullable: true
+        emailAddressCC:
+          maxLength: 320
+          type: string
+          nullable: true
+        emailAddressBCC:
+          maxLength: 320
+          type: string
+          nullable: true
+      additionalProperties: false
+    NumberFormatInfo:
+      type: object
+      properties:
+        currencyDecimalDigits:
+          type: integer
+          format: int32
+        currencyDecimalSeparator:
+          type: string
+          nullable: true
+        isReadOnly:
+          type: boolean
+          readOnly: true
+        currencyGroupSizes:
+          type: array
+          items:
+            type: integer
+            format: int32
+          nullable: true
+        numberGroupSizes:
+          type: array
+          items:
+            type: integer
+            format: int32
+          nullable: true
+        percentGroupSizes:
+          type: array
+          items:
+            type: integer
+            format: int32
+          nullable: true
+        currencyGroupSeparator:
+          type: string
+          nullable: true
+        currencySymbol:
+          type: string
+          nullable: true
+        naNSymbol:
+          type: string
+          nullable: true
+        currencyNegativePattern:
+          type: integer
+          format: int32
+        numberNegativePattern:
+          type: integer
+          format: int32
+        percentPositivePattern:
+          type: integer
+          format: int32
+        percentNegativePattern:
+          type: integer
+          format: int32
+        negativeInfinitySymbol:
+          type: string
+          nullable: true
+        negativeSign:
+          type: string
+          nullable: true
+        numberDecimalDigits:
+          type: integer
+          format: int32
+        numberDecimalSeparator:
+          type: string
+          nullable: true
+        numberGroupSeparator:
+          type: string
+          nullable: true
+        currencyPositivePattern:
+          type: integer
+          format: int32
+        positiveInfinitySymbol:
+          type: string
+          nullable: true
+        positiveSign:
+          type: string
+          nullable: true
+        percentDecimalDigits:
+          type: integer
+          format: int32
+        percentDecimalSeparator:
+          type: string
+          nullable: true
+        percentGroupSeparator:
+          type: string
+          nullable: true
+        percentSymbol:
+          type: string
+          nullable: true
+        perMilleSymbol:
+          type: string
+          nullable: true
+        nativeDigits:
+          type: array
+          items:
+            type: string
+          nullable: true
+        digitSubstitution:
+          $ref: '#/components/schemas/DigitShapes'
+      additionalProperties: false
+    ParameterAttributes:
+      enum:
+        - none
+        - in
+        - out
+        - lcid
+        - retval
+        - optional
+        - hasDefault
+        - hasFieldMarshal
+        - reserved3
+        - reserved4
+        - reservedMask
+      type: string
+    ParameterInfo:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ParameterAttributes'
+        member:
+          $ref: '#/components/schemas/MemberInfo'
+        name:
+          type: string
+          nullable: true
+          readOnly: true
+        parameterType:
+          $ref: '#/components/schemas/Type'
+        position:
+          type: integer
+          format: int32
+          readOnly: true
+        isIn:
+          type: boolean
+          readOnly: true
+        isLcid:
+          type: boolean
+          readOnly: true
+        isOptional:
+          type: boolean
+          readOnly: true
+        isOut:
+          type: boolean
+          readOnly: true
+        isRetval:
+          type: boolean
+          readOnly: true
+        defaultValue:
+          nullable: true
+          readOnly: true
+        rawDefaultValue:
+          nullable: true
+          readOnly: true
+        hasDefaultValue:
+          type: boolean
+          readOnly: true
+        customAttributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          nullable: true
+          readOnly: true
+        metadataToken:
+          type: integer
+          format: int32
+          readOnly: true
+      additionalProperties: false
+    PickupAddress:
+      required:
+        - city
+        - countryCode
+        - name1
+        - street
+        - zipCode
+      type: object
+      properties:
+        name1:
+          maxLength: 30
+          minLength: 1
+          type: string
+        name2:
+          maxLength: 30
+          type: string
+          nullable: true
+        name3:
+          maxLength: 30
+          type: string
+          nullable: true
+        street:
+          maxLength: 40
+          minLength: 1
+          type: string
+        houseNo:
+          maxLength: 5
+          type: string
+          nullable: true
+        houseNoExt:
+          maxLength: 5
+          type: string
+          nullable: true
+        zipCode:
+          maxLength: 8
+          minLength: 1
+          type: string
+        city:
+          maxLength: 30
+          minLength: 1
+          type: string
+        countryCode:
+          maxLength: 2
+          minLength: 1
+          type: string
+        contact:
+          maxLength: 30
+          type: string
+          nullable: true
+        phone:
+          maxLength: 25
+          type: string
+          nullable: true
+        email:
+          maxLength: 320
+          type: string
+          nullable: true
+      additionalProperties: false
+    PickupAddresses:
+      type: object
+      properties:
+        pickupAddress:
+          $ref: '#/components/schemas/PickupAddress'
+        deliveryAddress:
+          $ref: '#/components/schemas/DeliveryAddress'
+        requesterAddress:
+          $ref: '#/components/schemas/RequesterAddress'
+      additionalProperties: false
+    ProductDestinationType:
+      enum:
+        - domestic
+        - global
+        - euro
+      type: string
+    PropertyAttributes:
+      enum:
+        - none
+        - specialName
+        - rtSpecialName
+        - hasDefault
+        - reserved2
+        - reserved3
+        - reserved4
+        - reservedMask
+      type: string
+    PropertyInfo:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+          readOnly: true
+        declaringType:
+          $ref: '#/components/schemas/Type'
+        reflectedType:
+          $ref: '#/components/schemas/Type'
+        module:
+          $ref: '#/components/schemas/Module'
+        customAttributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          nullable: true
+          readOnly: true
+        isCollectible:
+          type: boolean
+          readOnly: true
+        metadataToken:
+          type: integer
+          format: int32
+          readOnly: true
+        memberType:
+          $ref: '#/components/schemas/MemberTypes'
+        propertyType:
+          $ref: '#/components/schemas/Type'
+        attributes:
+          $ref: '#/components/schemas/PropertyAttributes'
+        isSpecialName:
+          type: boolean
+          readOnly: true
+        canRead:
+          type: boolean
+          readOnly: true
+        canWrite:
+          type: boolean
+          readOnly: true
+        getMethod:
+          $ref: '#/components/schemas/MethodInfo'
+        setMethod:
+          $ref: '#/components/schemas/MethodInfo'
+      additionalProperties: false
+    RequesterAddress:
+      required:
+        - city
+        - countryCode
+        - name1
+        - street
+        - zipCode
+      type: object
+      properties:
+        name1:
+          maxLength: 30
+          minLength: 1
+          type: string
+        name2:
+          maxLength: 30
+          type: string
+          nullable: true
+        name3:
+          maxLength: 30
+          type: string
+          nullable: true
+        street:
+          maxLength: 40
+          minLength: 1
+          type: string
+        houseNo:
+          maxLength: 5
+          type: string
+          nullable: true
+        houseNoExt:
+          maxLength: 5
+          type: string
+          nullable: true
+        zipCode:
+          maxLength: 8
+          minLength: 1
+          type: string
+        city:
+          maxLength: 30
+          minLength: 1
+          type: string
+        countryCode:
+          maxLength: 2
+          minLength: 1
+          type: string
+        contact:
+          maxLength: 30
+          type: string
+          nullable: true
+        phone:
+          maxLength: 25
+          type: string
+          nullable: true
+        email:
+          maxLength: 320
+          type: string
+          nullable: true
+      additionalProperties: false
+    ReturnAddress:
+      required:
+        - city
+        - countryCode
+        - name1
+        - street
+        - zipCode
+      type: object
+      properties:
+        name1:
+          maxLength: 30
+          minLength: 1
+          type: string
+        name2:
+          maxLength: 30
+          type: string
+          nullable: true
+        name3:
+          maxLength: 30
+          type: string
+          nullable: true
+        street:
+          maxLength: 40
+          minLength: 1
+          type: string
+        houseNo:
+          maxLength: 5
+          type: string
+          nullable: true
+        houseNoExt:
+          maxLength: 5
+          type: string
+          nullable: true
+        zipCode:
+          maxLength: 8
+          minLength: 1
+          type: string
+        city:
+          maxLength: 30
+          minLength: 1
+          type: string
+        countryCode:
+          maxLength: 2
+          minLength: 1
+          type: string
+        contact:
+          maxLength: 30
+          type: string
+          nullable: true
+        phone:
+          maxLength: 25
+          type: string
+          nullable: true
+        email:
+          maxLength: 320
+          type: string
+          nullable: true
+      additionalProperties: false
+    RoutingDataBase:
+      type: object
+      properties:
+        outboundSortFlag:
+          type: string
+          nullable: true
+        inboundSortFlag:
+          type: string
+          nullable: true
+        finalCountry:
+          type: string
+          nullable: true
+        finalLocation:
+          type: string
+          nullable: true
+        tourNo:
+          type: string
+          nullable: true
+        geoTour:
+          type: string
+          nullable: true
+        loadingArea:
+          type: string
+          nullable: true
+        dispositionFlag:
+          type: string
+          nullable: true
+        zipCode:
+          type: string
+          nullable: true
+        handlingInfo1:
+          type: string
+          nullable: true
+        handlingInfo2:
+          type: string
+          nullable: true
+        handlingInfo3:
+          type: string
+          nullable: true
+        handlingInfo4:
+          type: string
+          nullable: true
+        handlingInfo5:
+          type: string
+          nullable: true
+        originLocation:
+          type: string
+          nullable: true
+        stationId:
+          type: string
+          nullable: true
+        printDateTime:
+          type: string
+          nullable: true
+        unitSequenceNo:
+          type: string
+          nullable: true
+        totalUnitCount:
+          type: string
+          nullable: true
+        routingInfo:
+          type: string
+          nullable: true
+        applicationName:
+          type: string
+          nullable: true
+        applicationVersion:
+          type: string
+          nullable: true
+        primaryDataMatrixContent:
+          type: string
+          nullable: true
+        secondaryDataMatrixContent:
+          type: string
+          nullable: true
+        gpNo:
+          type: string
+          nullable: true
+        gpNoText:
+          type: string
+          nullable: true
+        chNdiNo:
+          type: string
+          nullable: true
+        chNdiNoText:
+          type: string
+          nullable: true
+        gbNdiNo:
+          type: string
+          nullable: true
+        gbProductIdentifier:
+          type: string
+          nullable: true
+        gbZipcode:
+          type: string
+          nullable: true
+        gbPostOffice:
+          type: string
+          nullable: true
+        noNdiNo:
+          type: string
+          nullable: true
+        seNdiNo:
+          type: string
+          nullable: true
+        itNdiNo:
+          type: string
+          nullable: true
+        itDataMatrixContent:
+          type: string
+          nullable: true
+        itDepot:
+          type: string
+          nullable: true
+        itTour:
+          type: string
+          nullable: true
+        freightBarcodeNo:
+          type: string
+          nullable: true
+        freightSSCCBarcodeNo:
+          type: string
+          nullable: true
+        uniShipDataMatrixContent:
+          type: string
+          nullable: true
+        serviceField1:
+          type: string
+          nullable: true
+        serviceField2:
+          type: string
+          nullable: true
+        serviceField3:
+          type: string
+          nullable: true
+        serviceField4:
+          type: string
+          nullable: true
+        serviceField5:
+          type: string
+          nullable: true
+        serviceField6:
+          type: string
+          nullable: true
+        serviceField7:
+          type: string
+          nullable: true
+        serviceField8:
+          type: string
+          nullable: true
+        packagingName:
+          type: string
+          nullable: true
+        custNo:
+          type: string
+          nullable: true
+        contactId:
+          type: string
+          nullable: true
+        gdprLine1:
+          type: string
+          nullable: true
+        gdprLine2:
+          type: string
+          nullable: true
+        gdprLine3:
+          type: string
+          nullable: true
+        gdprLine4:
+          type: string
+          nullable: true
+      additionalProperties: false
+    RuntimeFieldHandle:
+      type: object
+      properties:
+        value:
+          $ref: '#/components/schemas/IntPtr'
+      additionalProperties: false
+    RuntimeMethodHandle:
+      type: object
+      properties:
+        value:
+          $ref: '#/components/schemas/IntPtr'
+      additionalProperties: false
+    RuntimeTypeHandle:
+      type: object
+      properties:
+        value:
+          $ref: '#/components/schemas/IntPtr'
+      additionalProperties: false
+    SecureString:
+      type: object
+      properties:
+        length:
+          type: integer
+          format: int32
+          readOnly: true
+      additionalProperties: false
+    SecurityRuleSet:
+      enum:
+        - none
+        - level1
+        - level2
+      type: string
+    Services:
+      type: object
+      properties:
+        ageCheckService:
+          type: boolean
+          nullable: true
+        addresseeOnlyService:
+          type: boolean
+          nullable: true
+        expressService:
+          $ref: '#/components/schemas/ExpressServiceType'
+        expressConfirmSMS:
+          type: string
+          nullable: true
+        economyParcel:
+          type: boolean
+          nullable: true
+        letterBoxParcel:
+          type: boolean
+          nullable: true
+        shopDeliveryService:
+          type: boolean
+          nullable: true
+        shopDeliveryParcelShopId:
+          type: string
+          nullable: true
+        shopDeliveryPlusService:
+          type: boolean
+          nullable: true
+        shopReturnService:
+          type: boolean
+          nullable: true
+        saturdayService:
+          type: boolean
+          nullable: true
+      additionalProperties: false
+    ShipType:
+      enum:
+        - p
+        - f
+      type: string
+    SortVersion:
+      type: object
+      properties:
+        fullVersion:
+          type: integer
+          format: int32
+        sortId:
+          type: string
+          format: uuid
+      additionalProperties: false
+    StructLayoutAttribute:
+      type: object
+      properties:
+        typeId:
+          nullable: true
+          readOnly: true
+        value:
+          $ref: '#/components/schemas/LayoutKind'
+      additionalProperties: false
+    TbAccount:
+      type: object
+      properties:
+        accountId:
+          type: string
+          nullable: true
+        adminAccountId:
+          maxLength: 32
+          minLength: 0
+          type: string
+          nullable: true
+        name:
+          maxLength: 100
+          minLength: 0
+          type: string
+          nullable: true
+        username:
+          maxLength: 70
+          minLength: 0
+          type: string
+          nullable: true
+        email:
+          maxLength: 320
+          minLength: 0
+          type: string
+          nullable: true
+        password:
+          maxLength: 32
+          minLength: 0
+          type: string
+          nullable: true
+        encryptCode:
+          type: integer
+          format: int32
+        bCryptSalt:
+          type: string
+          nullable: true
+        active:
+          type: boolean
+        crDtTm:
+          type: string
+          format: date-time
+        chDtTm:
+          type: string
+          format: date-time
+        crUserId:
+          type: string
+          nullable: true
+        chUserId:
+          type: string
+          nullable: true
+        options:
+          type: array
+          items:
+            $ref: '#/components/schemas/TbAccountOption'
+          nullable: true
+        applications:
+          type: array
+          items:
+            $ref: '#/components/schemas/TbApplication'
+          nullable: true
+        custNos:
+          type: array
+          items:
+            $ref: '#/components/schemas/TbCustNos'
+          nullable: true
+        freightCustNos:
+          type: array
+          items:
+            $ref: '#/components/schemas/TbFreightCustNos'
+          nullable: true
+        shipmentRoutePermissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/TbShipmentRoutePermission'
+          nullable: true
+        securePassword:
+          $ref: '#/components/schemas/SecureString'
+        alwaysSendTrackingEmailCountries:
+          type: array
+          items:
+            type: string
+          nullable: true
+          readOnly: true
+        blockAplDelivery:
+          type: boolean
+          readOnly: true
+        defaultFreightCustNo:
+          type: string
+          nullable: true
+          readOnly: true
+        gbCarrierConnectRoyalMail:
+          type: boolean
+          readOnly: true
+        gbRoyalMailTrackedType:
+          type: string
+          nullable: true
+          readOnly: true
+        gbCarrierConnectRoyalMailTrackedType:
+          type: string
+          nullable: true
+          readOnly: true
+        gbCarrierConnectReturnName1:
+          type: string
+          nullable: true
+          readOnly: true
+        gbCarrierConnectReturnStreet:
+          type: string
+          nullable: true
+          readOnly: true
+        gbCarrierConnectReturnHouseNo:
+          type: string
+          nullable: true
+          readOnly: true
+        gbCarrierConnectReturnHouseNoAdd:
+          type: string
+          nullable: true
+          readOnly: true
+        gbCarrierConnectReturnZipcode:
+          type: string
+          nullable: true
+          readOnly: true
+        gbCarrierConnectReturnCity:
+          type: string
+          nullable: true
+          readOnly: true
+        gbCarrierConnectReturnPhoneNo:
+          type: string
+          nullable: true
+          readOnly: true
+        gbCarrierConnectReturnEmail:
+          type: string
+          nullable: true
+          readOnly: true
+        gbCarrierConnectShopDeliverySupported:
+          type: boolean
+          readOnly: true
+        gbCarrierConnectShopReturnSupported:
+          type: boolean
+          readOnly: true
+        sendCustomerContactIdToShipIt:
+          type: boolean
+          readOnly: true
+        srsReferenceBarcodeValue:
+          type: string
+          nullable: true
+          readOnly: true
+        freightUseShortColliKey:
+          type: boolean
+          readOnly: true
+        blueRockOnly:
+          type: boolean
+          readOnly: true
+        blockRoyalMail:
+          type: boolean
+          readOnly: true
+      additionalProperties: false
+    TbAccountOption:
+      type: object
+      properties:
+        accountId:
+          type: string
+          nullable: true
+        type:
+          maxLength: 32
+          minLength: 0
+          type: string
+          nullable: true
+        value:
+          maxLength: 32
+          minLength: 0
+          type: string
+          nullable: true
+        crDtTm:
+          type: string
+          format: date-time
+        chDtTm:
+          type: string
+          format: date-time
+        crUserId:
+          type: string
+          nullable: true
+        chUserId:
+          type: string
+          nullable: true
+        account:
+          $ref: '#/components/schemas/TbAccount'
+      additionalProperties: false
+    TbApiCustAddrOperation:
+      type: object
+      properties:
+        custNoOperation:
+          maxLength: 8
+          minLength: 0
+          type: string
+          nullable: true
+        addrTypeOps:
+          maxLength: 32
+          minLength: 0
+          type: string
+          nullable: true
+        name1:
+          maxLength: 50
+          minLength: 0
+          type: string
+          nullable: true
+        name2:
+          maxLength: 50
+          minLength: 0
+          type: string
+          nullable: true
+        street:
+          maxLength: 40
+          minLength: 0
+          type: string
+          nullable: true
+        houseNo:
+          maxLength: 5
+          minLength: 0
+          type: string
+          nullable: true
+        houseNoAdd:
+          maxLength: 5
+          minLength: 0
+          type: string
+          nullable: true
+        zipCode:
+          maxLength: 10
+          minLength: 0
+          type: string
+          nullable: true
+        city:
+          maxLength: 30
+          minLength: 0
+          type: string
+          nullable: true
+        countryCode:
+          maxLength: 2
+          minLength: 0
+          type: string
+          nullable: true
+        phoneNo:
+          maxLength: 25
+          minLength: 0
+          type: string
+          nullable: true
+        faxNo:
+          maxLength: 25
+          minLength: 0
+          type: string
+          nullable: true
+        email:
+          maxLength: 320
+          minLength: 0
+          type: string
+          nullable: true
+        contactTitle:
+          maxLength: 32
+          minLength: 0
+          type: string
+          nullable: true
+        contactPerson:
+          maxLength: 50
+          minLength: 0
+          type: string
+          nullable: true
+        contactPhoneNo:
+          maxLength: 25
+          minLength: 0
+          type: string
+          nullable: true
+        contactEmail:
+          maxLength: 320
+          minLength: 0
+          type: string
+          nullable: true
+        crDtTm:
+          type: string
+          format: date-time
+        chDtTm:
+          type: string
+          format: date-time
+        tbApiCustOperation:
+          $ref: '#/components/schemas/TbApiCustOperation'
+      additionalProperties: false
+    TbApiCustNoRangeConfig:
+      type: object
+      properties:
+        custNoOperation:
+          type: string
+          nullable: true
+        rangeType:
+          type: string
+          nullable: true
+        warningAmt:
+          type: integer
+          format: int32
+        alertAmt:
+          type: integer
+          format: int32
+        requestRangeSize:
+          type: integer
+          format: int32
+        crDtTm:
+          type: string
+          format: date-time
+        chDtTm:
+          type: string
+          format: date-time
+        tbApiCustOperation:
+          $ref: '#/components/schemas/TbApiCustOperation'
+      additionalProperties: false
+    TbApiCustOperation:
+      type: object
+      properties:
+        custNoOperation:
+          maxLength: 8
+          minLength: 0
+          type: string
+          nullable: true
+        sapNo:
+          type: string
+          nullable: true
+        contactId:
+          type: string
+          nullable: true
+        isUnishipAllowed:
+          type: boolean
+        crDtTm:
+          type: string
+          format: date-time
+        chDtTm:
+          type: string
+          format: date-time
+        customers:
+          type: array
+          items:
+            $ref: '#/components/schemas/TbApiCustomer'
+          nullable: true
+        addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/TbApiCustAddrOperation'
+          nullable: true
+        noRangeConfigs:
+          type: array
+          items:
+            $ref: '#/components/schemas/TbApiCustNoRangeConfig'
+          nullable: true
+      additionalProperties: false
+    TbApiCustomer:
+      type: object
+      properties:
+        custNoOperation:
+          maxLength: 8
+          minLength: 0
+          type: string
+          nullable: true
+        custNo:
+          maxLength: 8
+          minLength: 0
+          type: string
+          nullable: true
+        baseCustNo:
+          maxLength: 8
+          minLength: 0
+          type: string
+          nullable: true
+        custType:
+          maxLength: 32
+          minLength: 0
+          type: string
+          nullable: true
+        locCode:
+          maxLength: 6
+          minLength: 0
+          type: string
+          nullable: true
+        subjectName:
+          maxLength: 50
+          minLength: 0
+          type: string
+          nullable: true
+        crDtTm:
+          type: string
+          format: date-time
+        chDtTm:
+          type: string
+          format: date-time
+        tbApiCustOperation:
+          $ref: '#/components/schemas/TbApiCustOperation'
+        tbSprintCustNos:
+          $ref: '#/components/schemas/TbSprintCustNos'
+      additionalProperties: false
+    TbApplication:
+      type: object
+      properties:
+        accountId:
+          maxLength: 32
+          minLength: 0
+          type: string
+          nullable: true
+        application:
+          maxLength: 32
+          minLength: 0
+          type: string
+          nullable: true
+        permissionLevel:
+          type: string
+          nullable: true
+        crDtTm:
+          type: string
+          format: date-time
+        chDtTm:
+          type: string
+          format: date-time
+        crUserId:
+          type: string
+          nullable: true
+        chUserId:
+          type: string
+          nullable: true
+        tbAccount:
+          $ref: '#/components/schemas/TbAccount'
+      additionalProperties: false
+    TbCustNos:
+      type: object
+      properties:
+        accountId:
+          maxLength: 32
+          minLength: 0
+          type: string
+          nullable: true
+        custNo:
+          maxLength: 8
+          minLength: 0
+          type: string
+          nullable: true
+        custNoType:
+          $ref: '#/components/schemas/CustomerNoType'
+        crDtTm:
+          type: string
+          format: date-time
+        chDtTm:
+          type: string
+          format: date-time
+        crUserId:
+          type: string
+          nullable: true
+        chUserId:
+          type: string
+          nullable: true
+        tbAccount:
+          $ref: '#/components/schemas/TbAccount'
+      additionalProperties: false
+    TbDeliveryOption:
+      type: object
+      properties:
+        deliveryOptionId:
+          type: string
+          format: uuid
+        parentDeliveryOptionId:
+          type: string
+          format: uuid
+          nullable: true
+        dayOfWeek:
+          maxLength: 2
+          minLength: 0
+          type: string
+          nullable: true
+        seqNo:
+          type: integer
+          format: int32
+        productId:
+          type: string
+          format: uuid
+        serviceId:
+          type: string
+          format: uuid
+          nullable: true
+        titleTextId:
+          type: string
+          format: uuid
+        showTimeFrame:
+          type: boolean
+        showTransitTime:
+          type: boolean
+        crDtTm:
+          type: string
+          format: date-time
+        chDtTm:
+          type: string
+          format: date-time
+        tbProduct:
+          $ref: '#/components/schemas/TbProduct'
+      additionalProperties: false
+    TbFreightCustNos:
+      type: object
+      properties:
+        accountId:
+          type: string
+          nullable: true
+        freightCustNo:
+          maxLength: 8
+          minLength: 0
+          type: string
+          nullable: true
+        custNo:
+          maxLength: 8
+          minLength: 0
+          type: string
+          nullable: true
+        custNoType:
+          $ref: '#/components/schemas/CustomerNoType'
+        crUserId:
+          type: string
+          nullable: true
+        crDtTm:
+          type: string
+          format: date-time
+        chUserId:
+          type: string
+          nullable: true
+        chDtTm:
+          type: string
+          format: date-time
+        account:
+          $ref: '#/components/schemas/TbAccount'
+      additionalProperties: false
+    TbProduct:
+      type: object
+      properties:
+        productId:
+          type: string
+          format: uuid
+        barcArtFlag:
+          maxLength: 10
+          minLength: 0
+          type: string
+          nullable: true
+        network:
+          maxLength: 1
+          minLength: 0
+          type: string
+          nullable: true
+        shortDescription:
+          maxLength: 20
+          minLength: 0
+          type: string
+          nullable: true
+        description:
+          maxLength: 30
+          minLength: 0
+          type: string
+          nullable: true
+        destinationType:
+          $ref: '#/components/schemas/ProductDestinationType'
+        expressProduct:
+          type: boolean
+        maxUnitWeight:
+          type: integer
+          format: int32
+        maxUnitCount:
+          type: integer
+          format: int32
+        externalId:
+          type: integer
+          format: int32
+          nullable: true
+        tfStartTm:
+          type: string
+          format: date-span
+          nullable: true
+        tfEndTm:
+          type: string
+          format: date-span
+          nullable: true
+        crDtTm:
+          type: string
+          format: date-time
+        chDtTm:
+          type: string
+          format: date-time
+        tbService:
+          type: array
+          items:
+            $ref: '#/components/schemas/TbService'
+          nullable: true
+        tbProductDestination:
+          type: array
+          items:
+            $ref: '#/components/schemas/TbProductDestination'
+          nullable: true
+        tbDeliveryOption:
+          type: array
+          items:
+            $ref: '#/components/schemas/TbDeliveryOption'
+          nullable: true
+      additionalProperties: false
+    TbProductDestination:
+      type: object
+      properties:
+        productId:
+          type: string
+          format: uuid
+        destinationCountryA2:
+          maxLength: 2
+          minLength: 0
+          type: string
+          nullable: true
+        zipCode:
+          maxLength: 10
+          minLength: 0
+          type: string
+          nullable: true
+        island:
+          type: boolean
+        region:
+          maxLength: 5
+          minLength: 0
+          type: string
+          nullable: true
+        allowed:
+          type: boolean
+        chDtTm:
+          type: string
+          format: date-time
+        tbProduct:
+          $ref: '#/components/schemas/TbProduct'
+      additionalProperties: false
+    TbService:
+      type: object
+      properties:
+        serviceId:
+          type: string
+          format: uuid
+        productId:
+          type: string
+          format: uuid
+        service:
+          maxLength: 20
+          minLength: 0
+          type: string
+          nullable: true
+        description:
+          maxLength: 255
+          minLength: 0
+          type: string
+          nullable: true
+        combinedService:
+          maxLength: 255
+          minLength: 0
+          type: string
+          nullable: true
+        destinationCountryA2:
+          maxLength: 2
+          minLength: 0
+          type: string
+          nullable: true
+        maxUnitWeight:
+          type: number
+          format: float
+          nullable: true
+        externalId:
+          type: integer
+          format: int32
+          nullable: true
+        tfStartTm:
+          type: string
+          format: date-span
+          nullable: true
+        tfEndTm:
+          type: string
+          format: date-span
+          nullable: true
+        crDtTm:
+          type: string
+          format: date-time
+        chDtTm:
+          type: string
+          format: date-time
+        tbProduct:
+          $ref: '#/components/schemas/TbProduct'
+        tbServiceDestination:
+          type: array
+          items:
+            $ref: '#/components/schemas/TbServiceDestination'
+          nullable: true
+      additionalProperties: false
+    TbServiceDestination:
+      type: object
+      properties:
+        serviceId:
+          type: string
+          format: uuid
+        destinationCountryA2:
+          maxLength: 2
+          minLength: 0
+          type: string
+          nullable: true
+        zipCode:
+          maxLength: 10
+          minLength: 0
+          type: string
+          nullable: true
+        island:
+          type: boolean
+        region:
+          maxLength: 5
+          minLength: 0
+          type: string
+          nullable: true
+        allowed:
+          type: boolean
+        chDtTm:
+          type: string
+          format: date-time
+        tbService:
+          $ref: '#/components/schemas/TbService'
+      additionalProperties: false
+    TbShipmentRoutePermission:
+      type: object
+      properties:
+        accountId:
+          maxLength: 32
+          minLength: 0
+          type: string
+          nullable: true
+        custNoOperation:
+          maxLength: 8
+          minLength: 0
+          type: string
+          nullable: true
+        service:
+          maxLength: 32
+          minLength: 0
+          type: string
+          nullable: true
+        fromCountryA2:
+          maxLength: 2
+          minLength: 0
+          type: string
+          nullable: true
+        toCountryA2:
+          maxLength: 2
+          minLength: 0
+          type: string
+          nullable: true
+        crDtTm:
+          type: string
+          format: date-time
+        chDtTm:
+          type: string
+          format: date-time
+        crUserId:
+          type: string
+          nullable: true
+        chUserId:
+          type: string
+          nullable: true
+        account:
+          $ref: '#/components/schemas/TbAccount'
+      additionalProperties: false
+    TbSprintCustNos:
+      type: object
+      properties:
+        custNo:
+          maxLength: 8
+          minLength: 0
+          type: string
+          nullable: true
+        custNoSprint:
+          maxLength: 60
+          minLength: 0
+          type: string
+          nullable: true
+        crDtTm:
+          type: string
+          format: date-time
+        chDtTm:
+          type: string
+          format: date-time
+        tbApiCustomer:
+          $ref: '#/components/schemas/TbApiCustomer'
+      additionalProperties: false
+    TextInfo:
+      type: object
+      properties:
+        ansiCodePage:
+          type: integer
+          format: int32
+          readOnly: true
+        oemCodePage:
+          type: integer
+          format: int32
+          readOnly: true
+        macCodePage:
+          type: integer
+          format: int32
+          readOnly: true
+        ebcdicCodePage:
+          type: integer
+          format: int32
+          readOnly: true
+        lcid:
+          type: integer
+          format: int32
+          readOnly: true
+        cultureName:
+          type: string
+          nullable: true
+          readOnly: true
+        isReadOnly:
+          type: boolean
+          readOnly: true
+        listSeparator:
+          type: string
+          nullable: true
+        isRightToLeft:
+          type: boolean
+          readOnly: true
+      additionalProperties: false
+    TrackingLinkType:
+      enum:
+        - u
+        - s
+      type: string
+    Type:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+          readOnly: true
+        customAttributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          nullable: true
+          readOnly: true
+        isCollectible:
+          type: boolean
+          readOnly: true
+        metadataToken:
+          type: integer
+          format: int32
+          readOnly: true
+        isInterface:
+          type: boolean
+          readOnly: true
+        memberType:
+          $ref: '#/components/schemas/MemberTypes'
+        namespace:
+          type: string
+          nullable: true
+          readOnly: true
+        assemblyQualifiedName:
+          type: string
+          nullable: true
+          readOnly: true
+        fullName:
+          type: string
+          nullable: true
+          readOnly: true
+        assembly:
+          $ref: '#/components/schemas/Assembly'
+        module:
+          $ref: '#/components/schemas/Module'
+        isNested:
+          type: boolean
+          readOnly: true
+        declaringType:
+          $ref: '#/components/schemas/Type'
+        declaringMethod:
+          $ref: '#/components/schemas/MethodBase'
+        reflectedType:
+          $ref: '#/components/schemas/Type'
+        underlyingSystemType:
+          $ref: '#/components/schemas/Type'
+        isTypeDefinition:
+          type: boolean
+          readOnly: true
+        isArray:
+          type: boolean
+          readOnly: true
+        isByRef:
+          type: boolean
+          readOnly: true
+        isPointer:
+          type: boolean
+          readOnly: true
+        isConstructedGenericType:
+          type: boolean
+          readOnly: true
+        isGenericParameter:
+          type: boolean
+          readOnly: true
+        isGenericTypeParameter:
+          type: boolean
+          readOnly: true
+        isGenericMethodParameter:
+          type: boolean
+          readOnly: true
+        isGenericType:
+          type: boolean
+          readOnly: true
+        isGenericTypeDefinition:
+          type: boolean
+          readOnly: true
+        isSZArray:
+          type: boolean
+          readOnly: true
+        isVariableBoundArray:
+          type: boolean
+          readOnly: true
+        isByRefLike:
+          type: boolean
+          readOnly: true
+        isFunctionPointer:
+          type: boolean
+          readOnly: true
+        isUnmanagedFunctionPointer:
+          type: boolean
+          readOnly: true
+        hasElementType:
+          type: boolean
+          readOnly: true
+        genericTypeArguments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Type'
+          nullable: true
+          readOnly: true
+        genericParameterPosition:
+          type: integer
+          format: int32
+          readOnly: true
+        genericParameterAttributes:
+          $ref: '#/components/schemas/GenericParameterAttributes'
+        attributes:
+          $ref: '#/components/schemas/TypeAttributes'
+        isAbstract:
+          type: boolean
+          readOnly: true
+        isImport:
+          type: boolean
+          readOnly: true
+        isSealed:
+          type: boolean
+          readOnly: true
+        isSpecialName:
+          type: boolean
+          readOnly: true
+        isClass:
+          type: boolean
+          readOnly: true
+        isNestedAssembly:
+          type: boolean
+          readOnly: true
+        isNestedFamANDAssem:
+          type: boolean
+          readOnly: true
+        isNestedFamily:
+          type: boolean
+          readOnly: true
+        isNestedFamORAssem:
+          type: boolean
+          readOnly: true
+        isNestedPrivate:
+          type: boolean
+          readOnly: true
+        isNestedPublic:
+          type: boolean
+          readOnly: true
+        isNotPublic:
+          type: boolean
+          readOnly: true
+        isPublic:
+          type: boolean
+          readOnly: true
+        isAutoLayout:
+          type: boolean
+          readOnly: true
+        isExplicitLayout:
+          type: boolean
+          readOnly: true
+        isLayoutSequential:
+          type: boolean
+          readOnly: true
+        isAnsiClass:
+          type: boolean
+          readOnly: true
+        isAutoClass:
+          type: boolean
+          readOnly: true
+        isUnicodeClass:
+          type: boolean
+          readOnly: true
+        isCOMObject:
+          type: boolean
+          readOnly: true
+        isContextful:
+          type: boolean
+          readOnly: true
+        isEnum:
+          type: boolean
+          readOnly: true
+        isMarshalByRef:
+          type: boolean
+          readOnly: true
+        isPrimitive:
+          type: boolean
+          readOnly: true
+        isValueType:
+          type: boolean
+          readOnly: true
+        isSignatureType:
+          type: boolean
+          readOnly: true
+        isSecurityCritical:
+          type: boolean
+          readOnly: true
+        isSecuritySafeCritical:
+          type: boolean
+          readOnly: true
+        isSecurityTransparent:
+          type: boolean
+          readOnly: true
+        structLayoutAttribute:
+          $ref: '#/components/schemas/StructLayoutAttribute'
+        typeInitializer:
+          $ref: '#/components/schemas/ConstructorInfo'
+        typeHandle:
+          $ref: '#/components/schemas/RuntimeTypeHandle'
+        guid:
+          type: string
+          format: uuid
+          readOnly: true
+        baseType:
+          $ref: '#/components/schemas/Type'
+        isSerializable:
+          type: boolean
+          readOnly: true
+          deprecated: true
+        containsGenericParameters:
+          type: boolean
+          readOnly: true
+        isVisible:
+          type: boolean
+          readOnly: true
+      additionalProperties: false
+    TypeAttributes:
+      enum:
+        - notPublic
+        - public
+        - nestedPublic
+        - nestedPrivate
+        - nestedFamily
+        - nestedAssembly
+        - nestedFamANDAssem
+        - visibilityMask
+        - sequentialLayout
+        - explicitLayout
+        - layoutMask
+        - interface
+        - abstract
+        - sealed
+        - specialName
+        - rtSpecialName
+        - import
+        - serializable
+        - windowsRuntime
+        - unicodeClass
+        - autoClass
+        - stringFormatMask
+        - hasSecurity
+        - reservedMask
+        - beforeFieldInit
+        - customFormatMask
+      type: string
+    TypeInfo:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+          readOnly: true
+        customAttributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          nullable: true
+          readOnly: true
+        isCollectible:
+          type: boolean
+          readOnly: true
+        metadataToken:
+          type: integer
+          format: int32
+          readOnly: true
+        isInterface:
+          type: boolean
+          readOnly: true
+        memberType:
+          $ref: '#/components/schemas/MemberTypes'
+        namespace:
+          type: string
+          nullable: true
+          readOnly: true
+        assemblyQualifiedName:
+          type: string
+          nullable: true
+          readOnly: true
+        fullName:
+          type: string
+          nullable: true
+          readOnly: true
+        assembly:
+          $ref: '#/components/schemas/Assembly'
+        module:
+          $ref: '#/components/schemas/Module'
+        isNested:
+          type: boolean
+          readOnly: true
+        declaringType:
+          $ref: '#/components/schemas/Type'
+        declaringMethod:
+          $ref: '#/components/schemas/MethodBase'
+        reflectedType:
+          $ref: '#/components/schemas/Type'
+        underlyingSystemType:
+          $ref: '#/components/schemas/Type'
+        isTypeDefinition:
+          type: boolean
+          readOnly: true
+        isArray:
+          type: boolean
+          readOnly: true
+        isByRef:
+          type: boolean
+          readOnly: true
+        isPointer:
+          type: boolean
+          readOnly: true
+        isConstructedGenericType:
+          type: boolean
+          readOnly: true
+        isGenericParameter:
+          type: boolean
+          readOnly: true
+        isGenericTypeParameter:
+          type: boolean
+          readOnly: true
+        isGenericMethodParameter:
+          type: boolean
+          readOnly: true
+        isGenericType:
+          type: boolean
+          readOnly: true
+        isGenericTypeDefinition:
+          type: boolean
+          readOnly: true
+        isSZArray:
+          type: boolean
+          readOnly: true
+        isVariableBoundArray:
+          type: boolean
+          readOnly: true
+        isByRefLike:
+          type: boolean
+          readOnly: true
+        isFunctionPointer:
+          type: boolean
+          readOnly: true
+        isUnmanagedFunctionPointer:
+          type: boolean
+          readOnly: true
+        hasElementType:
+          type: boolean
+          readOnly: true
+        genericTypeArguments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Type'
+          nullable: true
+          readOnly: true
+        genericParameterPosition:
+          type: integer
+          format: int32
+          readOnly: true
+        genericParameterAttributes:
+          $ref: '#/components/schemas/GenericParameterAttributes'
+        attributes:
+          $ref: '#/components/schemas/TypeAttributes'
+        isAbstract:
+          type: boolean
+          readOnly: true
+        isImport:
+          type: boolean
+          readOnly: true
+        isSealed:
+          type: boolean
+          readOnly: true
+        isSpecialName:
+          type: boolean
+          readOnly: true
+        isClass:
+          type: boolean
+          readOnly: true
+        isNestedAssembly:
+          type: boolean
+          readOnly: true
+        isNestedFamANDAssem:
+          type: boolean
+          readOnly: true
+        isNestedFamily:
+          type: boolean
+          readOnly: true
+        isNestedFamORAssem:
+          type: boolean
+          readOnly: true
+        isNestedPrivate:
+          type: boolean
+          readOnly: true
+        isNestedPublic:
+          type: boolean
+          readOnly: true
+        isNotPublic:
+          type: boolean
+          readOnly: true
+        isPublic:
+          type: boolean
+          readOnly: true
+        isAutoLayout:
+          type: boolean
+          readOnly: true
+        isExplicitLayout:
+          type: boolean
+          readOnly: true
+        isLayoutSequential:
+          type: boolean
+          readOnly: true
+        isAnsiClass:
+          type: boolean
+          readOnly: true
+        isAutoClass:
+          type: boolean
+          readOnly: true
+        isUnicodeClass:
+          type: boolean
+          readOnly: true
+        isCOMObject:
+          type: boolean
+          readOnly: true
+        isContextful:
+          type: boolean
+          readOnly: true
+        isEnum:
+          type: boolean
+          readOnly: true
+        isMarshalByRef:
+          type: boolean
+          readOnly: true
+        isPrimitive:
+          type: boolean
+          readOnly: true
+        isValueType:
+          type: boolean
+          readOnly: true
+        isSignatureType:
+          type: boolean
+          readOnly: true
+        isSecurityCritical:
+          type: boolean
+          readOnly: true
+        isSecuritySafeCritical:
+          type: boolean
+          readOnly: true
+        isSecurityTransparent:
+          type: boolean
+          readOnly: true
+        structLayoutAttribute:
+          $ref: '#/components/schemas/StructLayoutAttribute'
+        typeInitializer:
+          $ref: '#/components/schemas/ConstructorInfo'
+        typeHandle:
+          $ref: '#/components/schemas/RuntimeTypeHandle'
+        guid:
+          type: string
+          format: uuid
+          readOnly: true
+        baseType:
+          $ref: '#/components/schemas/Type'
+        isSerializable:
+          type: boolean
+          readOnly: true
+          deprecated: true
+        containsGenericParameters:
+          type: boolean
+          readOnly: true
+        isVisible:
+          type: boolean
+          readOnly: true
+        genericTypeParameters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Type'
+          nullable: true
+          readOnly: true
+        declaredConstructors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConstructorInfo'
+          nullable: true
+          readOnly: true
+        declaredEvents:
+          type: array
+          items:
+            $ref: '#/components/schemas/EventInfo'
+          nullable: true
+          readOnly: true
+        declaredFields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldInfo'
+          nullable: true
+          readOnly: true
+        declaredMembers:
+          type: array
+          items:
+            $ref: '#/components/schemas/MemberInfo'
+          nullable: true
+          readOnly: true
+        declaredMethods:
+          type: array
+          items:
+            $ref: '#/components/schemas/MethodInfo'
+          nullable: true
+          readOnly: true
+        declaredNestedTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/TypeInfo'
+          nullable: true
+          readOnly: true
+        declaredProperties:
+          type: array
+          items:
+            $ref: '#/components/schemas/PropertyInfo'
+          nullable: true
+          readOnly: true
+        implementedInterfaces:
+          type: array
+          items:
+            $ref: '#/components/schemas/Type'
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    Unit:
+      required:
+        - unitId
+        - weight
+      type: object
+      properties:
+        unitId:
+          maxLength: 50
+          minLength: 1
+          type: string
+        unitType:
+          $ref: '#/components/schemas/UnitType'
+        customerUnitReference:
+          maxLength: 35
+          type: string
+          nullable: true
+        weight:
+          type: number
+          format: float
+        dimensions:
+          $ref: '#/components/schemas/Dimensions'
+        additionalInfo1:
+          maxLength: 30
+          type: string
+          nullable: true
+        additionalInfo2:
+          maxLength: 30
+          type: string
+          nullable: true
+      additionalProperties: false
+    UnitType:
+      enum:
+        - co
+        - lg
+        - mp
+        - bp
+        - xl
+        - pl
+        - rl
+      type: string

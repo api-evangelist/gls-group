@@ -1,0 +1,349 @@
+aid: gls-group
+name: GLS Group
+review:
+  question: >-
+    Does GLS Group publish a callable, standards-conformant API surface that the next
+    party in a shipment chain can speak, or a proprietary contract bound to a GLS
+    customer relationship?
+  answer: proprietary-documented
+  date: '2026-07-30'
+  reviewer: API Evangelist
+  tier: parcel-integrator
+  cohort: air-cargo-parcel
+  homeCountry: Netherlands
+  primaryDomain: gls-group.com
+  domainVerified: true
+  domainNote: >-
+    The roster hint gls-group.com resolves and returns HTTP 200 for GLS Group corporate
+    content. gls-group.eu is a live sibling host serving the same CMS (also HTTP 200) and
+    is what gls-group.com redirects deeper paths to. Both are genuinely GLS Group. No
+    change to the hinted primary domain was needed.
+findings:
+  summary: >-
+    GLS Group has three distinct, real, publicly reachable API surfaces and no single one
+    of them. (1) A group-level Apigee developer portal at dev-portal.gls-group.net operated
+    by GLS IT Services GmbH, where account creation is genuinely self-serve but the API
+    catalog is only rendered after sign-in; "public" API products can be enabled by any
+    registered app, "restricted" ones require an approval that takes 1-3 business days and
+    a local GLS representative. (2) A GLS Netherlands Azure API Management portal at
+    api-portal.gls.nl whose management plane answers anonymously, from which four OpenAPI
+    3.0.1 documents were exported verbatim (Label API prod + test, Track & Trace prod +
+    test). (3) The group-wide GLS ShipIT web services, documented publicly and in detail as
+    Doxygen pages at shipit.gls-group.eu, but with no published base URL — GLS explicitly
+    states the endpoint is given to you with your credentials by your primary GLS contact.
+    Not one artifact in any of the three references an industry data standard.
+  developerPortals:
+  - url: https://dev-portal.gls-group.net/
+    httpStatus: 200
+    platform: Google Apigee integrated developer portal
+    operator: GLS IT Services GmbH
+    selfServeRegistration: true
+    catalogPubliclyVisible: false
+    note: >-
+      Portal shell renders anonymously; siteId gls-group-it-prod-developerportal. The
+      /portals/api/sites/{siteId}/liveportal/page/{id} endpoint answers anonymously for
+      index, get-started and faq pages, but /portals/api/sites/{siteId}/apidocs returns
+      HTTP 401 "No authorization header provided". The list of API products is therefore
+      not publicly enumerable.
+  - url: https://api-portal.gls.nl/
+    httpStatus: 200
+    platform: Azure API Management developer portal (apim-glsnl-api-prod)
+    selfServeRegistration: true
+    catalogPubliclyVisible: true
+    note: >-
+      /config.json (HTTP 200) discloses managementApiUrl
+      https://apim-glsnl-api-prod.management.azure-api.net/... at api-version
+      2022-04-01-preview, which answers anonymously. GET /apis returned 5 entries
+      (2 revisions of the Label API production, Label API test, T&T production,
+      T&T test). Each exported via ?export=true&format=openapi-link to a SAS-signed
+      blob, all HTTP 200.
+  - url: https://shipit.gls-group.eu/webservices/3_4_19/doxygen/WS-REST-API/index.html
+    httpStatus: 200
+    platform: Doxygen-generated reference (generated 2024-01-09, Doxygen 1.9.7)
+    selfServeRegistration: false
+    catalogPubliclyVisible: true
+    note: >-
+      Mirrored identically at shipit.gls-group.com (HTTP 200). Full method, field and
+      validation documentation is public; the base URL is not.
+  probedAndNegative:
+  - url: https://developer.gls-group.com
+    httpStatus: 000
+    note: does not resolve
+  - url: https://developers.gls-group.com
+    httpStatus: 000
+    note: does not resolve
+  - url: https://docs.gls-group.com
+    httpStatus: 000
+    note: does not resolve
+  - url: https://api.gls-group.com
+    httpStatus: 000
+    note: does not resolve
+  - url: https://dev.gls-group.eu
+    httpStatus: 000
+    note: does not resolve
+  - url: https://api.gls-group.eu/
+    httpStatus: 200
+    note: serves the GLS marketing site, not an API host
+  - url: https://api.gls-group.eu/openapi.json
+    httpStatus: 200
+    note: soft 404 - returns the CMS "404 - Page not found" HTML page, not JSON
+  - url: https://gls-group.com/openapi.json
+    httpStatus: 200
+    note: soft 404 - returns the CMS "404 - Page not found" HTML page, not JSON
+  - url: https://api.gls.nl/
+    httpStatus: 404
+  - url: https://api.gls.nl/swagger/v1/swagger.json
+    httpStatus: 404
+  - url: https://api.gls.nl/v1/swagger.json
+    httpStatus: 404
+  - url: https://api.gls.nl/openapi.json
+    httpStatus: 404
+  - url: https://api.gls-group.eu/public/v1
+    httpStatus: 404
+  - url: https://gls-group.com/.well-known/security.txt
+    httpStatus: 200
+    note: >-
+      Real security.txt - Contact security@gls-group.com, Expires 2026-12-31,
+      Preferred-Languages en,de. No API-specific disclosure.
+interoperability:
+  standardConformance:
+    standard: none
+    verdict: no standard reference found
+    version: null
+    evidence:
+    - url: https://api-portal.gls.nl/content/GLS_Shipping_API_v0.8.pdf
+      httpStatus: 200
+      note: >-
+        19-page "GLS Shipping API v0.8" integration guide. Describes GLS-proprietary
+        endpoints, GLS product/service codes and GLS UnitType codes (BP, CO, LG, MP, PL,
+        RL, XL). No reference to GS1, EPCIS, SSCC, GTIN, UN/EDIFACT, ANSI X12, UPU,
+        UN/CEFACT, WCO Data Model, eFTI or any other external data standard.
+    - url: https://shipit.gls-group.eu/webservices/3_4_19/doxygen/WS-REST-API/index.html
+      httpStatus: 200
+      note: >-
+        ShipIT 3.4.19 REST reference. Media types are the vendor-specific
+        application/glsVersion1+json. Types are Java package names under
+        eu.glsgroup.fpcs.datatypes.soap.v1.*. No standards body is cited anywhere.
+    - artifact: openapi/gls-netherlands-label-api-openapi.yml
+      note: >-
+        Grepped the four harvested OpenAPI documents for gs1, sscc, gtin, edifact, x12,
+        iso 6346, un/locode, upu, epcis, dcsa. Zero genuine hits (the only "ssCC" matches
+        were substrings of the field name emailAddressCC).
+    caveats: >-
+      GLS is a private ground carrier, not a UPU designated postal operator, so UPU
+      standards posture is not applicable to it. Country and currency fields use ISO codes
+      and labels are produced in Zebra ZPL, but neither is a logistics interchange standard.
+      A ChangeOfDelivery/partner block in the Track & Trace webhook payload carries an
+      "ndis" array with a Type such as SPICHPCLNUM and a partner parcel number, which is a
+      bilateral partner-carrier identifier exchange, not a standards-based one.
+  interfaceShape: proprietary-documented
+  interfaceShapeEvidence: >-
+    Every published contract is unique to GLS. The Netherlands Label API is a set of
+    RPC-style POST verbs (/api/Label/Create, /api/Label/Confirm, /api/Pickup/Create) with
+    107 GLS-specific schemas; the Track & Trace API is three POST reads
+    (/api/parcel/v1/details, /api/parcel/v1/search, /api/pod/v1); ShipIT is a fourth,
+    differently-shaped contract with its own vendor media type. Nothing another carrier
+    also implements. A shipper integrating GLS and a second carrier writes two integrations,
+    which is exactly why Shippo, EasyPost and Sendcloud exist in this cohort.
+  identifierScheme: >-
+    Entirely GLS-proprietary. ShipIT keys on TrackID (alphanumeric, max 40), ParcelNumber
+    (11 or 12 digits), ShipmentReference and ShipmentUnitReference (max 40),
+    PartnerParcelNumber (max 50) and ContactID (the 10-char shipper identifier). The
+    Netherlands stack adds parcelNo, uniqueNo, shipmentParcelNo, shipmentUniqueNo, gpNo
+    (the international parcel number for import/export), custNo (GLS customer number) and
+    customerReference. ParcelShops are addressed as {partnerID}-{localID}, e.g.
+    GLS_DE-2761234567. Depots are identified by GLS depot codes. The only shared,
+    cross-party identifiers anywhere in the surface are ISO country codes and postal codes.
+    No GS1 GTIN/SSCC/GLN, no SCAC, no EORI or HS codes, no UN/LOCODE, no DUNS.
+  eventModel: webhook-and-polling
+  eventModelEvidence: >-
+    Polling: POST https://api.gls.nl/tt/V1/api/parcel/v1/details and
+    POST /api/parcel/v1/search return an events[] array per parcel with eventId, eventNo,
+    reasonNo, descriptionNL, descriptionEN, country, countryName, depot, depotName, date
+    and isPhysical, plus state/substate and an eta block. POST /api/pod/v1 returns proof of
+    delivery. ShipIT offers the same read pattern (POST /parcels, /parceldetails,
+    /parcelpod) and documents no push at all.
+    Push: GLS Netherlands operates two customer-registered webhooks documented at
+    https://api-portal.gls.nl/track-trace-webhook (HTTP 200) and
+    https://api-portal.gls.nl/content/webhooks.pdf (HTTP 200) - one for parcel events, one
+    delivering the recipient signature as a PNG proof of delivery. The receiver must return
+    HTTP 200; failures are retried with increasing intervals and the webhook is eventually
+    suspended until the customer contacts GLS to reactivate it.
+    Critically, there is NO subscription or webhook-registration operation in any published
+    OpenAPI document. Registration is an out-of-band request to GLS in which the customer
+    supplies the callback URL. The event vocabulary (eventNo, reasonNo) is a GLS-internal
+    numeric code list, not DCSA event types or GS1 EPCIS events, and the code list itself is
+    not published.
+  ediLegacy: >-
+    No EDI referenced. Nothing in the GLS Group developer portal, the GLS Netherlands
+    portal, the Shipping API guide or the ShipIT 3.4.19 reference mentions UN/EDIFACT
+    (IFTMIN/IFTSTA/DESADV), ANSI X12 (204/214/856), AS2, OFTP2 or a VAN. The legacy layer
+    here is not EDI but SOAP - ShipIT's REST resources are documented over the same
+    eu.glsgroup.fpcs.datatypes.soap.v1.* type model as its SOAP web services, so REST is a
+    later veneer over a SOAP-era contract. Onboarding is a mapping project against GLS's own
+    JSON, not an EDI mapping project.
+  multiPartyPosture: >-
+    Publishes only to its own contracted shippers and to the aggregators that resell it.
+    A shipper cannot self-serve into a callable GLS surface: the Netherlands APIs require
+    MyGLS username and password that "are provided to the shipper", and ShipIT's endpoints
+    are stated to be "obtained from your primary GLS contact and will be given with your
+    credentials". The group Apigee portal lets anyone register an account and an app, but
+    gates restricted API products behind approval by a local GLS representative. GLS
+    publishes no partner/marketplace directory of pre-built integrations of its own; its
+    de-facto integration directory lives on the aggregator side (Sendcloud, EasyPost,
+    Shippo and the e-commerce platforms all list GLS as a supported carrier). GLS does
+    consume from counterparties bilaterally - the webhook payload carries partner-carrier
+    parcel numbers such as SPICHPCLNUM for handovers - but that exchange is not published.
+    The surface is also federated by country rather than by group: api-portal.gls.nl is a
+    GLS Netherlands Azure tenant, entirely separate from the group Apigee portal, and other
+    national units run their own.
+  accessGate: customer-account-required
+  accessGateDetail: >-
+    Two gates stacked. Registration: creating a developer account on
+    dev-portal.gls-group.net is self-serve (full name, email, password, company, country, zip, email
+    verification, reCAPTCHA), and creating an app that enables a public API product needs
+    nothing further; a restricted product needs a Request that a GLS team approves in 1-3
+    business days. Calling: a live GLS customer relationship is mandatory regardless. The
+    GLS Shipping API guide states plainly that "a MyGLS username and password must be
+    included in the API request" and that "the MyGLS credentials are provided to the
+    shipper" - i.e. you must already be a contracted GLS shipper with an operational
+    customer number. ShipIT goes further and withholds the endpoint URL itself until a GLS
+    contact issues credentials. A sandbox exists but only inside the same gate: GLS
+    Netherlands publishes a test environment at https://api.gls.nl/test/v1 (labels) and
+    https://api.gls.nl/tt-test (tracking) whose OpenAPI is public, yet the test credentials
+    are still MyGLS credentials. There is no anonymous try-it path to a working call.
+  dcsaMembershipVsPublication: not-applicable
+  dcsaNote: >-
+    DCSA is the container-shipping standards body; GLS is a road-based parcel and LTL
+    freight carrier and is not a DCSA member and publishes nothing DCSA-shaped. Recorded
+    here only to close out the sector template question.
+harvest:
+  openapiHarvested: true
+  specsCount: 4
+  method: >-
+    Azure API Management anonymous management-plane export. GET
+    {managementApiUrl}/apis?api-version=2022-04-01-preview returned the API list; each API
+    was then exported with ?export=true&format=openapi-link and the returned SAS blob URL
+    downloaded verbatim. No spec was edited, reformatted or reconstructed.
+  fetchDate: '2026-07-30'
+  specs:
+  - path: openapi/gls-netherlands-label-api-openapi.yml
+    title: GLS Netherlands LabelApi - Production
+    openapiVersion: 3.0.1
+    server: https://api.gls.nl/v1
+    paths: 11
+    schemas: 107
+    sourceUrl: https://apim-glsnl-api-prod.management.azure-api.net/subscriptions/000/resourceGroups/000/providers/Microsoft.ApiManagement/service/apim-glsnl-api-prod/apis/gls-netherlands-labelapi-production?export=true&format=openapi-link&api-version=2022-04-01-preview
+    httpStatus: 200
+    parsed: true
+  - path: openapi/gls-netherlands-label-api-test-openapi.yml
+    title: GLS.API (Version 1.0)
+    openapiVersion: 3.0.1
+    server: https://api.gls.nl/test/v1
+    paths: 11
+    schemas: 113
+    sourceUrl: https://apim-glsnl-api-prod.management.azure-api.net/subscriptions/000/resourceGroups/000/providers/Microsoft.ApiManagement/service/apim-glsnl-api-prod/apis/gls-netherlands-labelapi-test?export=true&format=openapi-link&api-version=2022-04-01-preview
+    httpStatus: 200
+    parsed: true
+  - path: openapi/gls-track-and-trace-api-openapi.yml
+    title: GLS T&T Api - Production
+    openapiVersion: 3.0.1
+    server: https://api.gls.nl/tt/V1
+    paths: 4
+    schemas: 14
+    sourceUrl: https://apim-glsnl-api-prod.management.azure-api.net/subscriptions/000/resourceGroups/000/providers/Microsoft.ApiManagement/service/apim-glsnl-api-prod/apis/track-trace-api-v1?export=true&format=openapi-link&api-version=2022-04-01-preview
+    httpStatus: 200
+    parsed: true
+  - path: openapi/gls-track-and-trace-api-test-openapi.yml
+    title: GLS T&T Api - Test
+    openapiVersion: 3.0.1
+    server: https://api.gls.nl/tt-test
+    paths: 4
+    schemas: 14
+    sourceUrl: https://apim-glsnl-api-prod.management.azure-api.net/subscriptions/000/resourceGroups/000/providers/Microsoft.ApiManagement/service/apim-glsnl-api-prod/apis/gls-t-t-api-test?export=true&format=openapi-link&api-version=2022-04-01-preview
+    httpStatus: 200
+    parsed: true
+  notHarvested:
+  - api: GLS ShipIT REST API
+    reason: >-
+      GLS publishes no OpenAPI, Swagger or WADL for ShipIT. The reference is Doxygen HTML
+      only. No spec was reconstructed - inventing one would fabricate a contract GLS has
+      not published.
+  - api: GLS Group developer portal API products
+    reason: >-
+      /portals/api/sites/gls-group-it-prod-developerportal/apidocs returns HTTP 401. The
+      catalog is not enumerable without an account, so the API list is unknown rather than
+      empty.
+apiFamily:
+  rating: not-published
+  quoting: not-published
+  labelCreation: >-
+    Yes - POST /api/Label/Create (NL) and POST /backend/rs/shipments (ShipIT). Formats ZPL,
+    PDF, PDF A6 unit/shipment, PDF 2xA4, PDF 4xA4, routing-data-only, and ZEBRA ZPL_200 /
+    ZPL_300 plus PNG in ShipIT.
+  labelVoid: Yes - POST /api/Label/Delete (NL), POST /backend/rs/shipments/cancel/{trackID} (ShipIT)
+  manifest: Yes - POST /api/Label/Confirm and /api/Label/ConfirmMultiple (NL), POST /backend/rs/shipments/endofday (ShipIT)
+  pickup: Yes - POST /api/Pickup/Create and /api/Pickup/Delete (NL), /backend/rs/sporadiccollection (ShipIT)
+  tracking: Yes - polling plus registered webhooks (NL); polling only (ShipIT)
+  proofOfDelivery: Yes - POST /api/pod/v1 (NL), POST /parcelpod (ShipIT), plus a signature-PNG webhook
+  addressValidation: not-published
+  customsDocumentation: >-
+    Not exposed in any harvested spec. GLS documents customs handling in country-level
+    portals and PDFs rather than in the published API contracts.
+  returns: Yes - POST /api/ShopReturn/Create (NL), plus the ShopReturnService label variant
+  serviceAvailability: Yes - POST /api/DeliveryOptions/GetDeliveryOptions (NL), POST /backend/rs/shipments/allowedservices and /backend/rs/timeframe/deliverydays (ShipIT)
+  outOfHomeNetwork: Yes - POST /api/ParcelShop/GetParcelShops (NL), four ParcelShop search operations (ShipIT)
+  sandboxWithoutCommercialAccount: false
+sources:
+- url: https://gls-group.com/
+  httpStatus: 200
+  type: Website
+- url: https://en.wikipedia.org/wiki/GLS_Group
+  httpStatus: 200
+  type: Reference
+  note: Corporate facts - General Logistics Systems B.V., Amsterdam-Duivendrecht, IDS plc parent, ~50 countries, 120+ hubs, 1,600 depots, EUR 5.6bn FY2023/24, ~23,000 employees.
+- url: https://dev-portal.gls-group.net/
+  httpStatus: 200
+  type: PortalHome
+- url: https://dev-portal.gls-group.net/get-started
+  httpStatus: 200
+  type: GettingStarted
+  note: Three-step onboarding - sign in, register app, access API keys. Public APIs usable immediately; restricted APIs require a Request and a local GLS representative.
+- url: https://dev-portal.gls-group.net/faq
+  httpStatus: 200
+  type: FAQ
+  note: Operator is GLS IT Services GmbH. Auth is OAuth 2.0 or API key. Restricted API approval takes 1-3 business days.
+- url: https://api-portal.gls.nl/
+  httpStatus: 200
+  type: PortalHome
+- url: https://api-portal.gls.nl/config.json
+  httpStatus: 200
+  type: Configuration
+  note: Discloses the anonymously readable Azure APIM management endpoint.
+- url: https://api-portal.gls.nl/content/GLS_Shipping_API_v0.8.pdf
+  httpStatus: 200
+  type: Documentation
+  note: GLS Shipping API v0.8, 19 pages. MyGLS credentials, endpoint list, product/service and UnitType codes, request examples, move-to-production procedure.
+- url: https://api-portal.gls.nl/track-trace-webhook
+  httpStatus: 200
+  type: Documentation
+- url: https://api-portal.gls.nl/content/webhooks.pdf
+  httpStatus: 200
+  type: Webhooks
+  note: Dutch-language webhook guide with the full parcel-event JSON payload and field glossary.
+- url: https://shipit.gls-group.eu/webservices/3_4_19/doxygen/WS-REST-API/index.html
+  httpStatus: 200
+  type: APIReference
+- url: https://shipit.gls-group.com/webservices/3_4_19/doxygen/WS-REST-API/index.html
+  httpStatus: 200
+  type: APIReference
+  note: Identical mirror on the .com host.
+- url: https://gls-group.com/.well-known/security.txt
+  httpStatus: 200
+  type: SecurityDisclosure
+actions:
+  apisYmlCreated: true
+  apisListed: 3
+  openapiHarvested: 4
+  gated: true
+  status: built

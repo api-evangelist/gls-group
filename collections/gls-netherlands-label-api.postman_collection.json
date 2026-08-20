@@ -1,0 +1,2771 @@
+{
+  "item": [
+    {
+      "id": "cc61e8b7-eb26-4ac7-b86b-5f5298546c70",
+      "name": "Authentication",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6ae5c2b0-5e48-4027-b108-ab03e519e5aa",
+          "name": "ValidateLogin",
+          "request": {
+            "name": "ValidateLogin",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "Authentication",
+                "ValidateLogin"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "1.0",
+                  "description": "The requested API version"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f194925a-3534-47c3-b582-c0923c650217",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Authentication",
+                    "ValidateLogin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cc38f85a-dfae-413f-ac7e-a7f54bc5ecce",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Authentication",
+                    "ValidateLogin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ba1be6ac-4ff3-4aed-bba1-2647b09a1374",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Authentication",
+                    "ValidateLogin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "c4ca5700-81d0-4744-bcd2-cc21ea8f9457",
+      "name": "Delivery",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d1a1498c-9b13-4472-95aa-6d49159d0682",
+          "name": "CreateLabel",
+          "request": {
+            "name": "CreateLabel",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "Label",
+                "Create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "1.0",
+                  "description": "The requested API version"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"shippingSystemName\": \"<string>\",\n  \"shippingSystemVersion\": \"<string>\",\n  \"shiptype\": \"<string>\",\n  \"customerNo\": \"<string>\",\n  \"customerSubjectName\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"trackingLinkType\": \"<string>\",\n  \"units\": [\n    {\n      \"unitId\": \"<string>\",\n      \"weight\": \"<float>\",\n      \"unitType\": \"<string>\",\n      \"customerUnitReference\": \"<string>\",\n      \"dimensions\": {\n        \"length\": \"<integer>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      },\n      \"additionalInfo1\": \"<string>\",\n      \"additionalInfo2\": \"<string>\"\n    },\n    {\n      \"unitId\": \"<string>\",\n      \"weight\": \"<float>\",\n      \"unitType\": \"<string>\",\n      \"customerUnitReference\": \"<string>\",\n      \"dimensions\": {\n        \"length\": \"<integer>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      },\n      \"additionalInfo1\": \"<string>\",\n      \"additionalInfo2\": \"<string>\"\n    }\n  ],\n  \"labelType\": \"<string>\",\n  \"labelA4StartPosition\": \"<integer>\",\n  \"labelA4MoveXMm\": \"<integer>\",\n  \"labelA4MoveYMm\": \"<integer>\",\n  \"notificationEmail\": {\n    \"sendMail\": \"<boolean>\",\n    \"senderName\": \"<string>\",\n    \"senderReplyAddress\": \"<string>\",\n    \"senderContactName\": \"<string>\",\n    \"senderPhoneNo\": \"<string>\",\n    \"emailSubject\": \"<string>\",\n    \"emailAddressCC\": \"<string>\",\n    \"emailAddressBCC\": \"<string>\"\n  },\n  \"returnRoutingData\": \"<boolean>\",\n  \"addresses\": {\n    \"pickupAddress\": {\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"name1\": \"<string>\",\n      \"street\": \"<string>\",\n      \"zipCode\": \"<string>\",\n      \"name2\": \"<string>\",\n      \"name3\": \"<string>\",\n      \"houseNo\": \"<string>\",\n      \"houseNoExt\": \"<string>\",\n      \"contact\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"email\": \"<string>\"\n    },\n    \"deliveryAddress\": {\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"name1\": \"<string>\",\n      \"street\": \"<string>\",\n      \"zipCode\": \"<string>\",\n      \"name2\": \"<string>\",\n      \"name3\": \"<string>\",\n      \"houseNo\": \"<string>\",\n      \"houseNoExt\": \"<string>\",\n      \"contact\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"email\": \"<string>\",\n      \"addresseeType\": \"<string>\"\n    }\n  },\n  \"shippingDate\": \"<dateTime>\",\n  \"services\": {\n    \"addresseeOnlyService\": \"<boolean>\",\n    \"expressService\": \"<string>\",\n    \"expressConfirmSMS\": \"<string>\",\n    \"economyParcel\": \"<boolean>\",\n    \"letterBoxParcel\": \"<boolean>\",\n    \"shopDeliveryService\": \"<boolean>\",\n    \"shopDeliveryParcelShopId\": \"<string>\",\n    \"shopDeliveryPlusService\": \"<boolean>\",\n    \"shopReturnService\": \"<boolean>\",\n    \"saturdayService\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9d984c90-25c6-4c61-ad9d-6df506d2f50c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Label",
+                    "Create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"shippingSystemName\": \"string\",\n  \"shippingSystemVersion\": \"string\",\n  \"shiptype\": \"p\",\n  \"customerNo\": \"string\",\n  \"customerSubjectName\": \"string\",\n  \"reference\": \"string\",\n  \"trackingLinkType\": \"u\",\n  \"units\": [\n    {\n      \"unitId\": \"string\",\n      \"unitType\": \"co\",\n      \"customerUnitReference\": \"string\",\n      \"weight\": 0,\n      \"dimensions\": {\n        \"length\": 0,\n        \"width\": 0,\n        \"height\": 0\n      },\n      \"additionalInfo1\": \"string\",\n      \"additionalInfo2\": \"string\"\n    }\n  ],\n  \"labelType\": \"zpl\",\n  \"labelA4StartPosition\": 0,\n  \"labelA4MoveXMm\": 0,\n  \"labelA4MoveYMm\": 0,\n  \"notificationEmail\": {\n    \"sendMail\": true,\n    \"senderName\": \"string\",\n    \"senderReplyAddress\": \"string\",\n    \"senderContactName\": \"string\",\n    \"senderPhoneNo\": \"string\",\n    \"emailSubject\": \"string\",\n    \"emailAddressCC\": \"string\",\n    \"emailAddressBCC\": \"string\"\n  },\n  \"returnRoutingData\": true,\n  \"addresses\": {\n    \"pickupAddress\": {\n      \"name1\": \"string\",\n      \"name2\": \"string\",\n      \"name3\": \"string\",\n      \"street\": \"string\",\n      \"houseNo\": \"string\",\n      \"houseNoExt\": \"string\",\n      \"zipCode\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"string\",\n      \"contact\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\"\n    },\n    \"deliveryAddress\": {\n      \"name1\": \"string\",\n      \"name2\": \"string\",\n      \"name3\": \"string\",\n      \"street\": \"string\",\n      \"houseNo\": \"string\",\n      \"houseNoExt\": \"string\",\n      \"zipCode\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"string\",\n      \"contact\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"addresseeType\": \"b\"\n    }\n  },\n  \"shippingDate\": \"string\",\n  \"services\": {\n    \"addresseeOnlyService\": true,\n    \"expressService\": \"none\",\n    \"expressConfirmSMS\": \"string\",\n    \"economyParcel\": true,\n    \"letterBoxParcel\": true,\n    \"shopDeliveryService\": true,\n    \"shopDeliveryParcelShopId\": \"string\",\n    \"shopDeliveryPlusService\": true,\n    \"shopReturnService\": true,\n    \"saturdayService\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\",\n  \"shipmentTrackingLink\": \"string\",\n  \"labels\": \"string\",\n  \"units\": [\n    {}\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b4221e0b-8839-4d57-8f21-f40a73e74bc4",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Label",
+                    "Create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"shippingSystemName\": \"string\",\n  \"shippingSystemVersion\": \"string\",\n  \"shiptype\": \"p\",\n  \"customerNo\": \"string\",\n  \"customerSubjectName\": \"string\",\n  \"reference\": \"string\",\n  \"trackingLinkType\": \"u\",\n  \"units\": [\n    {\n      \"unitId\": \"string\",\n      \"unitType\": \"co\",\n      \"customerUnitReference\": \"string\",\n      \"weight\": 0,\n      \"dimensions\": {\n        \"length\": 0,\n        \"width\": 0,\n        \"height\": 0\n      },\n      \"additionalInfo1\": \"string\",\n      \"additionalInfo2\": \"string\"\n    }\n  ],\n  \"labelType\": \"zpl\",\n  \"labelA4StartPosition\": 0,\n  \"labelA4MoveXMm\": 0,\n  \"labelA4MoveYMm\": 0,\n  \"notificationEmail\": {\n    \"sendMail\": true,\n    \"senderName\": \"string\",\n    \"senderReplyAddress\": \"string\",\n    \"senderContactName\": \"string\",\n    \"senderPhoneNo\": \"string\",\n    \"emailSubject\": \"string\",\n    \"emailAddressCC\": \"string\",\n    \"emailAddressBCC\": \"string\"\n  },\n  \"returnRoutingData\": true,\n  \"addresses\": {\n    \"pickupAddress\": {\n      \"name1\": \"string\",\n      \"name2\": \"string\",\n      \"name3\": \"string\",\n      \"street\": \"string\",\n      \"houseNo\": \"string\",\n      \"houseNoExt\": \"string\",\n      \"zipCode\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"string\",\n      \"contact\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\"\n    },\n    \"deliveryAddress\": {\n      \"name1\": \"string\",\n      \"name2\": \"string\",\n      \"name3\": \"string\",\n      \"street\": \"string\",\n      \"houseNo\": \"string\",\n      \"houseNoExt\": \"string\",\n      \"zipCode\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"string\",\n      \"contact\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"addresseeType\": \"b\"\n    }\n  },\n  \"shippingDate\": \"string\",\n  \"services\": {\n    \"addresseeOnlyService\": true,\n    \"expressService\": \"none\",\n    \"expressConfirmSMS\": \"string\",\n    \"economyParcel\": true,\n    \"letterBoxParcel\": true,\n    \"shopDeliveryService\": true,\n    \"shopDeliveryParcelShopId\": \"string\",\n    \"shopDeliveryPlusService\": true,\n    \"shopReturnService\": true,\n    \"saturdayService\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "58843e29-aa7b-4260-b27a-eda62c8ceed7",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Label",
+                    "Create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"shippingSystemName\": \"string\",\n  \"shippingSystemVersion\": \"string\",\n  \"shiptype\": \"p\",\n  \"customerNo\": \"string\",\n  \"customerSubjectName\": \"string\",\n  \"reference\": \"string\",\n  \"trackingLinkType\": \"u\",\n  \"units\": [\n    {\n      \"unitId\": \"string\",\n      \"unitType\": \"co\",\n      \"customerUnitReference\": \"string\",\n      \"weight\": 0,\n      \"dimensions\": {\n        \"length\": 0,\n        \"width\": 0,\n        \"height\": 0\n      },\n      \"additionalInfo1\": \"string\",\n      \"additionalInfo2\": \"string\"\n    }\n  ],\n  \"labelType\": \"zpl\",\n  \"labelA4StartPosition\": 0,\n  \"labelA4MoveXMm\": 0,\n  \"labelA4MoveYMm\": 0,\n  \"notificationEmail\": {\n    \"sendMail\": true,\n    \"senderName\": \"string\",\n    \"senderReplyAddress\": \"string\",\n    \"senderContactName\": \"string\",\n    \"senderPhoneNo\": \"string\",\n    \"emailSubject\": \"string\",\n    \"emailAddressCC\": \"string\",\n    \"emailAddressBCC\": \"string\"\n  },\n  \"returnRoutingData\": true,\n  \"addresses\": {\n    \"pickupAddress\": {\n      \"name1\": \"string\",\n      \"name2\": \"string\",\n      \"name3\": \"string\",\n      \"street\": \"string\",\n      \"houseNo\": \"string\",\n      \"houseNoExt\": \"string\",\n      \"zipCode\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"string\",\n      \"contact\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\"\n    },\n    \"deliveryAddress\": {\n      \"name1\": \"string\",\n      \"name2\": \"string\",\n      \"name3\": \"string\",\n      \"street\": \"string\",\n      \"houseNo\": \"string\",\n      \"houseNoExt\": \"string\",\n      \"zipCode\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"string\",\n      \"contact\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"addresseeType\": \"b\"\n    }\n  },\n  \"shippingDate\": \"string\",\n  \"services\": {\n    \"addresseeOnlyService\": true,\n    \"expressService\": \"none\",\n    \"expressConfirmSMS\": \"string\",\n    \"economyParcel\": true,\n    \"letterBoxParcel\": true,\n    \"shopDeliveryService\": true,\n    \"shopDeliveryParcelShopId\": \"string\",\n    \"shopDeliveryPlusService\": true,\n    \"shopReturnService\": true,\n    \"saturdayService\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "80f502fb-7bef-4c96-8f30-32cee57e2290",
+              "name": "Unprocessable Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Label",
+                    "Create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"shippingSystemName\": \"string\",\n  \"shippingSystemVersion\": \"string\",\n  \"shiptype\": \"p\",\n  \"customerNo\": \"string\",\n  \"customerSubjectName\": \"string\",\n  \"reference\": \"string\",\n  \"trackingLinkType\": \"u\",\n  \"units\": [\n    {\n      \"unitId\": \"string\",\n      \"unitType\": \"co\",\n      \"customerUnitReference\": \"string\",\n      \"weight\": 0,\n      \"dimensions\": {\n        \"length\": 0,\n        \"width\": 0,\n        \"height\": 0\n      },\n      \"additionalInfo1\": \"string\",\n      \"additionalInfo2\": \"string\"\n    }\n  ],\n  \"labelType\": \"zpl\",\n  \"labelA4StartPosition\": 0,\n  \"labelA4MoveXMm\": 0,\n  \"labelA4MoveYMm\": 0,\n  \"notificationEmail\": {\n    \"sendMail\": true,\n    \"senderName\": \"string\",\n    \"senderReplyAddress\": \"string\",\n    \"senderContactName\": \"string\",\n    \"senderPhoneNo\": \"string\",\n    \"emailSubject\": \"string\",\n    \"emailAddressCC\": \"string\",\n    \"emailAddressBCC\": \"string\"\n  },\n  \"returnRoutingData\": true,\n  \"addresses\": {\n    \"pickupAddress\": {\n      \"name1\": \"string\",\n      \"name2\": \"string\",\n      \"name3\": \"string\",\n      \"street\": \"string\",\n      \"houseNo\": \"string\",\n      \"houseNoExt\": \"string\",\n      \"zipCode\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"string\",\n      \"contact\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\"\n    },\n    \"deliveryAddress\": {\n      \"name1\": \"string\",\n      \"name2\": \"string\",\n      \"name3\": \"string\",\n      \"street\": \"string\",\n      \"houseNo\": \"string\",\n      \"houseNoExt\": \"string\",\n      \"zipCode\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"string\",\n      \"contact\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"addresseeType\": \"b\"\n    }\n  },\n  \"shippingDate\": \"string\",\n  \"services\": {\n    \"addresseeOnlyService\": true,\n    \"expressService\": \"none\",\n    \"expressConfirmSMS\": \"string\",\n    \"economyParcel\": true,\n    \"letterBoxParcel\": true,\n    \"shopDeliveryService\": true,\n    \"shopDeliveryParcelShopId\": \"string\",\n    \"shopDeliveryPlusService\": true,\n    \"shopReturnService\": true,\n    \"saturdayService\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "da6e088b-6de0-487c-8ba7-40ee9f1afb15",
+              "name": "Failed Dependency",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Label",
+                    "Create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"shippingSystemName\": \"string\",\n  \"shippingSystemVersion\": \"string\",\n  \"shiptype\": \"p\",\n  \"customerNo\": \"string\",\n  \"customerSubjectName\": \"string\",\n  \"reference\": \"string\",\n  \"trackingLinkType\": \"u\",\n  \"units\": [\n    {\n      \"unitId\": \"string\",\n      \"unitType\": \"co\",\n      \"customerUnitReference\": \"string\",\n      \"weight\": 0,\n      \"dimensions\": {\n        \"length\": 0,\n        \"width\": 0,\n        \"height\": 0\n      },\n      \"additionalInfo1\": \"string\",\n      \"additionalInfo2\": \"string\"\n    }\n  ],\n  \"labelType\": \"zpl\",\n  \"labelA4StartPosition\": 0,\n  \"labelA4MoveXMm\": 0,\n  \"labelA4MoveYMm\": 0,\n  \"notificationEmail\": {\n    \"sendMail\": true,\n    \"senderName\": \"string\",\n    \"senderReplyAddress\": \"string\",\n    \"senderContactName\": \"string\",\n    \"senderPhoneNo\": \"string\",\n    \"emailSubject\": \"string\",\n    \"emailAddressCC\": \"string\",\n    \"emailAddressBCC\": \"string\"\n  },\n  \"returnRoutingData\": true,\n  \"addresses\": {\n    \"pickupAddress\": {\n      \"name1\": \"string\",\n      \"name2\": \"string\",\n      \"name3\": \"string\",\n      \"street\": \"string\",\n      \"houseNo\": \"string\",\n      \"houseNoExt\": \"string\",\n      \"zipCode\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"string\",\n      \"contact\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\"\n    },\n    \"deliveryAddress\": {\n      \"name1\": \"string\",\n      \"name2\": \"string\",\n      \"name3\": \"string\",\n      \"street\": \"string\",\n      \"houseNo\": \"string\",\n      \"houseNoExt\": \"string\",\n      \"zipCode\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"string\",\n      \"contact\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"addresseeType\": \"b\"\n    }\n  },\n  \"shippingDate\": \"string\",\n  \"services\": {\n    \"addresseeOnlyService\": true,\n    \"expressService\": \"none\",\n    \"expressConfirmSMS\": \"string\",\n    \"economyParcel\": true,\n    \"letterBoxParcel\": true,\n    \"shopDeliveryService\": true,\n    \"shopDeliveryParcelShopId\": \"string\",\n    \"shopDeliveryPlusService\": true,\n    \"shopReturnService\": true,\n    \"saturdayService\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Failed Dependency (WebDAV) (RFC 4918)",
+              "code": 424,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "33b14764-3aa4-48e2-957c-9193dcf63174",
+          "name": "DeleteLabel",
+          "request": {
+            "name": "DeleteLabel",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "Label",
+                "Delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "1.0",
+                  "description": "The requested API version"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"password\": \"<string>\",\n  \"unitNo\": \"<string>\",\n  \"username\": \"<string>\",\n  \"shippingSystemName\": \"<string>\",\n  \"shippingSystemVersion\": \"<string>\",\n  \"shiptype\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8d9200b2-428e-46f8-a819-10dd452aaae2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Label",
+                    "Delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"shippingSystemName\": \"string\",\n  \"shippingSystemVersion\": \"string\",\n  \"shiptype\": \"p\",\n  \"unitNo\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ca60946-eca2-4486-a1dd-3547393793d8",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Label",
+                    "Delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"shippingSystemName\": \"string\",\n  \"shippingSystemVersion\": \"string\",\n  \"shiptype\": \"p\",\n  \"unitNo\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "52cb728c-f62f-49cd-a2da-7ee3cb9b4217",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Label",
+                    "Delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"shippingSystemName\": \"string\",\n  \"shippingSystemVersion\": \"string\",\n  \"shiptype\": \"p\",\n  \"unitNo\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4d0d2c35-a2b4-4789-94ef-22e2186da1d6",
+              "name": "Failed Dependency",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Label",
+                    "Delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"shippingSystemName\": \"string\",\n  \"shippingSystemVersion\": \"string\",\n  \"shiptype\": \"p\",\n  \"unitNo\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Failed Dependency (WebDAV) (RFC 4918)",
+              "code": 424,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c71ac47d-f2c5-4277-bae6-35fe0092314e",
+          "name": "ConfirmLabel",
+          "request": {
+            "name": "ConfirmLabel",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "Label",
+                "Confirm"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "1.0",
+                  "description": "The requested API version"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"password\": \"<string>\",\n  \"unitNo\": \"<string>\",\n  \"username\": \"<string>\",\n  \"shippingSystemName\": \"<string>\",\n  \"shippingSystemVersion\": \"<string>\",\n  \"shiptype\": \"<string>\",\n  \"shippingDate\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7be8042b-c9f2-4314-8e11-4a310e8cf9cd",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Label",
+                    "Confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"shippingSystemName\": \"string\",\n  \"shippingSystemVersion\": \"string\",\n  \"shiptype\": \"p\",\n  \"unitNo\": \"string\",\n  \"shippingDate\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03c9a6ff-248b-43e4-85e1-6a46951a30b3",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Label",
+                    "Confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"shippingSystemName\": \"string\",\n  \"shippingSystemVersion\": \"string\",\n  \"shiptype\": \"p\",\n  \"unitNo\": \"string\",\n  \"shippingDate\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "91b16d16-73ed-41b9-9acc-95dad4a348b3",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Label",
+                    "Confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"shippingSystemName\": \"string\",\n  \"shippingSystemVersion\": \"string\",\n  \"shiptype\": \"p\",\n  \"unitNo\": \"string\",\n  \"shippingDate\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b075935-f88b-4fa7-a76d-d113819671c9",
+              "name": "Failed Dependency",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Label",
+                    "Confirm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"shippingSystemName\": \"string\",\n  \"shippingSystemVersion\": \"string\",\n  \"shiptype\": \"p\",\n  \"unitNo\": \"string\",\n  \"shippingDate\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Failed Dependency (WebDAV) (RFC 4918)",
+              "code": 424,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6f12f893-8b0a-4770-9215-a82f9f89e482",
+          "name": "ConfirmMultiple",
+          "request": {
+            "name": "ConfirmMultiple",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "Label",
+                "ConfirmMultiple"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "1.0",
+                  "description": "The requested API version"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"password\": \"<string>\",\n  \"unitNos\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"username\": \"<string>\",\n  \"shippingSystemName\": \"<string>\",\n  \"shippingSystemVersion\": \"<string>\",\n  \"shiptype\": \"<string>\",\n  \"shippingDate\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "37a9d6fb-be9c-4197-90ba-60da43cf586b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Label",
+                    "ConfirmMultiple"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"shippingSystemName\": \"string\",\n  \"shippingSystemVersion\": \"string\",\n  \"shiptype\": \"p\",\n  \"unitNos\": [\n    \"string\"\n  ],\n  \"shippingDate\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5e9b8968-cf0b-4cf9-8073-4d7c42ba37b9",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Label",
+                    "ConfirmMultiple"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"shippingSystemName\": \"string\",\n  \"shippingSystemVersion\": \"string\",\n  \"shiptype\": \"p\",\n  \"unitNos\": [\n    \"string\"\n  ],\n  \"shippingDate\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ba373e8a-fce0-41cc-a183-0f956b23769a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Label",
+                    "ConfirmMultiple"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"shippingSystemName\": \"string\",\n  \"shippingSystemVersion\": \"string\",\n  \"shiptype\": \"p\",\n  \"unitNos\": [\n    \"string\"\n  ],\n  \"shippingDate\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b58d105e-2b14-413e-bdf7-98f643c91c20",
+              "name": "Failed Dependency",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Label",
+                    "ConfirmMultiple"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"shippingSystemName\": \"string\",\n  \"shippingSystemVersion\": \"string\",\n  \"shiptype\": \"p\",\n  \"unitNos\": [\n    \"string\"\n  ],\n  \"shippingDate\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Failed Dependency (WebDAV) (RFC 4918)",
+              "code": 424,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "79675944-8a5e-4bc4-9d9a-cab17a0e25d0",
+      "name": "DeliveryOptions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "82b809d4-7528-449a-83eb-c36f1dbb09a2",
+          "name": "GetDeliveryOptions",
+          "request": {
+            "name": "GetDeliveryOptions",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "DeliveryOptions",
+                "GetDeliveryOptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "1.0",
+                  "description": "The requested API version"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"countryCode\": \"<string>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"zipCode\": \"<string>\",\n  \"langCode\": \"<string>\",\n  \"shippingDate\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d606c96b-0dce-470a-b3a4-ee26218adf8c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "DeliveryOptions",
+                    "GetDeliveryOptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"countryCode\": \"string\",\n  \"langCode\": \"nl\",\n  \"zipCode\": \"string\",\n  \"shippingDate\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\",\n  \"deliveryOptions\": [\n    {\n      \"service\": \"string\",\n      \"title\": \"string\",\n      \"expectedDeliveryDate\": \"string\",\n      \"expectedDeliveryTime\": \"string\",\n      \"subDeliveryOptions\": [\n        {\n          \"service\": \"string\",\n          \"title\": \"string\",\n          \"expectedDeliveryDate\": \"string\",\n          \"expectedDeliveryTime\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a284da6-4242-4fec-9e99-d0a7eecc3587",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "DeliveryOptions",
+                    "GetDeliveryOptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"countryCode\": \"string\",\n  \"langCode\": \"nl\",\n  \"zipCode\": \"string\",\n  \"shippingDate\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2a0d88a0-82cf-41db-b3e9-608cdbefa1b9",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "DeliveryOptions",
+                    "GetDeliveryOptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"countryCode\": \"string\",\n  \"langCode\": \"nl\",\n  \"zipCode\": \"string\",\n  \"shippingDate\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "325084e6-e9aa-4559-9466-6173dcc309b3",
+      "name": "Monitor",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d72269eb-989a-4614-9168-5f4dc56f2091",
+          "name": "HealthProbe",
+          "request": {
+            "name": "HealthProbe",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "Monitor",
+                "HealthProbe"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "1.0",
+                  "description": "The requested API version"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "HEAD",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "73322961-6ff9-4de3-b5ba-013bdbc7ae2a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Monitor",
+                    "HealthProbe"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "HEAD",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"string\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "3b4b37c3-647c-4dcb-9c4d-e6117e21347c",
+      "name": "ParcelShop",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "333ec7b6-2885-43c8-8184-2c07917c13e5",
+          "name": "GetParcelShops",
+          "request": {
+            "name": "GetParcelShops",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "ParcelShop",
+                "GetParcelShops"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "1.0",
+                  "description": "The requested API version"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"amountOfShops\": \"<integer>\",\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"zipCode\": \"<string>\",\n  \"countryCode\": \"<string>\",\n  \"street\": \"<string>\",\n  \"houseNo\": \"<string>\",\n  \"city\": \"<string>\",\n  \"shippingDate\": \"<dateTime>\",\n  \"langCode\": \"<string>\",\n  \"glsPointType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "475a40be-3e51-4dc5-b495-7e8e37073f8c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ParcelShop",
+                    "GetParcelShops"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"countryCode\": \"string\",\n  \"zipCode\": \"string\",\n  \"street\": \"string\",\n  \"houseNo\": \"string\",\n  \"city\": \"string\",\n  \"amountOfShops\": 0,\n  \"shippingDate\": \"string\",\n  \"langCode\": \"nl\",\n  \"glsPointType\": \"all\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\",\n  \"parcelShops\": [\n    {\n      \"parcelShopId\": \"string\",\n      \"name\": \"string\",\n      \"street\": \"string\",\n      \"houseNo\": \"string\",\n      \"zipcode\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"string\",\n      \"webSite\": \"string\",\n      \"info1\": \"string\",\n      \"info2\": \"string\",\n      \"mapsUrl\": \"string\",\n      \"geoCoordinates\": {\n        \"lat\": 0,\n        \"lng\": 0\n      },\n      \"businessHours\": [\n        {\n          \"dayOfWeek\": \"string\",\n          \"openTime\": \"string\",\n          \"breakStartTime\": \"string\",\n          \"breakEndTime\": \"string\",\n          \"secondBreakStartTime\": \"string\",\n          \"secondBreakEndTime\": \"string\",\n          \"closedTime\": \"string\"\n        }\n      ],\n      \"distanceMeters\": 0,\n      \"distanceMinutes\": 0,\n      \"vacations\": [\n        {\n          \"start\": \"string\",\n          \"end\": \"string\"\n        }\n      ],\n      \"deliveryOptions\": [\n        {\n          \"service\": \"string\",\n          \"title\": \"string\",\n          \"expectedDeliveryDate\": \"string\",\n          \"expectedDeliveryTime\": \"string\",\n          \"subDeliveryOptions\": [\n            {\n              \"service\": \"string\",\n              \"title\": \"string\",\n              \"expectedDeliveryDate\": \"string\",\n              \"expectedDeliveryTime\": \"string\"\n            }\n          ]\n        }\n      ],\n      \"type\": \"parcelShop\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f834e1ea-5def-4279-8663-5070977f9232",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ParcelShop",
+                    "GetParcelShops"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"countryCode\": \"string\",\n  \"zipCode\": \"string\",\n  \"street\": \"string\",\n  \"houseNo\": \"string\",\n  \"city\": \"string\",\n  \"amountOfShops\": 0,\n  \"shippingDate\": \"string\",\n  \"langCode\": \"nl\",\n  \"glsPointType\": \"all\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fdaa7003-6c77-485c-8e1d-85dbef6453d3",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ParcelShop",
+                    "GetParcelShops"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"countryCode\": \"string\",\n  \"zipCode\": \"string\",\n  \"street\": \"string\",\n  \"houseNo\": \"string\",\n  \"city\": \"string\",\n  \"amountOfShops\": 0,\n  \"shippingDate\": \"string\",\n  \"langCode\": \"nl\",\n  \"glsPointType\": \"all\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "90536a88-c204-4bae-9ac5-ef49cb189fa6",
+              "name": "Failed Dependency",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ParcelShop",
+                    "GetParcelShops"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"countryCode\": \"string\",\n  \"zipCode\": \"string\",\n  \"street\": \"string\",\n  \"houseNo\": \"string\",\n  \"city\": \"string\",\n  \"amountOfShops\": 0,\n  \"shippingDate\": \"string\",\n  \"langCode\": \"nl\",\n  \"glsPointType\": \"all\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Failed Dependency (WebDAV) (RFC 4918)",
+              "code": 424,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "3de727a4-290f-4b07-a692-3dddbd3ee704",
+      "name": "Pickup",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "acf417b4-270f-47af-9a18-50e172fa962b",
+          "name": "CreatePickup",
+          "request": {
+            "name": "CreatePickup",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "Pickup",
+                "Create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "1.0",
+                  "description": "The requested API version"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"password\": \"<string>\",\n  \"pickupDate\": \"<dateTime>\",\n  \"username\": \"<string>\",\n  \"shippingSystemName\": \"<string>\",\n  \"shippingSystemVersion\": \"<string>\",\n  \"shiptype\": \"<string>\",\n  \"customerNo\": \"<string>\",\n  \"customerSubjectName\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"trackingLinkType\": \"<string>\",\n  \"units\": [\n    {\n      \"unitId\": \"<string>\",\n      \"weight\": \"<float>\",\n      \"unitType\": \"<string>\",\n      \"customerUnitReference\": \"<string>\",\n      \"dimensions\": {\n        \"length\": \"<integer>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      },\n      \"additionalInfo1\": \"<string>\",\n      \"additionalInfo2\": \"<string>\"\n    },\n    {\n      \"unitId\": \"<string>\",\n      \"weight\": \"<float>\",\n      \"unitType\": \"<string>\",\n      \"customerUnitReference\": \"<string>\",\n      \"dimensions\": {\n        \"length\": \"<integer>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      },\n      \"additionalInfo1\": \"<string>\",\n      \"additionalInfo2\": \"<string>\"\n    }\n  ],\n  \"addresses\": {\n    \"pickupAddress\": {\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"name1\": \"<string>\",\n      \"street\": \"<string>\",\n      \"zipCode\": \"<string>\",\n      \"name2\": \"<string>\",\n      \"name3\": \"<string>\",\n      \"houseNo\": \"<string>\",\n      \"houseNoExt\": \"<string>\",\n      \"contact\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"email\": \"<string>\"\n    },\n    \"deliveryAddress\": {\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"name1\": \"<string>\",\n      \"street\": \"<string>\",\n      \"zipCode\": \"<string>\",\n      \"name2\": \"<string>\",\n      \"name3\": \"<string>\",\n      \"houseNo\": \"<string>\",\n      \"houseNoExt\": \"<string>\",\n      \"contact\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"email\": \"<string>\",\n      \"addresseeType\": \"<string>\"\n    },\n    \"requesterAddress\": {\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"name1\": \"<string>\",\n      \"street\": \"<string>\",\n      \"zipCode\": \"<string>\",\n      \"name2\": \"<string>\",\n      \"name3\": \"<string>\",\n      \"houseNo\": \"<string>\",\n      \"houseNoExt\": \"<string>\",\n      \"contact\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"email\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ff29d1b4-7135-4c0e-9bce-471dd7e3797d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Pickup",
+                    "Create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"password\": \"<string>\",\n  \"pickupDate\": \"<dateTime>\",\n  \"username\": \"<string>\",\n  \"shippingSystemName\": \"<string>\",\n  \"shippingSystemVersion\": \"<string>\",\n  \"shiptype\": \"<string>\",\n  \"customerNo\": \"<string>\",\n  \"customerSubjectName\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"trackingLinkType\": \"<string>\",\n  \"units\": [\n    {\n      \"unitId\": \"<string>\",\n      \"weight\": \"<float>\",\n      \"unitType\": \"<string>\",\n      \"customerUnitReference\": \"<string>\",\n      \"dimensions\": {\n        \"length\": \"<integer>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      },\n      \"additionalInfo1\": \"<string>\",\n      \"additionalInfo2\": \"<string>\"\n    },\n    {\n      \"unitId\": \"<string>\",\n      \"weight\": \"<float>\",\n      \"unitType\": \"<string>\",\n      \"customerUnitReference\": \"<string>\",\n      \"dimensions\": {\n        \"length\": \"<integer>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      },\n      \"additionalInfo1\": \"<string>\",\n      \"additionalInfo2\": \"<string>\"\n    }\n  ],\n  \"addresses\": {\n    \"pickupAddress\": {\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"name1\": \"<string>\",\n      \"street\": \"<string>\",\n      \"zipCode\": \"<string>\",\n      \"name2\": \"<string>\",\n      \"name3\": \"<string>\",\n      \"houseNo\": \"<string>\",\n      \"houseNoExt\": \"<string>\",\n      \"contact\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"email\": \"<string>\"\n    },\n    \"deliveryAddress\": {\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"name1\": \"<string>\",\n      \"street\": \"<string>\",\n      \"zipCode\": \"<string>\",\n      \"name2\": \"<string>\",\n      \"name3\": \"<string>\",\n      \"houseNo\": \"<string>\",\n      \"houseNoExt\": \"<string>\",\n      \"contact\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"email\": \"<string>\",\n      \"addresseeType\": \"<string>\"\n    },\n    \"requesterAddress\": {\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"name1\": \"<string>\",\n      \"street\": \"<string>\",\n      \"zipCode\": \"<string>\",\n      \"name2\": \"<string>\",\n      \"name3\": \"<string>\",\n      \"houseNo\": \"<string>\",\n      \"houseNoExt\": \"<string>\",\n      \"contact\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"email\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\",\n  \"shipmentTrackingLink\": \"string\",\n  \"units\": [\n    {}\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cfb7dc1f-66b4-4ce5-b537-ad6cbccf8487",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Pickup",
+                    "Create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"password\": \"<string>\",\n  \"pickupDate\": \"<dateTime>\",\n  \"username\": \"<string>\",\n  \"shippingSystemName\": \"<string>\",\n  \"shippingSystemVersion\": \"<string>\",\n  \"shiptype\": \"<string>\",\n  \"customerNo\": \"<string>\",\n  \"customerSubjectName\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"trackingLinkType\": \"<string>\",\n  \"units\": [\n    {\n      \"unitId\": \"<string>\",\n      \"weight\": \"<float>\",\n      \"unitType\": \"<string>\",\n      \"customerUnitReference\": \"<string>\",\n      \"dimensions\": {\n        \"length\": \"<integer>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      },\n      \"additionalInfo1\": \"<string>\",\n      \"additionalInfo2\": \"<string>\"\n    },\n    {\n      \"unitId\": \"<string>\",\n      \"weight\": \"<float>\",\n      \"unitType\": \"<string>\",\n      \"customerUnitReference\": \"<string>\",\n      \"dimensions\": {\n        \"length\": \"<integer>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      },\n      \"additionalInfo1\": \"<string>\",\n      \"additionalInfo2\": \"<string>\"\n    }\n  ],\n  \"addresses\": {\n    \"pickupAddress\": {\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"name1\": \"<string>\",\n      \"street\": \"<string>\",\n      \"zipCode\": \"<string>\",\n      \"name2\": \"<string>\",\n      \"name3\": \"<string>\",\n      \"houseNo\": \"<string>\",\n      \"houseNoExt\": \"<string>\",\n      \"contact\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"email\": \"<string>\"\n    },\n    \"deliveryAddress\": {\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"name1\": \"<string>\",\n      \"street\": \"<string>\",\n      \"zipCode\": \"<string>\",\n      \"name2\": \"<string>\",\n      \"name3\": \"<string>\",\n      \"houseNo\": \"<string>\",\n      \"houseNoExt\": \"<string>\",\n      \"contact\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"email\": \"<string>\",\n      \"addresseeType\": \"<string>\"\n    },\n    \"requesterAddress\": {\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"name1\": \"<string>\",\n      \"street\": \"<string>\",\n      \"zipCode\": \"<string>\",\n      \"name2\": \"<string>\",\n      \"name3\": \"<string>\",\n      \"houseNo\": \"<string>\",\n      \"houseNoExt\": \"<string>\",\n      \"contact\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"email\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cfaaa4f4-9215-4b4e-9400-a788a4cc5a24",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Pickup",
+                    "Create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"password\": \"<string>\",\n  \"pickupDate\": \"<dateTime>\",\n  \"username\": \"<string>\",\n  \"shippingSystemName\": \"<string>\",\n  \"shippingSystemVersion\": \"<string>\",\n  \"shiptype\": \"<string>\",\n  \"customerNo\": \"<string>\",\n  \"customerSubjectName\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"trackingLinkType\": \"<string>\",\n  \"units\": [\n    {\n      \"unitId\": \"<string>\",\n      \"weight\": \"<float>\",\n      \"unitType\": \"<string>\",\n      \"customerUnitReference\": \"<string>\",\n      \"dimensions\": {\n        \"length\": \"<integer>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      },\n      \"additionalInfo1\": \"<string>\",\n      \"additionalInfo2\": \"<string>\"\n    },\n    {\n      \"unitId\": \"<string>\",\n      \"weight\": \"<float>\",\n      \"unitType\": \"<string>\",\n      \"customerUnitReference\": \"<string>\",\n      \"dimensions\": {\n        \"length\": \"<integer>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      },\n      \"additionalInfo1\": \"<string>\",\n      \"additionalInfo2\": \"<string>\"\n    }\n  ],\n  \"addresses\": {\n    \"pickupAddress\": {\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"name1\": \"<string>\",\n      \"street\": \"<string>\",\n      \"zipCode\": \"<string>\",\n      \"name2\": \"<string>\",\n      \"name3\": \"<string>\",\n      \"houseNo\": \"<string>\",\n      \"houseNoExt\": \"<string>\",\n      \"contact\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"email\": \"<string>\"\n    },\n    \"deliveryAddress\": {\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"name1\": \"<string>\",\n      \"street\": \"<string>\",\n      \"zipCode\": \"<string>\",\n      \"name2\": \"<string>\",\n      \"name3\": \"<string>\",\n      \"houseNo\": \"<string>\",\n      \"houseNoExt\": \"<string>\",\n      \"contact\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"email\": \"<string>\",\n      \"addresseeType\": \"<string>\"\n    },\n    \"requesterAddress\": {\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"name1\": \"<string>\",\n      \"street\": \"<string>\",\n      \"zipCode\": \"<string>\",\n      \"name2\": \"<string>\",\n      \"name3\": \"<string>\",\n      \"houseNo\": \"<string>\",\n      \"houseNoExt\": \"<string>\",\n      \"contact\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"email\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3be0bbfb-be57-46fd-8f9d-96dbce327b64",
+              "name": "Unprocessable Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Pickup",
+                    "Create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"password\": \"<string>\",\n  \"pickupDate\": \"<dateTime>\",\n  \"username\": \"<string>\",\n  \"shippingSystemName\": \"<string>\",\n  \"shippingSystemVersion\": \"<string>\",\n  \"shiptype\": \"<string>\",\n  \"customerNo\": \"<string>\",\n  \"customerSubjectName\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"trackingLinkType\": \"<string>\",\n  \"units\": [\n    {\n      \"unitId\": \"<string>\",\n      \"weight\": \"<float>\",\n      \"unitType\": \"<string>\",\n      \"customerUnitReference\": \"<string>\",\n      \"dimensions\": {\n        \"length\": \"<integer>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      },\n      \"additionalInfo1\": \"<string>\",\n      \"additionalInfo2\": \"<string>\"\n    },\n    {\n      \"unitId\": \"<string>\",\n      \"weight\": \"<float>\",\n      \"unitType\": \"<string>\",\n      \"customerUnitReference\": \"<string>\",\n      \"dimensions\": {\n        \"length\": \"<integer>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      },\n      \"additionalInfo1\": \"<string>\",\n      \"additionalInfo2\": \"<string>\"\n    }\n  ],\n  \"addresses\": {\n    \"pickupAddress\": {\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"name1\": \"<string>\",\n      \"street\": \"<string>\",\n      \"zipCode\": \"<string>\",\n      \"name2\": \"<string>\",\n      \"name3\": \"<string>\",\n      \"houseNo\": \"<string>\",\n      \"houseNoExt\": \"<string>\",\n      \"contact\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"email\": \"<string>\"\n    },\n    \"deliveryAddress\": {\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"name1\": \"<string>\",\n      \"street\": \"<string>\",\n      \"zipCode\": \"<string>\",\n      \"name2\": \"<string>\",\n      \"name3\": \"<string>\",\n      \"houseNo\": \"<string>\",\n      \"houseNoExt\": \"<string>\",\n      \"contact\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"email\": \"<string>\",\n      \"addresseeType\": \"<string>\"\n    },\n    \"requesterAddress\": {\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"name1\": \"<string>\",\n      \"street\": \"<string>\",\n      \"zipCode\": \"<string>\",\n      \"name2\": \"<string>\",\n      \"name3\": \"<string>\",\n      \"houseNo\": \"<string>\",\n      \"houseNoExt\": \"<string>\",\n      \"contact\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"email\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f9cf6a12-66b7-461d-b687-779c02c93a3c",
+              "name": "Failed Dependency",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Pickup",
+                    "Create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"password\": \"<string>\",\n  \"pickupDate\": \"<dateTime>\",\n  \"username\": \"<string>\",\n  \"shippingSystemName\": \"<string>\",\n  \"shippingSystemVersion\": \"<string>\",\n  \"shiptype\": \"<string>\",\n  \"customerNo\": \"<string>\",\n  \"customerSubjectName\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"trackingLinkType\": \"<string>\",\n  \"units\": [\n    {\n      \"unitId\": \"<string>\",\n      \"weight\": \"<float>\",\n      \"unitType\": \"<string>\",\n      \"customerUnitReference\": \"<string>\",\n      \"dimensions\": {\n        \"length\": \"<integer>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      },\n      \"additionalInfo1\": \"<string>\",\n      \"additionalInfo2\": \"<string>\"\n    },\n    {\n      \"unitId\": \"<string>\",\n      \"weight\": \"<float>\",\n      \"unitType\": \"<string>\",\n      \"customerUnitReference\": \"<string>\",\n      \"dimensions\": {\n        \"length\": \"<integer>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      },\n      \"additionalInfo1\": \"<string>\",\n      \"additionalInfo2\": \"<string>\"\n    }\n  ],\n  \"addresses\": {\n    \"pickupAddress\": {\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"name1\": \"<string>\",\n      \"street\": \"<string>\",\n      \"zipCode\": \"<string>\",\n      \"name2\": \"<string>\",\n      \"name3\": \"<string>\",\n      \"houseNo\": \"<string>\",\n      \"houseNoExt\": \"<string>\",\n      \"contact\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"email\": \"<string>\"\n    },\n    \"deliveryAddress\": {\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"name1\": \"<string>\",\n      \"street\": \"<string>\",\n      \"zipCode\": \"<string>\",\n      \"name2\": \"<string>\",\n      \"name3\": \"<string>\",\n      \"houseNo\": \"<string>\",\n      \"houseNoExt\": \"<string>\",\n      \"contact\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"email\": \"<string>\",\n      \"addresseeType\": \"<string>\"\n    },\n    \"requesterAddress\": {\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"name1\": \"<string>\",\n      \"street\": \"<string>\",\n      \"zipCode\": \"<string>\",\n      \"name2\": \"<string>\",\n      \"name3\": \"<string>\",\n      \"houseNo\": \"<string>\",\n      \"houseNoExt\": \"<string>\",\n      \"contact\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"email\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Failed Dependency (WebDAV) (RFC 4918)",
+              "code": 424,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02a7556c-c199-4852-b71f-d1b55bcd7cd3",
+          "name": "DeletePickup",
+          "request": {
+            "name": "DeletePickup",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "Pickup",
+                "Delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "1.0",
+                  "description": "The requested API version"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"password\": \"<string>\",\n  \"unitNo\": \"<string>\",\n  \"username\": \"<string>\",\n  \"shippingSystemName\": \"<string>\",\n  \"shippingSystemVersion\": \"<string>\",\n  \"shiptype\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "03655290-1d26-4ca8-b8ec-d9ce69f08a89",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Pickup",
+                    "Delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"shippingSystemName\": \"string\",\n  \"shippingSystemVersion\": \"string\",\n  \"shiptype\": \"p\",\n  \"unitNo\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e7f07a0b-aef6-4582-86ab-cc3f43021166",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Pickup",
+                    "Delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"shippingSystemName\": \"string\",\n  \"shippingSystemVersion\": \"string\",\n  \"shiptype\": \"p\",\n  \"unitNo\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b6982128-644f-492a-916e-d641b49da147",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Pickup",
+                    "Delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"shippingSystemName\": \"string\",\n  \"shippingSystemVersion\": \"string\",\n  \"shiptype\": \"p\",\n  \"unitNo\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dd69c56d-0dc5-4847-b73b-020e24a0edda",
+              "name": "Failed Dependency",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "Pickup",
+                    "Delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"shippingSystemName\": \"string\",\n  \"shippingSystemVersion\": \"string\",\n  \"shiptype\": \"p\",\n  \"unitNo\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Failed Dependency (WebDAV) (RFC 4918)",
+              "code": 424,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "3e9b5761-41f9-4aa2-b5fd-31fb5f64a7a7",
+      "name": "ShopReturn",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3f30b20d-f551-44f8-95c0-88a644204ccb",
+          "name": "CreateShopReturn",
+          "request": {
+            "name": "CreateShopReturn",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "ShopReturn",
+                "Create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api-version",
+                  "value": "1.0",
+                  "description": "The requested API version"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"password\": \"<string>\",\n  \"username\": \"<string>\",\n  \"shippingSystemName\": \"<string>\",\n  \"shippingSystemVersion\": \"<string>\",\n  \"shiptype\": \"<string>\",\n  \"customerNo\": \"<string>\",\n  \"customerSubjectName\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"trackingLinkType\": \"<string>\",\n  \"units\": [\n    {\n      \"unitId\": \"<string>\",\n      \"weight\": \"<float>\",\n      \"unitType\": \"<string>\",\n      \"customerUnitReference\": \"<string>\",\n      \"dimensions\": {\n        \"length\": \"<integer>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      },\n      \"additionalInfo1\": \"<string>\",\n      \"additionalInfo2\": \"<string>\"\n    },\n    {\n      \"unitId\": \"<string>\",\n      \"weight\": \"<float>\",\n      \"unitType\": \"<string>\",\n      \"customerUnitReference\": \"<string>\",\n      \"dimensions\": {\n        \"length\": \"<integer>\",\n        \"width\": \"<integer>\",\n        \"height\": \"<integer>\"\n      },\n      \"additionalInfo1\": \"<string>\",\n      \"additionalInfo2\": \"<string>\"\n    }\n  ],\n  \"labelType\": \"<string>\",\n  \"labelA4StartPosition\": \"<integer>\",\n  \"labelA4MoveXMm\": \"<integer>\",\n  \"labelA4MoveYMm\": \"<integer>\",\n  \"addresses\": {\n    \"pickupAddress\": {\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"name1\": \"<string>\",\n      \"street\": \"<string>\",\n      \"zipCode\": \"<string>\",\n      \"name2\": \"<string>\",\n      \"name3\": \"<string>\",\n      \"houseNo\": \"<string>\",\n      \"houseNoExt\": \"<string>\",\n      \"contact\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"email\": \"<string>\"\n    },\n    \"deliveryAddress\": {\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"name1\": \"<string>\",\n      \"street\": \"<string>\",\n      \"zipCode\": \"<string>\",\n      \"name2\": \"<string>\",\n      \"name3\": \"<string>\",\n      \"houseNo\": \"<string>\",\n      \"houseNoExt\": \"<string>\",\n      \"contact\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"email\": \"<string>\",\n      \"addresseeType\": \"<string>\"\n    },\n    \"requesterAddress\": {\n      \"city\": \"<string>\",\n      \"countryCode\": \"<string>\",\n      \"name1\": \"<string>\",\n      \"street\": \"<string>\",\n      \"zipCode\": \"<string>\",\n      \"name2\": \"<string>\",\n      \"name3\": \"<string>\",\n      \"houseNo\": \"<string>\",\n      \"houseNoExt\": \"<string>\",\n      \"contact\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"email\": \"<string>\"\n    }\n  },\n  \"returnReason\": \"<string>\",\n  \"sendLabelsByEmail\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e93ef966-b50c-491d-a3fa-7f2c6c559914",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ShopReturn",
+                    "Create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"shippingSystemName\": \"string\",\n  \"shippingSystemVersion\": \"string\",\n  \"shiptype\": \"p\",\n  \"customerNo\": \"string\",\n  \"customerSubjectName\": \"string\",\n  \"reference\": \"string\",\n  \"trackingLinkType\": \"u\",\n  \"units\": [\n    {\n      \"unitId\": \"string\",\n      \"unitType\": \"co\",\n      \"customerUnitReference\": \"string\",\n      \"weight\": 0,\n      \"dimensions\": {\n        \"length\": 0,\n        \"width\": 0,\n        \"height\": 0\n      },\n      \"additionalInfo1\": \"string\",\n      \"additionalInfo2\": \"string\"\n    }\n  ],\n  \"labelType\": \"zpl\",\n  \"labelA4StartPosition\": 0,\n  \"labelA4MoveXMm\": 0,\n  \"labelA4MoveYMm\": 0,\n  \"addresses\": {\n    \"pickupAddress\": {\n      \"name1\": \"string\",\n      \"name2\": \"string\",\n      \"name3\": \"string\",\n      \"street\": \"string\",\n      \"houseNo\": \"string\",\n      \"houseNoExt\": \"string\",\n      \"zipCode\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"string\",\n      \"contact\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\"\n    },\n    \"deliveryAddress\": {\n      \"name1\": \"string\",\n      \"name2\": \"string\",\n      \"name3\": \"string\",\n      \"street\": \"string\",\n      \"houseNo\": \"string\",\n      \"houseNoExt\": \"string\",\n      \"zipCode\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"string\",\n      \"contact\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"addresseeType\": \"b\"\n    },\n    \"requesterAddress\": {\n      \"name1\": \"string\",\n      \"name2\": \"string\",\n      \"name3\": \"string\",\n      \"street\": \"string\",\n      \"houseNo\": \"string\",\n      \"houseNoExt\": \"string\",\n      \"zipCode\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"string\",\n      \"contact\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\"\n    }\n  },\n  \"returnReason\": \"string\",\n  \"sendLabelsByEmail\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\",\n  \"shipmentTrackingLink\": \"string\",\n  \"labels\": \"string\",\n  \"units\": [\n    {}\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2f55c2c1-279f-4ad8-898b-e8c315de2c98",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ShopReturn",
+                    "Create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"shippingSystemName\": \"string\",\n  \"shippingSystemVersion\": \"string\",\n  \"shiptype\": \"p\",\n  \"customerNo\": \"string\",\n  \"customerSubjectName\": \"string\",\n  \"reference\": \"string\",\n  \"trackingLinkType\": \"u\",\n  \"units\": [\n    {\n      \"unitId\": \"string\",\n      \"unitType\": \"co\",\n      \"customerUnitReference\": \"string\",\n      \"weight\": 0,\n      \"dimensions\": {\n        \"length\": 0,\n        \"width\": 0,\n        \"height\": 0\n      },\n      \"additionalInfo1\": \"string\",\n      \"additionalInfo2\": \"string\"\n    }\n  ],\n  \"labelType\": \"zpl\",\n  \"labelA4StartPosition\": 0,\n  \"labelA4MoveXMm\": 0,\n  \"labelA4MoveYMm\": 0,\n  \"addresses\": {\n    \"pickupAddress\": {\n      \"name1\": \"string\",\n      \"name2\": \"string\",\n      \"name3\": \"string\",\n      \"street\": \"string\",\n      \"houseNo\": \"string\",\n      \"houseNoExt\": \"string\",\n      \"zipCode\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"string\",\n      \"contact\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\"\n    },\n    \"deliveryAddress\": {\n      \"name1\": \"string\",\n      \"name2\": \"string\",\n      \"name3\": \"string\",\n      \"street\": \"string\",\n      \"houseNo\": \"string\",\n      \"houseNoExt\": \"string\",\n      \"zipCode\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"string\",\n      \"contact\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"addresseeType\": \"b\"\n    },\n    \"requesterAddress\": {\n      \"name1\": \"string\",\n      \"name2\": \"string\",\n      \"name3\": \"string\",\n      \"street\": \"string\",\n      \"houseNo\": \"string\",\n      \"houseNoExt\": \"string\",\n      \"zipCode\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"string\",\n      \"contact\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\"\n    }\n  },\n  \"returnReason\": \"string\",\n  \"sendLabelsByEmail\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b44cec63-feef-4140-bfa0-1dfb6c0fc322",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ShopReturn",
+                    "Create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"shippingSystemName\": \"string\",\n  \"shippingSystemVersion\": \"string\",\n  \"shiptype\": \"p\",\n  \"customerNo\": \"string\",\n  \"customerSubjectName\": \"string\",\n  \"reference\": \"string\",\n  \"trackingLinkType\": \"u\",\n  \"units\": [\n    {\n      \"unitId\": \"string\",\n      \"unitType\": \"co\",\n      \"customerUnitReference\": \"string\",\n      \"weight\": 0,\n      \"dimensions\": {\n        \"length\": 0,\n        \"width\": 0,\n        \"height\": 0\n      },\n      \"additionalInfo1\": \"string\",\n      \"additionalInfo2\": \"string\"\n    }\n  ],\n  \"labelType\": \"zpl\",\n  \"labelA4StartPosition\": 0,\n  \"labelA4MoveXMm\": 0,\n  \"labelA4MoveYMm\": 0,\n  \"addresses\": {\n    \"pickupAddress\": {\n      \"name1\": \"string\",\n      \"name2\": \"string\",\n      \"name3\": \"string\",\n      \"street\": \"string\",\n      \"houseNo\": \"string\",\n      \"houseNoExt\": \"string\",\n      \"zipCode\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"string\",\n      \"contact\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\"\n    },\n    \"deliveryAddress\": {\n      \"name1\": \"string\",\n      \"name2\": \"string\",\n      \"name3\": \"string\",\n      \"street\": \"string\",\n      \"houseNo\": \"string\",\n      \"houseNoExt\": \"string\",\n      \"zipCode\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"string\",\n      \"contact\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"addresseeType\": \"b\"\n    },\n    \"requesterAddress\": {\n      \"name1\": \"string\",\n      \"name2\": \"string\",\n      \"name3\": \"string\",\n      \"street\": \"string\",\n      \"houseNo\": \"string\",\n      \"houseNoExt\": \"string\",\n      \"zipCode\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"string\",\n      \"contact\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\"\n    }\n  },\n  \"returnReason\": \"string\",\n  \"sendLabelsByEmail\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3fd5bb2b-bb72-4257-ae89-291a54f25554",
+              "name": "Unprocessable Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ShopReturn",
+                    "Create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"shippingSystemName\": \"string\",\n  \"shippingSystemVersion\": \"string\",\n  \"shiptype\": \"p\",\n  \"customerNo\": \"string\",\n  \"customerSubjectName\": \"string\",\n  \"reference\": \"string\",\n  \"trackingLinkType\": \"u\",\n  \"units\": [\n    {\n      \"unitId\": \"string\",\n      \"unitType\": \"co\",\n      \"customerUnitReference\": \"string\",\n      \"weight\": 0,\n      \"dimensions\": {\n        \"length\": 0,\n        \"width\": 0,\n        \"height\": 0\n      },\n      \"additionalInfo1\": \"string\",\n      \"additionalInfo2\": \"string\"\n    }\n  ],\n  \"labelType\": \"zpl\",\n  \"labelA4StartPosition\": 0,\n  \"labelA4MoveXMm\": 0,\n  \"labelA4MoveYMm\": 0,\n  \"addresses\": {\n    \"pickupAddress\": {\n      \"name1\": \"string\",\n      \"name2\": \"string\",\n      \"name3\": \"string\",\n      \"street\": \"string\",\n      \"houseNo\": \"string\",\n      \"houseNoExt\": \"string\",\n      \"zipCode\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"string\",\n      \"contact\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\"\n    },\n    \"deliveryAddress\": {\n      \"name1\": \"string\",\n      \"name2\": \"string\",\n      \"name3\": \"string\",\n      \"street\": \"string\",\n      \"houseNo\": \"string\",\n      \"houseNoExt\": \"string\",\n      \"zipCode\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"string\",\n      \"contact\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"addresseeType\": \"b\"\n    },\n    \"requesterAddress\": {\n      \"name1\": \"string\",\n      \"name2\": \"string\",\n      \"name3\": \"string\",\n      \"street\": \"string\",\n      \"houseNo\": \"string\",\n      \"houseNoExt\": \"string\",\n      \"zipCode\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"string\",\n      \"contact\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\"\n    }\n  },\n  \"returnReason\": \"string\",\n  \"sendLabelsByEmail\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d90898af-182e-44a7-b6ad-dbb1ba37e2d0",
+              "name": "Failed Dependency",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "ShopReturn",
+                    "Create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api-version",
+                      "value": "1.0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\",\n  \"shippingSystemName\": \"string\",\n  \"shippingSystemVersion\": \"string\",\n  \"shiptype\": \"p\",\n  \"customerNo\": \"string\",\n  \"customerSubjectName\": \"string\",\n  \"reference\": \"string\",\n  \"trackingLinkType\": \"u\",\n  \"units\": [\n    {\n      \"unitId\": \"string\",\n      \"unitType\": \"co\",\n      \"customerUnitReference\": \"string\",\n      \"weight\": 0,\n      \"dimensions\": {\n        \"length\": 0,\n        \"width\": 0,\n        \"height\": 0\n      },\n      \"additionalInfo1\": \"string\",\n      \"additionalInfo2\": \"string\"\n    }\n  ],\n  \"labelType\": \"zpl\",\n  \"labelA4StartPosition\": 0,\n  \"labelA4MoveXMm\": 0,\n  \"labelA4MoveYMm\": 0,\n  \"addresses\": {\n    \"pickupAddress\": {\n      \"name1\": \"string\",\n      \"name2\": \"string\",\n      \"name3\": \"string\",\n      \"street\": \"string\",\n      \"houseNo\": \"string\",\n      \"houseNoExt\": \"string\",\n      \"zipCode\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"string\",\n      \"contact\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\"\n    },\n    \"deliveryAddress\": {\n      \"name1\": \"string\",\n      \"name2\": \"string\",\n      \"name3\": \"string\",\n      \"street\": \"string\",\n      \"houseNo\": \"string\",\n      \"houseNoExt\": \"string\",\n      \"zipCode\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"string\",\n      \"contact\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\",\n      \"addresseeType\": \"b\"\n    },\n    \"requesterAddress\": {\n      \"name1\": \"string\",\n      \"name2\": \"string\",\n      \"name3\": \"string\",\n      \"street\": \"string\",\n      \"houseNo\": \"string\",\n      \"houseNoExt\": \"string\",\n      \"zipCode\": \"string\",\n      \"city\": \"string\",\n      \"countryCode\": \"string\",\n      \"contact\": \"string\",\n      \"phone\": \"string\",\n      \"email\": \"string\"\n    }\n  },\n  \"returnReason\": \"string\",\n  \"sendLabelsByEmail\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Failed Dependency (WebDAV) (RFC 4918)",
+              "code": 424,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": true,\n  \"status\": \"string\",\n  \"message\": \"string\",\n  \"errors\": {},\n  \"transactionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.gls.nl/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "532ce844-0e5f-468d-9152-2673ee98b1a4",
+    "name": "GLS Netherlands LabelApi - Production",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "GLS Label API Production environment",
+      "type": "text/plain"
+    }
+  }
+}

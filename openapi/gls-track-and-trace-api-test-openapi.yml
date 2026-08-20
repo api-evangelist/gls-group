@@ -1,0 +1,849 @@
+openapi: 3.0.1
+info:
+  title: GLS T&T Api - Test
+  description: GLS Track & Trace API Test environment
+  version: '1.0'
+servers:
+  - url: http://api.gls.nl/tt-test
+  - url: https://api.gls.nl/tt-test
+paths:
+  /:
+    get:
+      tags:
+        - Home
+      summary: / - GET
+      operationId: get
+      responses:
+        '200':
+          description: OK
+  /api/parcel/v1/details:
+    post:
+      tags:
+        - Parcel
+      summary: /api/parcel/v1/details - POST
+      operationId: post-api-parcel-v1-details
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetParcelsDetailsRequestDto'
+            example:
+              userName: string
+              password: string
+              parcelNumbers:
+                - string
+          text/json:
+            schema:
+              $ref: '#/components/schemas/GetParcelsDetailsRequestDto'
+            example:
+              userName: string
+              password: string
+              parcelNumbers:
+                - string
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/GetParcelsDetailsRequestDto'
+            example:
+              userName: string
+              password: string
+              parcelNumbers:
+                - string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ParcelDetailsResponseDto'
+              examples:
+                default:
+                  value: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ParcelDetailsResponseDto'
+              example:
+                parcels:
+                  - id: string
+                    custNo: string
+                    parcelNo: string
+                    uniqueNo: string
+                    shipmentParcelNo: string
+                    shipmentUniqueNo: string
+                    gpNo: string
+                    jobDate: string
+                    initialDate: string
+                    events:
+                      - eventId: string
+                        eventNo: 0
+                        reasonNo: 0
+                        descriptionNL: string
+                        descriptionEN: string
+                        country: string
+                        countryName: string
+                        depot: string
+                        depotName: string
+                        details: string
+                        date: string
+                        isPhysical: true
+                    addresses:
+                      - addressType: string
+                        email: string
+                        city: string
+                        street: string
+                        zipCode: string
+                        country: string
+                        houseNumber: string
+                        houseNumberAddition: string
+                        name1: string
+                        name2: string
+                        name3: string
+                    length: 0
+                    height: 0
+                    width: 0
+                    suppliedWeight: 0
+                    weightedWeight: 0
+                    product: string
+                    customerReference: string
+                    state: string
+                    subState: string
+                    eta:
+                      startTime: string
+                      endTime: string
+                      stops: 0
+                      latitude: 0
+                      longitude: 0
+                    finalLocCode: string
+                    deliveryCountry: string
+                    deliveryZipcode: string
+                    deliveryName: string
+                    stopId: string
+                    stopIdDateTime: 0
+                    uri: string
+                    carrierIntegrator: string
+                    ndis:
+                      - type: string
+                        number: string
+                    lastModified: 0
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ParcelDetailsResponseDto'
+              example:
+                parcels:
+                  - id: string
+                    custNo: string
+                    parcelNo: string
+                    uniqueNo: string
+                    shipmentParcelNo: string
+                    shipmentUniqueNo: string
+                    gpNo: string
+                    jobDate: string
+                    initialDate: string
+                    events:
+                      - eventId: string
+                        eventNo: 0
+                        reasonNo: 0
+                        descriptionNL: string
+                        descriptionEN: string
+                        country: string
+                        countryName: string
+                        depot: string
+                        depotName: string
+                        details: string
+                        date: string
+                        isPhysical: true
+                    addresses:
+                      - addressType: string
+                        email: string
+                        city: string
+                        street: string
+                        zipCode: string
+                        country: string
+                        houseNumber: string
+                        houseNumberAddition: string
+                        name1: string
+                        name2: string
+                        name3: string
+                    length: 0
+                    height: 0
+                    width: 0
+                    suppliedWeight: 0
+                    weightedWeight: 0
+                    product: string
+                    customerReference: string
+                    state: string
+                    subState: string
+                    eta:
+                      startTime: string
+                      endTime: string
+                      stops: 0
+                      latitude: 0
+                      longitude: 0
+                    finalLocCode: string
+                    deliveryCountry: string
+                    deliveryZipcode: string
+                    deliveryName: string
+                    stopId: string
+                    stopIdDateTime: 0
+                    uri: string
+                    carrierIntegrator: string
+                    ndis:
+                      - type: string
+                        number: string
+                    lastModified: 0
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+  /api/parcel/v1/search:
+    post:
+      tags:
+        - Parcel
+      summary: /api/parcel/v1/search - POST
+      operationId: post-api-parcel-v1-search
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchParcelsRequestDto'
+            example:
+              userName: string
+              password: string
+              customerRef: string
+              from: string
+              to: string
+              since: string
+              state: string
+              country: string
+              name: string
+              zipCode: string
+              ndi: string
+          text/json:
+            schema:
+              $ref: '#/components/schemas/SearchParcelsRequestDto'
+            example:
+              userName: string
+              password: string
+              customerRef: string
+              from: string
+              to: string
+              since: string
+              state: string
+              country: string
+              name: string
+              zipCode: string
+              ndi: string
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/SearchParcelsRequestDto'
+            example:
+              userName: string
+              password: string
+              customerRef: string
+              from: string
+              to: string
+              since: string
+              state: string
+              country: string
+              name: string
+              zipCode: string
+              ndi: string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/SearchParcelResponseDto'
+              examples:
+                default:
+                  value: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchParcelResponseDto'
+              example:
+                parcels:
+                  - parcelNo: string
+                    uniqueNo: string
+                    jobDate: string
+                    country: string
+                    zipcode: string
+                    name: string
+                    state: string
+                    subState: string
+                    customerReference: string
+                    uri: string
+                    ndi:
+                      - string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/SearchParcelResponseDto'
+              example:
+                parcels:
+                  - parcelNo: string
+                    uniqueNo: string
+                    jobDate: string
+                    country: string
+                    zipcode: string
+                    name: string
+                    state: string
+                    subState: string
+                    customerReference: string
+                    uri: string
+                    ndi:
+                      - string
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+  /api/pod/v1:
+    post:
+      tags:
+        - Pod
+      summary: /api/pod/v1 - POST
+      operationId: post-api-pod-v1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetPodsRequestDto'
+            example:
+              userName: string
+              password: string
+              parcelNumbers:
+                - string
+          text/json:
+            schema:
+              $ref: '#/components/schemas/GetPodsRequestDto'
+            example:
+              userName: string
+              password: string
+              parcelNumbers:
+                - string
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/GetPodsRequestDto'
+            example:
+              userName: string
+              password: string
+              parcelNumbers:
+                - string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PodsResponseDto'
+              examples:
+                default:
+                  value: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PodsResponseDto'
+              example:
+                pods:
+                  - parcelNumber: string
+                    podBlob: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PodsResponseDto'
+              example:
+                pods:
+                  - parcelNumber: string
+                    podBlob: string
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+components:
+  schemas:
+    Address:
+      type: object
+      properties:
+        addressType:
+          type: string
+          nullable: true
+        email:
+          type: string
+          nullable: true
+        city:
+          type: string
+          nullable: true
+        street:
+          type: string
+          nullable: true
+        zipCode:
+          type: string
+          nullable: true
+        country:
+          type: string
+          nullable: true
+        houseNumber:
+          type: string
+          nullable: true
+        houseNumberAddition:
+          type: string
+          nullable: true
+        name1:
+          type: string
+          nullable: true
+        name2:
+          type: string
+          nullable: true
+        name3:
+          type: string
+          nullable: true
+      additionalProperties: false
+    Eta:
+      type: object
+      properties:
+        startTime:
+          type: string
+          format: date-time
+          nullable: true
+        endTime:
+          type: string
+          format: date-time
+          nullable: true
+        stops:
+          type: integer
+          format: int32
+          nullable: true
+        latitude:
+          type: number
+          format: double
+          nullable: true
+        longitude:
+          type: number
+          format: double
+          nullable: true
+      additionalProperties: false
+    GetParcelsDetailsRequestDto:
+      required:
+        - parcelNumbers
+        - password
+        - userName
+      type: object
+      properties:
+        userName:
+          minLength: 3
+          type: string
+        password:
+          minLength: 3
+          type: string
+        parcelNumbers:
+          type: array
+          items:
+            type: string
+      additionalProperties: false
+    GetPodsRequestDto:
+      required:
+        - parcelNumbers
+        - password
+        - userName
+      type: object
+      properties:
+        userName:
+          minLength: 1
+          type: string
+        password:
+          minLength: 1
+          type: string
+        parcelNumbers:
+          type: array
+          items:
+            type: string
+      additionalProperties: false
+    Ndi:
+      type: object
+      properties:
+        type:
+          type: string
+          nullable: true
+        number:
+          type: string
+          nullable: true
+      additionalProperties: false
+    ParcelDetailsResponseDto:
+      required:
+        - parcels
+      type: object
+      properties:
+        parcels:
+          type: array
+          items:
+            $ref: '#/components/schemas/ParcelModel'
+          nullable: true
+      additionalProperties: false
+    ParcelEvent:
+      type: object
+      properties:
+        eventId:
+          type: string
+          nullable: true
+        eventNo:
+          type: integer
+          format: int32
+        reasonNo:
+          type: integer
+          format: int32
+        descriptionNL:
+          type: string
+          nullable: true
+        descriptionEN:
+          type: string
+          nullable: true
+        country:
+          type: string
+          nullable: true
+        countryName:
+          type: string
+          nullable: true
+        depot:
+          type: string
+          nullable: true
+        depotName:
+          type: string
+          nullable: true
+        details:
+          type: string
+          nullable: true
+        date:
+          type: string
+          format: date-time
+        isPhysical:
+          type: boolean
+      additionalProperties: false
+    ParcelInfo:
+      type: object
+      properties:
+        parcelNo:
+          type: string
+          nullable: true
+          readOnly: true
+        uniqueNo:
+          type: string
+          nullable: true
+          readOnly: true
+        jobDate:
+          type: string
+          format: date-time
+          nullable: true
+          readOnly: true
+        country:
+          type: string
+          nullable: true
+          readOnly: true
+        zipcode:
+          type: string
+          nullable: true
+          readOnly: true
+        name:
+          type: string
+          nullable: true
+          readOnly: true
+        state:
+          type: string
+          nullable: true
+          readOnly: true
+        subState:
+          type: string
+          nullable: true
+          readOnly: true
+        customerReference:
+          type: string
+          nullable: true
+          readOnly: true
+        uri:
+          type: string
+          nullable: true
+          readOnly: true
+        ndi:
+          type: array
+          items:
+            type: string
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    ParcelModel:
+      type: object
+      properties:
+        id:
+          type: string
+          nullable: true
+        custNo:
+          type: string
+          nullable: true
+        parcelNo:
+          type: string
+          nullable: true
+        uniqueNo:
+          type: string
+          nullable: true
+        shipmentParcelNo:
+          type: string
+          nullable: true
+        shipmentUniqueNo:
+          type: string
+          nullable: true
+        gpNo:
+          type: string
+          nullable: true
+        jobDate:
+          type: string
+          format: date-time
+          nullable: true
+        initialDate:
+          type: string
+          format: date-time
+          nullable: true
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/ParcelEvent'
+          nullable: true
+        addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/Address'
+          nullable: true
+        length:
+          type: number
+          format: double
+          nullable: true
+        height:
+          type: number
+          format: double
+          nullable: true
+        width:
+          type: number
+          format: double
+          nullable: true
+        suppliedWeight:
+          type: number
+          format: double
+          nullable: true
+        weightedWeight:
+          type: number
+          format: double
+          nullable: true
+        product:
+          type: string
+          nullable: true
+        customerReference:
+          type: string
+          nullable: true
+        state:
+          type: string
+          nullable: true
+        subState:
+          type: string
+          nullable: true
+        eta:
+          $ref: '#/components/schemas/Eta'
+        finalLocCode:
+          type: string
+          nullable: true
+        deliveryCountry:
+          type: string
+          nullable: true
+        deliveryZipcode:
+          type: string
+          nullable: true
+        deliveryName:
+          type: string
+          nullable: true
+        stopId:
+          type: string
+          nullable: true
+        stopIdDateTime:
+          type: integer
+          format: int64
+        uri:
+          type: string
+          nullable: true
+        carrierIntegrator:
+          type: string
+          nullable: true
+        ndis:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ndi'
+          nullable: true
+        lastModified:
+          type: integer
+          format: int64
+      additionalProperties: false
+    Pod:
+      required:
+        - parcelNumber
+      type: object
+      properties:
+        parcelNumber:
+          type: string
+          nullable: true
+        podBlob:
+          type: string
+          format: byte
+          nullable: true
+      additionalProperties: false
+    PodsResponseDto:
+      required:
+        - pods
+      type: object
+      properties:
+        pods:
+          type: array
+          items:
+            $ref: '#/components/schemas/Pod'
+          nullable: true
+      additionalProperties: false
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type: string
+          nullable: true
+        title:
+          type: string
+          nullable: true
+        status:
+          type: integer
+          format: int32
+          nullable: true
+        detail:
+          type: string
+          nullable: true
+        instance:
+          type: string
+          nullable: true
+      additionalProperties: { }
+    SearchParcelResponseDto:
+      required:
+        - parcels
+      type: object
+      properties:
+        parcels:
+          type: array
+          items:
+            $ref: '#/components/schemas/ParcelInfo'
+          nullable: true
+      additionalProperties: false
+    SearchParcelsRequestDto:
+      required:
+        - password
+        - userName
+      type: object
+      properties:
+        userName:
+          minLength: 3
+          type: string
+        password:
+          minLength: 3
+          type: string
+        customerRef:
+          type: string
+          nullable: true
+        from:
+          type: string
+          format: date-time
+          nullable: true
+        to:
+          type: string
+          format: date-time
+          nullable: true
+        since:
+          type: string
+          format: date-time
+          nullable: true
+        state:
+          type: string
+          nullable: true
+        country:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        zipCode:
+          type: string
+          nullable: true
+        ndi:
+          type: string
+          nullable: true
+      additionalProperties: false

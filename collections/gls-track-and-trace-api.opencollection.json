@@ -1,0 +1,90 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "GLS T&T Api - Production",
+    "version": "V1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Home",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "/ - GET",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gls.nl/tt/V1/"
+          },
+          "docs": "/ - GET"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Parcel",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "/api/parcel/v1/details - POST",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gls.nl/tt/V1/api/parcel/v1/details",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "/api/parcel/v1/details - POST"
+        },
+        {
+          "info": {
+            "name": "/api/parcel/v1/search - POST",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gls.nl/tt/V1/api/parcel/v1/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "/api/parcel/v1/search - POST"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Pod",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "/api/pod/v1 - POST",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gls.nl/tt/V1/api/pod/v1",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "/api/pod/v1 - POST"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

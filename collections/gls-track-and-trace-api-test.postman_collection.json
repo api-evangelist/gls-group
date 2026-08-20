@@ -1,0 +1,645 @@
+{
+  "item": [
+    {
+      "id": "623c0d89-6d5a-4456-a404-1af01e04b140",
+      "name": "Home",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0b908b05-7fe7-4a16-9bc6-8b3521b2e710",
+          "name": "/ - GET",
+          "request": {
+            "name": "/ - GET",
+            "description": {},
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cef86357-7d72-4d43-b63f-7e889dedfba6",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "b70d5e22-b33b-4d4b-bbd1-a47d72dc4263",
+      "name": "Parcel",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c3e52c66-5a1e-4749-8933-222f1ef4d79b",
+          "name": "/api/parcel/v1/details - POST",
+          "request": {
+            "name": "/api/parcel/v1/details - POST",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "parcel",
+                "v1",
+                "details"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"parcelNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"password\": \"<string>\",\n  \"userName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e78f68e2-1dd9-45c5-990a-a916242cc108",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "parcel",
+                    "v1",
+                    "details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userName\": \"string\",\n  \"password\": \"string\",\n  \"parcelNumbers\": [\n    \"string\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"parcels\": [\n    {\n      \"id\": \"string\",\n      \"custNo\": \"string\",\n      \"parcelNo\": \"string\",\n      \"uniqueNo\": \"string\",\n      \"shipmentParcelNo\": \"string\",\n      \"shipmentUniqueNo\": \"string\",\n      \"gpNo\": \"string\",\n      \"jobDate\": \"string\",\n      \"initialDate\": \"string\",\n      \"events\": [\n        {\n          \"eventId\": \"string\",\n          \"eventNo\": 0,\n          \"reasonNo\": 0,\n          \"descriptionNL\": \"string\",\n          \"descriptionEN\": \"string\",\n          \"country\": \"string\",\n          \"countryName\": \"string\",\n          \"depot\": \"string\",\n          \"depotName\": \"string\",\n          \"details\": \"string\",\n          \"date\": \"string\",\n          \"isPhysical\": true\n        }\n      ],\n      \"addresses\": [\n        {\n          \"addressType\": \"string\",\n          \"email\": \"string\",\n          \"city\": \"string\",\n          \"street\": \"string\",\n          \"zipCode\": \"string\",\n          \"country\": \"string\",\n          \"houseNumber\": \"string\",\n          \"houseNumberAddition\": \"string\",\n          \"name1\": \"string\",\n          \"name2\": \"string\",\n          \"name3\": \"string\"\n        }\n      ],\n      \"length\": 0,\n      \"height\": 0,\n      \"width\": 0,\n      \"suppliedWeight\": 0,\n      \"weightedWeight\": 0,\n      \"product\": \"string\",\n      \"customerReference\": \"string\",\n      \"state\": \"string\",\n      \"subState\": \"string\",\n      \"eta\": {\n        \"startTime\": \"string\",\n        \"endTime\": \"string\",\n        \"stops\": 0,\n        \"latitude\": 0,\n        \"longitude\": 0\n      },\n      \"finalLocCode\": \"string\",\n      \"deliveryCountry\": \"string\",\n      \"deliveryZipcode\": \"string\",\n      \"deliveryName\": \"string\",\n      \"stopId\": \"string\",\n      \"stopIdDateTime\": 0,\n      \"uri\": \"string\",\n      \"carrierIntegrator\": \"string\",\n      \"ndis\": [\n        {\n          \"type\": \"string\",\n          \"number\": \"string\"\n        }\n      ],\n      \"lastModified\": 0\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4218edd5-9446-40dd-9d44-e365c57bc6a7",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "parcel",
+                    "v1",
+                    "details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userName\": \"string\",\n  \"password\": \"string\",\n  \"parcelNumbers\": [\n    \"string\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c57755b4-5d1d-4f16-9c22-39c0ec518025",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "parcel",
+                    "v1",
+                    "details"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userName\": \"string\",\n  \"password\": \"string\",\n  \"parcelNumbers\": [\n    \"string\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c3668bcd-6f31-4992-97a6-89c912743d45",
+          "name": "/api/parcel/v1/search - POST",
+          "request": {
+            "name": "/api/parcel/v1/search - POST",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "parcel",
+                "v1",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"password\": \"<string>\",\n  \"userName\": \"<string>\",\n  \"customerRef\": \"<string>\",\n  \"from\": \"<dateTime>\",\n  \"to\": \"<dateTime>\",\n  \"since\": \"<dateTime>\",\n  \"state\": \"<string>\",\n  \"country\": \"<string>\",\n  \"name\": \"<string>\",\n  \"zipCode\": \"<string>\",\n  \"ndi\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a3359dc0-e325-4f02-8b59-a8bc7db689cc",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "parcel",
+                    "v1",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userName\": \"string\",\n  \"password\": \"string\",\n  \"customerRef\": \"string\",\n  \"from\": \"string\",\n  \"to\": \"string\",\n  \"since\": \"string\",\n  \"state\": \"string\",\n  \"country\": \"string\",\n  \"name\": \"string\",\n  \"zipCode\": \"string\",\n  \"ndi\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"parcels\": [\n    {\n      \"parcelNo\": \"string\",\n      \"uniqueNo\": \"string\",\n      \"jobDate\": \"string\",\n      \"country\": \"string\",\n      \"zipcode\": \"string\",\n      \"name\": \"string\",\n      \"state\": \"string\",\n      \"subState\": \"string\",\n      \"customerReference\": \"string\",\n      \"uri\": \"string\",\n      \"ndi\": [\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2f0bbb2b-872a-444c-aaeb-0fb29f1b8632",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "parcel",
+                    "v1",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userName\": \"string\",\n  \"password\": \"string\",\n  \"customerRef\": \"string\",\n  \"from\": \"string\",\n  \"to\": \"string\",\n  \"since\": \"string\",\n  \"state\": \"string\",\n  \"country\": \"string\",\n  \"name\": \"string\",\n  \"zipCode\": \"string\",\n  \"ndi\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "dfce234c-01e6-4057-aa42-34e8a34dc751",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "parcel",
+                    "v1",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userName\": \"string\",\n  \"password\": \"string\",\n  \"customerRef\": \"string\",\n  \"from\": \"string\",\n  \"to\": \"string\",\n  \"since\": \"string\",\n  \"state\": \"string\",\n  \"country\": \"string\",\n  \"name\": \"string\",\n  \"zipCode\": \"string\",\n  \"ndi\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "5c7e8f4c-a32b-4b94-a9fc-061855b043c9",
+      "name": "Pod",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a33671d1-e49c-43bb-b461-958fa6c54c68",
+          "name": "/api/pod/v1 - POST",
+          "request": {
+            "name": "/api/pod/v1 - POST",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "pod",
+                "v1"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "text/plain"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"parcelNumbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"password\": \"<string>\",\n  \"userName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bd232519-acb6-4656-8270-45f630b2366b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "pod",
+                    "v1"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userName\": \"string\",\n  \"password\": \"string\",\n  \"parcelNumbers\": [\n    \"string\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pods\": [\n    {\n      \"parcelNumber\": \"string\",\n      \"podBlob\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2a81f6fc-341e-4712-a109-63bba0f8ced8",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "pod",
+                    "v1"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userName\": \"string\",\n  \"password\": \"string\",\n  \"parcelNumbers\": [\n    \"string\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2dffdb85-23b4-4b95-a698-8850333fb5b7",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "pod",
+                    "v1"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userName\": \"string\",\n  \"password\": \"string\",\n  \"parcelNumbers\": [\n    \"string\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://api.gls.nl/tt-test",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1f6e52b0-bae1-4b66-8e89-83dde4c9b2f1",
+    "name": "GLS T&T Api - Test",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "GLS Track & Trace API Test environment",
+      "type": "text/plain"
+    }
+  }
+}
