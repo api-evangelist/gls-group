@@ -45,95 +45,20 @@ created: '2026-07-30'
 modified: '2026-07-30'
 specificationVersion: '0.23'
 apis:
-- aid: gls-group:gls-netherlands-label-api
-  name: GLS Netherlands Label API
-  description: >-
-    RESTful shipping API for printing labels and manifesting shipping data for GLS Netherlands.
-    Covers login validation, label creation (parcel ShipType "P" and freight ShipType "F"),
-    label deletion, single and multiple label confirmation, ParcelShop lookup, delivery-option
-    lookup, pickup creation and deletion, and shop-return creation. Labels are returned as ZPL
-    or Base64 PDF (pdf, pdfa6u, pdfa6s, pdfroutingonly, pdf2a4, pdf4a4), or the raw routing
-    data can be returned so the customer prints their own label. Authentication carries MyGLS
-    username and password in the request body; the developer-portal subscription key is issued
-    per registered product. An OpenAPI 3.0.1 definition is anonymously exportable from the
-    Azure API Management portal, and a separate test environment is published at
-    https://api.gls.nl/test/v1.
-  humanURL: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-production
-  baseURL: https://api.gls.nl/v1
-  tags:
-  - Parcel
-  - Labels
-  - Shipping
-  - Pickup
-  - Returns
-  - ParcelShop
-  - Netherlands
-  properties:
-  - type: OpenAPI
-    url: openapi/gls-netherlands-label-api-openapi.yml
-  - type: OpenAPI
-    url: openapi/gls-netherlands-label-api-test-openapi.yml
-  - type: Documentation
-    url: https://api-portal.gls.nl/content/GLS_Shipping_API_v0.8.pdf
-  - type: APIReference
-    url: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-production
-  - type: PortalHome
-    url: https://api-portal.gls.nl/
-  - type: Sandbox
-    url: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-test
-- aid: gls-group:gls-netherlands-track-and-trace-api
-  name: GLS Netherlands Track and Trace API
-  description: >-
-    Read API for parcel status and proof of delivery in the GLS Netherlands network. Three
-    documented operations — POST /api/parcel/v1/details, POST /api/parcel/v1/search and
-    POST /api/pod/v1 — return parcel event history, address data, dimensions, weight, product,
-    state/substate, ETA and a tracking URI, plus proof-of-delivery documents. Complemented by
-    two customer-registered push webhooks (parcel events and signature/proof-of-delivery PNG)
-    that GLS POSTs to a URL the customer supplies out of band; there is no self-service
-    subscription endpoint. An OpenAPI 3.0.1 definition is anonymously exportable, and a test
-    environment is published at https://api.gls.nl/tt-test.
-  humanURL: https://api-portal.gls.nl/api-details#api=track-trace-api-v1
-  baseURL: https://api.gls.nl/tt/V1
-  tags:
-  - Track and Trace
-  - Parcel
-  - Proof of Delivery
-  - Webhook
-  - Netherlands
-  tags_raw:
-  - Track and Trace
-  - Parcel
-  - Proof of Delivery
-  - Webhooks
-  - Netherlands
-  properties:
-  - type: OpenAPI
-    url: openapi/gls-track-and-trace-api-openapi.yml
-  - type: OpenAPI
-    url: openapi/gls-track-and-trace-api-test-openapi.yml
-  - type: Documentation
-    url: https://api-portal.gls.nl/track-trace-webhook
-  - type: Webhooks
-    url: https://api-portal.gls.nl/content/webhooks.pdf
-  - type: APIReference
-    url: https://api-portal.gls.nl/api-details#api=gls-t-t-api-test
-  - type: PortalHome
-    url: https://api-portal.gls.nl/
 - aid: gls-group:gls-shipit-rest-api
   name: GLS ShipIT REST API
   description: >-
-    Group-wide shipping integration web service (version 3.4.19) exposed by the GLS ShipIT
-    backend, documented publicly as Doxygen reference pages. Resource groups cover shipment
-    processing (POST /backend/rs/shipments, /shipments/cancel/{trackID}, /shipments/allowedservices,
-    /shipments/endofday, /shipments/updateparcelweight), ParcelShop search (getParcelShopById,
-    getParcelShopsByCountryCode, findNearestParcelShopForAddress, getParcelShopinDistance),
-    parcel tracking (POST /parcels, /parceldetails, /parcelpod), delivery time-frame estimation
-    (POST /backend/rs/timeframe/deliverydays) and sporadic collection scheduling
-    (/backend/rs/sporadiccollection). Authentication is HTTP Basic over TLS 1.2 with an optional
-    Requester header for data-protection logging; media types are application/glsVersion1+json
-    and application/json. No baseURL is published — GLS states the endpoints for the centrally
-    hosted service are obtained from the customer's primary GLS contact along with credentials,
-    or point at a locally installed ShipIT backend. No OpenAPI, Swagger or WADL file is offered.
+    Group-wide shipping integration web service (version 3.4.19) exposed by the GLS ShipIT backend, documented
+    publicly as Doxygen reference pages. Resource groups cover shipment processing (POST /backend/rs/shipments,
+    /shipments/cancel/{trackID}, /shipments/allowedservices, /shipments/endofday, /shipments/updateparcelweight),
+    ParcelShop search (getParcelShopById, getParcelShopsByCountryCode, findNearestParcelShopForAddress,
+    getParcelShopinDistance), parcel tracking (POST /parcels, /parceldetails, /parcelpod), delivery time-frame
+    estimation (POST /backend/rs/timeframe/deliverydays) and sporadic collection scheduling (/backend/rs/sporadiccollection).
+    Authentication is HTTP Basic over TLS 1.2 with an optional Requester header for data-protection logging;
+    media types are application/glsVersion1+json and application/json. No baseURL is published — GLS states
+    the endpoints for the centrally hosted service are obtained from the customer's primary GLS contact
+    along with credentials, or point at a locally installed ShipIT backend. No OpenAPI, Swagger or WADL
+    file is offered.
   humanURL: https://shipit.gls-group.eu/webservices/3_4_19/doxygen/WS-REST-API/index.html
   tags:
   - Shipping
@@ -146,7 +71,8 @@ apis:
   - type: APIReference
     url: https://shipit.gls-group.eu/webservices/3_4_19/doxygen/WS-REST-API/index.html
   - type: Documentation
-    url: https://shipit.gls-group.eu/webservices/3_4_19/doxygen/WS-REST-API/rest_shipment_processing.html
+    url: >-
+      https://shipit.gls-group.eu/webservices/3_4_19/doxygen/WS-REST-API/rest_shipment_processing.html
   - type: Documentation
     url: https://shipit.gls-group.eu/webservices/3_4_19/doxygen/WS-REST-API/rest_parcel_shop.html
   - type: Documentation
@@ -154,7 +80,248 @@ apis:
   - type: Documentation
     url: https://shipit.gls-group.eu/webservices/3_4_19/doxygen/WS-REST-API/rest_timeframe.html
   - type: Documentation
-    url: https://shipit.gls-group.eu/webservices/3_4_19/doxygen/WS-REST-API/rest_sporadic_collection.html
+    url: >-
+      https://shipit.gls-group.eu/webservices/3_4_19/doxygen/WS-REST-API/rest_sporadic_collection.html
+- aid: gls-group:gls-group-authentication-api
+  name: GLS Group Authentication API
+  description: The Authentication API from GLS Group — 1 operation(s) for authentication.
+  humanURL: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-production
+  baseURL: https://api.gls.nl/v1
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/gls-group-authentication-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.gls.nl/content/GLS_Shipping_API_v0.8.pdf
+  - type: APIReference
+    url: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-production
+  - type: PortalHome
+    url: https://api-portal.gls.nl/
+  - type: Sandbox
+    url: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-test
+  - type: Documentation
+    url: https://api-portal.gls.nl/track-trace-webhook
+  - type: Webhooks
+    url: https://api-portal.gls.nl/content/webhooks.pdf
+  - type: APIReference
+    url: https://api-portal.gls.nl/api-details#api=gls-t-t-api-test
+- aid: gls-group:gls-group-delivery-api
+  name: GLS Group Delivery API
+  description: The Delivery API from GLS Group — 4 operation(s) for delivery.
+  humanURL: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-production
+  baseURL: https://api.gls.nl/v1
+  tags:
+  - Delivery
+  properties:
+  - type: OpenAPI
+    url: openapi/gls-group-delivery-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.gls.nl/content/GLS_Shipping_API_v0.8.pdf
+  - type: APIReference
+    url: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-production
+  - type: PortalHome
+    url: https://api-portal.gls.nl/
+  - type: Sandbox
+    url: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-test
+  - type: Documentation
+    url: https://api-portal.gls.nl/track-trace-webhook
+  - type: Webhooks
+    url: https://api-portal.gls.nl/content/webhooks.pdf
+  - type: APIReference
+    url: https://api-portal.gls.nl/api-details#api=gls-t-t-api-test
+- aid: gls-group:gls-group-deliveryoptions-api
+  name: GLS Group Delivery Options API
+  description: The DeliveryOptions API from GLS Group — 1 operation(s) for deliveryoptions.
+  humanURL: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-production
+  baseURL: https://api.gls.nl/v1
+  tags:
+  - DeliveryOptions
+  properties:
+  - type: OpenAPI
+    url: openapi/gls-group-deliveryoptions-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.gls.nl/content/GLS_Shipping_API_v0.8.pdf
+  - type: APIReference
+    url: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-production
+  - type: PortalHome
+    url: https://api-portal.gls.nl/
+  - type: Sandbox
+    url: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-test
+  - type: Documentation
+    url: https://api-portal.gls.nl/track-trace-webhook
+  - type: Webhooks
+    url: https://api-portal.gls.nl/content/webhooks.pdf
+  - type: APIReference
+    url: https://api-portal.gls.nl/api-details#api=gls-t-t-api-test
+- aid: gls-group:gls-group-home-api
+  name: GLS Group Home API
+  description: The Home API from GLS Group — 1 operation(s) for home.
+  humanURL: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-production
+  baseURL: https://api.gls.nl/v1
+  tags:
+  - Home
+  properties:
+  - type: OpenAPI
+    url: openapi/gls-group-home-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.gls.nl/content/GLS_Shipping_API_v0.8.pdf
+  - type: APIReference
+    url: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-production
+  - type: PortalHome
+    url: https://api-portal.gls.nl/
+  - type: Sandbox
+    url: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-test
+  - type: Documentation
+    url: https://api-portal.gls.nl/track-trace-webhook
+  - type: Webhooks
+    url: https://api-portal.gls.nl/content/webhooks.pdf
+  - type: APIReference
+    url: https://api-portal.gls.nl/api-details#api=gls-t-t-api-test
+- aid: gls-group:gls-group-monitor-api
+  name: GLS Group Monitor API
+  description: The Monitor API from GLS Group — 1 operation(s) for monitor.
+  humanURL: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-production
+  baseURL: https://api.gls.nl/v1
+  tags:
+  - Monitor
+  properties:
+  - type: OpenAPI
+    url: openapi/gls-group-monitor-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.gls.nl/content/GLS_Shipping_API_v0.8.pdf
+  - type: APIReference
+    url: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-production
+  - type: PortalHome
+    url: https://api-portal.gls.nl/
+  - type: Sandbox
+    url: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-test
+  - type: Documentation
+    url: https://api-portal.gls.nl/track-trace-webhook
+  - type: Webhooks
+    url: https://api-portal.gls.nl/content/webhooks.pdf
+  - type: APIReference
+    url: https://api-portal.gls.nl/api-details#api=gls-t-t-api-test
+- aid: gls-group:gls-group-parcel-api
+  name: GLS Group Parcel API
+  description: The Parcel API from GLS Group — 2 operation(s) for parcel.
+  humanURL: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-production
+  baseURL: https://api.gls.nl/v1
+  tags:
+  - Parcel
+  properties:
+  - type: OpenAPI
+    url: openapi/gls-group-parcel-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.gls.nl/content/GLS_Shipping_API_v0.8.pdf
+  - type: APIReference
+    url: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-production
+  - type: PortalHome
+    url: https://api-portal.gls.nl/
+  - type: Sandbox
+    url: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-test
+  - type: Documentation
+    url: https://api-portal.gls.nl/track-trace-webhook
+  - type: Webhooks
+    url: https://api-portal.gls.nl/content/webhooks.pdf
+  - type: APIReference
+    url: https://api-portal.gls.nl/api-details#api=gls-t-t-api-test
+- aid: gls-group:gls-group-parcelshop-api
+  name: GLS Group Parcel Shop API
+  description: The ParcelShop API from GLS Group — 1 operation(s) for parcelshop.
+  humanURL: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-production
+  baseURL: https://api.gls.nl/v1
+  tags:
+  - ParcelShop
+  properties:
+  - type: OpenAPI
+    url: openapi/gls-group-parcelshop-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.gls.nl/content/GLS_Shipping_API_v0.8.pdf
+  - type: APIReference
+    url: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-production
+  - type: PortalHome
+    url: https://api-portal.gls.nl/
+  - type: Sandbox
+    url: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-test
+  - type: Documentation
+    url: https://api-portal.gls.nl/track-trace-webhook
+  - type: Webhooks
+    url: https://api-portal.gls.nl/content/webhooks.pdf
+  - type: APIReference
+    url: https://api-portal.gls.nl/api-details#api=gls-t-t-api-test
+- aid: gls-group:gls-group-pickup-api
+  name: GLS Group Pickup API
+  description: The Pickup API from GLS Group — 2 operation(s) for pickup.
+  humanURL: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-production
+  baseURL: https://api.gls.nl/v1
+  tags:
+  - Pickup
+  properties:
+  - type: OpenAPI
+    url: openapi/gls-group-pickup-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.gls.nl/content/GLS_Shipping_API_v0.8.pdf
+  - type: APIReference
+    url: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-production
+  - type: PortalHome
+    url: https://api-portal.gls.nl/
+  - type: Sandbox
+    url: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-test
+  - type: Documentation
+    url: https://api-portal.gls.nl/track-trace-webhook
+  - type: Webhooks
+    url: https://api-portal.gls.nl/content/webhooks.pdf
+  - type: APIReference
+    url: https://api-portal.gls.nl/api-details#api=gls-t-t-api-test
+- aid: gls-group:gls-group-pod-api
+  name: GLS Group Pod API
+  description: The Pod API from GLS Group — 1 operation(s) for pod.
+  humanURL: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-production
+  baseURL: https://api.gls.nl/v1
+  tags:
+  - Pod
+  properties:
+  - type: OpenAPI
+    url: openapi/gls-group-pod-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.gls.nl/content/GLS_Shipping_API_v0.8.pdf
+  - type: APIReference
+    url: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-production
+  - type: PortalHome
+    url: https://api-portal.gls.nl/
+  - type: Sandbox
+    url: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-test
+  - type: Documentation
+    url: https://api-portal.gls.nl/track-trace-webhook
+  - type: Webhooks
+    url: https://api-portal.gls.nl/content/webhooks.pdf
+  - type: APIReference
+    url: https://api-portal.gls.nl/api-details#api=gls-t-t-api-test
+- aid: gls-group:gls-group-shopreturn-api
+  name: GLS Group Shop Return API
+  description: The ShopReturn API from GLS Group — 1 operation(s) for shopreturn.
+  humanURL: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-production
+  baseURL: https://api.gls.nl/v1
+  tags:
+  - ShopReturn
+  properties:
+  - type: OpenAPI
+    url: openapi/gls-group-shopreturn-api-openapi.yml
+  - type: Documentation
+    url: https://api-portal.gls.nl/content/GLS_Shipping_API_v0.8.pdf
+  - type: APIReference
+    url: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-production
+  - type: PortalHome
+    url: https://api-portal.gls.nl/
+  - type: Sandbox
+    url: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-test
+  - type: Documentation
+    url: https://api-portal.gls.nl/track-trace-webhook
+  - type: Webhooks
+    url: https://api-portal.gls.nl/content/webhooks.pdf
+  - type: APIReference
+    url: https://api-portal.gls.nl/api-details#api=gls-t-t-api-test
 common:
 - type: Website
   url: https://gls-group.com/
