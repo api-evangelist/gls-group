@@ -335,6 +335,9 @@ apis:
   - type: APIReference
     url: https://api-portal.gls.nl/api-details#api=gls-t-t-api-test
 common:
+- type: CapabilityMap
+  url: capabilities/gls-group-capability-edges.yml
+  name: GLS Group Business Capability Map
 - type: Website
   url: https://gls-group.com/
 - type: PortalHome
