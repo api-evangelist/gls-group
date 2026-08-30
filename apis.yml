@@ -172,6 +172,8 @@ apis:
   humanURL: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-production
   baseURL: https://api.gls.nl/v1
   tags:
+  - Homes
+  tags_raw:
   - Home
   properties:
   - type: OpenAPI
@@ -196,6 +198,8 @@ apis:
   humanURL: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-production
   baseURL: https://api.gls.nl/v1
   tags:
+  - Monitors
+  tags_raw:
   - Monitor
   properties:
   - type: OpenAPI
@@ -292,6 +296,8 @@ apis:
   humanURL: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-production
   baseURL: https://api.gls.nl/v1
   tags:
+  - POD
+  tags_raw:
   - Pod
   properties:
   - type: OpenAPI
