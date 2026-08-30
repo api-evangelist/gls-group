@@ -1,0 +1,1196 @@
+openapi: 3.2.0
+info:
+  title: Gls Group Shop Return API
+  version: v1
+  description: 'Operations tagged ShopReturn across 2 of this provider''s published API definitions: gls-netherlands-label-api-openapi.yml, gls-netherlands-label-api-test-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.gls.nl/v1
+- url: https://api.gls.nl/test/v1
+tags:
+- name: ShopReturn
+paths:
+  /api/ShopReturn/Create:
+    post:
+      tags:
+      - ShopReturn
+      summary: CreateShopReturn
+      operationId: CreateShopReturn
+      parameters:
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/InboundCreateShopReturnRequest'
+            example:
+              username: string
+              password: string
+              shippingSystemName: string
+              shippingSystemVersion: string
+              shiptype: p
+              customerNo: string
+              customerSubjectName: string
+              reference: string
+              trackingLinkType: u
+              units:
+              - unitId: string
+                unitType: co
+                customerUnitReference: string
+                weight: 0
+                dimensions:
+                  length: 0
+                  width: 0
+                  height: 0
+                additionalInfo1: string
+                additionalInfo2: string
+              labelType: zpl
+              labelA4StartPosition: 0
+              labelA4MoveXMm: 0
+              labelA4MoveYMm: 0
+              addresses:
+                pickupAddress:
+                  name1: string
+                  name2: string
+                  name3: string
+                  street: string
+                  houseNo: string
+                  houseNoExt: string
+                  zipCode: string
+                  city: string
+                  countryCode: string
+                  contact: string
+                  phone: string
+                  email: string
+                deliveryAddress:
+                  name1: string
+                  name2: string
+                  name3: string
+                  street: string
+                  houseNo: string
+                  houseNoExt: string
+                  zipCode: string
+                  city: string
+                  countryCode: string
+                  contact: string
+                  phone: string
+                  email: string
+                  addresseeType: b
+                requesterAddress:
+                  name1: string
+                  name2: string
+                  name3: string
+                  street: string
+                  houseNo: string
+                  houseNoExt: string
+                  zipCode: string
+                  city: string
+                  countryCode: string
+                  contact: string
+                  phone: string
+                  email: string
+              returnReason: string
+              sendLabelsByEmail: true
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InboundCreateShopReturnRequest'
+            example:
+              username: string
+              password: string
+              shippingSystemName: string
+              shippingSystemVersion: string
+              shiptype: p
+              customerNo: string
+              customerSubjectName: string
+              reference: string
+              trackingLinkType: u
+              units:
+              - unitId: string
+                unitType: co
+                customerUnitReference: string
+                weight: 0
+                dimensions:
+                  length: 0
+                  width: 0
+                  height: 0
+                additionalInfo1: string
+                additionalInfo2: string
+              labelType: zpl
+              labelA4StartPosition: 0
+              labelA4MoveXMm: 0
+              labelA4MoveYMm: 0
+              addresses:
+                pickupAddress:
+                  name1: string
+                  name2: string
+                  name3: string
+                  street: string
+                  houseNo: string
+                  houseNoExt: string
+                  zipCode: string
+                  city: string
+                  countryCode: string
+                  contact: string
+                  phone: string
+                  email: string
+                deliveryAddress:
+                  name1: string
+                  name2: string
+                  name3: string
+                  street: string
+                  houseNo: string
+                  houseNoExt: string
+                  zipCode: string
+                  city: string
+                  countryCode: string
+                  contact: string
+                  phone: string
+                  email: string
+                  addresseeType: b
+                requesterAddress:
+                  name1: string
+                  name2: string
+                  name3: string
+                  street: string
+                  houseNo: string
+                  houseNoExt: string
+                  zipCode: string
+                  city: string
+                  countryCode: string
+                  contact: string
+                  phone: string
+                  email: string
+              returnReason: string
+              sendLabelsByEmail: true
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InboundCreateShopReturnRequest'
+            example:
+              username: string
+              password: string
+              shippingSystemName: string
+              shippingSystemVersion: string
+              shiptype: p
+              customerNo: string
+              customerSubjectName: string
+              reference: string
+              trackingLinkType: u
+              units:
+              - unitId: string
+                unitType: co
+                customerUnitReference: string
+                weight: 0
+                dimensions:
+                  length: 0
+                  width: 0
+                  height: 0
+                additionalInfo1: string
+                additionalInfo2: string
+              labelType: zpl
+              labelA4StartPosition: 0
+              labelA4MoveXMm: 0
+              labelA4MoveYMm: 0
+              addresses:
+                pickupAddress:
+                  name1: string
+                  name2: string
+                  name3: string
+                  street: string
+                  houseNo: string
+                  houseNoExt: string
+                  zipCode: string
+                  city: string
+                  countryCode: string
+                  contact: string
+                  phone: string
+                  email: string
+                deliveryAddress:
+                  name1: string
+                  name2: string
+                  name3: string
+                  street: string
+                  houseNo: string
+                  houseNoExt: string
+                  zipCode: string
+                  city: string
+                  countryCode: string
+                  contact: string
+                  phone: string
+                  email: string
+                  addresseeType: b
+                requesterAddress:
+                  name1: string
+                  name2: string
+                  name3: string
+                  street: string
+                  houseNo: string
+                  houseNoExt: string
+                  zipCode: string
+                  city: string
+                  countryCode: string
+                  contact: string
+                  phone: string
+                  email: string
+              returnReason: string
+              sendLabelsByEmail: true
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InboundCreateShopReturnRequest'
+            example:
+              username: string
+              password: string
+              shippingSystemName: string
+              shippingSystemVersion: string
+              shiptype: p
+              customerNo: string
+              customerSubjectName: string
+              reference: string
+              trackingLinkType: u
+              units:
+              - unitId: string
+                unitType: co
+                customerUnitReference: string
+                weight: 0
+                dimensions:
+                  length: 0
+                  width: 0
+                  height: 0
+                additionalInfo1: string
+                additionalInfo2: string
+              labelType: zpl
+              labelA4StartPosition: 0
+              labelA4MoveXMm: 0
+              labelA4MoveYMm: 0
+              addresses:
+                pickupAddress:
+                  name1: string
+                  name2: string
+                  name3: string
+                  street: string
+                  houseNo: string
+                  houseNoExt: string
+                  zipCode: string
+                  city: string
+                  countryCode: string
+                  contact: string
+                  phone: string
+                  email: string
+                deliveryAddress:
+                  name1: string
+                  name2: string
+                  name3: string
+                  street: string
+                  houseNo: string
+                  houseNoExt: string
+                  zipCode: string
+                  city: string
+                  countryCode: string
+                  contact: string
+                  phone: string
+                  email: string
+                  addresseeType: b
+                requesterAddress:
+                  name1: string
+                  name2: string
+                  name3: string
+                  street: string
+                  houseNo: string
+                  houseNoExt: string
+                  zipCode: string
+                  city: string
+                  countryCode: string
+                  contact: string
+                  phone: string
+                  email: string
+              returnReason: string
+              sendLabelsByEmail: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiCreateLabelResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: {}
+                transactionId: string
+                shipmentTrackingLink: string
+                labels: string
+                units:
+                - {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: {}
+                transactionId: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: {}
+                transactionId: string
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: {}
+                transactionId: string
+        '424':
+          description: Failed Dependency
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: {}
+                transactionId: string
+    servers:
+    - url: https://api.gls.nl/v1
+components:
+  schemas:
+    ApiUnit:
+      type: object
+      additionalProperties: false
+    ApiCreateLabelResponseObject:
+      type: object
+      properties:
+        error:
+          type: boolean
+          readOnly: true
+        status:
+          type:
+          - string
+          - 'null'
+        message:
+          type:
+          - string
+          - 'null'
+        errors:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type:
+            - array
+            - 'null'
+            items:
+              type: string
+        transactionId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        shipmentTrackingLink:
+          type:
+          - string
+          - 'null'
+        labels:
+          type:
+          - string
+          - 'null'
+        units:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ApiUnit'
+      additionalProperties: false
+    Dimensions:
+      type: object
+      properties:
+        length:
+          type: integer
+          format: int32
+        width:
+          type: integer
+          format: int32
+        height:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ApiResponseObject:
+      type: object
+      properties:
+        error:
+          type: boolean
+          readOnly: true
+        status:
+          type:
+          - string
+          - 'null'
+        message:
+          type:
+          - string
+          - 'null'
+        errors:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type:
+            - array
+            - 'null'
+            items:
+              type: string
+        transactionId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+      additionalProperties: false
+    Unit:
+      required:
+      - unitId
+      - weight
+      type: object
+      properties:
+        unitId:
+          maxLength: 50
+          minLength: 1
+          type: string
+        unitType:
+          $ref: '#/components/schemas/UnitType'
+        customerUnitReference:
+          maxLength: 35
+          type:
+          - string
+          - 'null'
+        weight:
+          type: number
+          format: float
+        dimensions:
+          $ref: '#/components/schemas/Dimensions'
+        additionalInfo1:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        additionalInfo2:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    UnitType:
+      enum:
+      - co
+      - lg
+      - mp
+      - bp
+      - xl
+      - pl
+      - rl
+      type: string
+    InboundCreateShopReturnRequest:
+      required:
+      - password
+      - username
+      type: object
+      properties:
+        username:
+          maxLength: 70
+          minLength: 1
+          type: string
+        password:
+          maxLength: 20
+          minLength: 1
+          type: string
+          writeOnly: true
+        shippingSystemName:
+          type:
+          - string
+          - 'null'
+        shippingSystemVersion:
+          type:
+          - string
+          - 'null'
+        shiptype:
+          $ref: '#/components/schemas/ShipType'
+        customerNo:
+          maxLength: 8
+          minLength: 7
+          type:
+          - string
+          - 'null'
+        customerSubjectName:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+        reference:
+          maxLength: 20
+          type:
+          - string
+          - 'null'
+        trackingLinkType:
+          $ref: '#/components/schemas/TrackingLinkType'
+        units:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Unit'
+        labelType:
+          $ref: '#/components/schemas/LabelResultType'
+        labelA4StartPosition:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        labelA4MoveXMm:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        labelA4MoveYMm:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        addresses:
+          $ref: '#/components/schemas/PickupAddresses'
+        returnReason:
+          type:
+          - string
+          - 'null'
+        sendLabelsByEmail:
+          type: boolean
+      additionalProperties: false
+    ShipType:
+      enum:
+      - p
+      - f
+      type: string
+    DeliveryAddress:
+      required:
+      - city
+      - countryCode
+      - name1
+      - street
+      - zipCode
+      type: object
+      properties:
+        name1:
+          maxLength: 30
+          minLength: 1
+          type: string
+        name2:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        name3:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        street:
+          maxLength: 40
+          minLength: 1
+          type: string
+        houseNo:
+          maxLength: 5
+          type:
+          - string
+          - 'null'
+        houseNoExt:
+          maxLength: 5
+          type:
+          - string
+          - 'null'
+        zipCode:
+          maxLength: 8
+          minLength: 1
+          type: string
+        city:
+          maxLength: 30
+          minLength: 1
+          type: string
+        countryCode:
+          maxLength: 2
+          minLength: 1
+          type: string
+        contact:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        phone:
+          maxLength: 25
+          type:
+          - string
+          - 'null'
+        email:
+          maxLength: 320
+          type:
+          - string
+          - 'null'
+        addresseeType:
+          $ref: '#/components/schemas/AdresseeType'
+      additionalProperties: false
+    AdresseeType:
+      enum:
+      - b
+      - p
+      type: string
+    PickupAddresses:
+      type: object
+      properties:
+        pickupAddress:
+          $ref: '#/components/schemas/PickupAddress'
+        deliveryAddress:
+          $ref: '#/components/schemas/DeliveryAddress'
+        requesterAddress:
+          $ref: '#/components/schemas/RequesterAddress'
+      additionalProperties: false
+    PickupAddress:
+      required:
+      - city
+      - countryCode
+      - name1
+      - street
+      - zipCode
+      type: object
+      properties:
+        name1:
+          maxLength: 30
+          minLength: 1
+          type: string
+        name2:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        name3:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        street:
+          maxLength: 40
+          minLength: 1
+          type: string
+        houseNo:
+          maxLength: 5
+          type:
+          - string
+          - 'null'
+        houseNoExt:
+          maxLength: 5
+          type:
+          - string
+          - 'null'
+        zipCode:
+          maxLength: 8
+          minLength: 1
+          type: string
+        city:
+          maxLength: 30
+          minLength: 1
+          type: string
+        countryCode:
+          maxLength: 2
+          minLength: 1
+          type: string
+        contact:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        phone:
+          maxLength: 25
+          type:
+          - string
+          - 'null'
+        email:
+          maxLength: 320
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    LabelResultType:
+      enum:
+      - zpl
+      - zplUtf8
+      - zpl300
+      - zpl300Utf8
+      - pdf
+      - pdfRoutingOnly
+      - zplRoutingOnly
+      - zplUtf8RoutingOnly
+      - zpl300RoutingOnly
+      - zpl300Utf8RoutingOnly
+      - pdfA6U
+      - pdfA6S
+      - pdf2A4
+      - pdf4A4
+      - none
+      type: string
+    TrackingLinkType:
+      enum:
+      - u
+      - s
+      type: string
+    RequesterAddress:
+      required:
+      - city
+      - countryCode
+      - name1
+      - street
+      - zipCode
+      type: object
+      properties:
+        name1:
+          maxLength: 30
+          minLength: 1
+          type: string
+        name2:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        name3:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        street:
+          maxLength: 40
+          minLength: 1
+          type: string
+        houseNo:
+          maxLength: 5
+          type:
+          - string
+          - 'null'
+        houseNoExt:
+          maxLength: 5
+          type:
+          - string
+          - 'null'
+        zipCode:
+          maxLength: 8
+          minLength: 1
+          type: string
+        city:
+          maxLength: 30
+          minLength: 1
+          type: string
+        countryCode:
+          maxLength: 2
+          minLength: 1
+          type: string
+        contact:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        phone:
+          maxLength: 25
+          type:
+          - string
+          - 'null'
+        email:
+          maxLength: 320
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ApiUnit_2:
+      type: object
+      properties:
+        unitId:
+          type:
+          - string
+          - 'null'
+        unitNo:
+          type:
+          - string
+          - 'null'
+        uniqueNo:
+          type:
+          - string
+          - 'null'
+        gpNo:
+          type:
+          - string
+          - 'null'
+        isEmergencyLabel:
+          type:
+          - boolean
+          - 'null'
+        label:
+          type:
+          - string
+          - 'null'
+        unitNoShopReturn:
+          type:
+          - string
+          - 'null'
+        uniqueNoShopReturn:
+          type:
+          - string
+          - 'null'
+        gpNoShopReturn:
+          type:
+          - string
+          - 'null'
+        labelShopReturn:
+          type:
+          - string
+          - 'null'
+        qrCodeShopReturn:
+          type:
+          - string
+          - 'null'
+        unitTrackingLink:
+          type:
+          - string
+          - 'null'
+        customerUnitReference:
+          type:
+          - string
+          - 'null'
+        routingData:
+          $ref: '#/components/schemas/RoutingDataBase'
+      additionalProperties: false
+    RoutingDataBase:
+      type: object
+      properties:
+        outboundSortFlag:
+          type:
+          - string
+          - 'null'
+        inboundSortFlag:
+          type:
+          - string
+          - 'null'
+        finalCountry:
+          type:
+          - string
+          - 'null'
+        finalLocation:
+          type:
+          - string
+          - 'null'
+        tourNo:
+          type:
+          - string
+          - 'null'
+        geoTour:
+          type:
+          - string
+          - 'null'
+        loadingArea:
+          type:
+          - string
+          - 'null'
+        dispositionFlag:
+          type:
+          - string
+          - 'null'
+        zipCode:
+          type:
+          - string
+          - 'null'
+        handlingInfo1:
+          type:
+          - string
+          - 'null'
+        handlingInfo2:
+          type:
+          - string
+          - 'null'
+        handlingInfo3:
+          type:
+          - string
+          - 'null'
+        handlingInfo4:
+          type:
+          - string
+          - 'null'
+        handlingInfo5:
+          type:
+          - string
+          - 'null'
+        originLocation:
+          type:
+          - string
+          - 'null'
+        stationId:
+          type:
+          - string
+          - 'null'
+        printDateTime:
+          type:
+          - string
+          - 'null'
+        unitSequenceNo:
+          type:
+          - string
+          - 'null'
+        totalUnitCount:
+          type:
+          - string
+          - 'null'
+        routingInfo:
+          type:
+          - string
+          - 'null'
+        applicationName:
+          type:
+          - string
+          - 'null'
+        applicationVersion:
+          type:
+          - string
+          - 'null'
+        primaryDataMatrixContent:
+          type:
+          - string
+          - 'null'
+        secondaryDataMatrixContent:
+          type:
+          - string
+          - 'null'
+        gpNo:
+          type:
+          - string
+          - 'null'
+        gpNoText:
+          type:
+          - string
+          - 'null'
+        chNdiNo:
+          type:
+          - string
+          - 'null'
+        chNdiNoText:
+          type:
+          - string
+          - 'null'
+        gbNdiNo:
+          type:
+          - string
+          - 'null'
+        gbProductIdentifier:
+          type:
+          - string
+          - 'null'
+        gbZipcode:
+          type:
+          - string
+          - 'null'
+        gbPostOffice:
+          type:
+          - string
+          - 'null'
+        noNdiNo:
+          type:
+          - string
+          - 'null'
+        seNdiNo:
+          type:
+          - string
+          - 'null'
+        itNdiNo:
+          type:
+          - string
+          - 'null'
+        itDataMatrixContent:
+          type:
+          - string
+          - 'null'
+        itDepot:
+          type:
+          - string
+          - 'null'
+        itTour:
+          type:
+          - string
+          - 'null'
+        freightBarcodeNo:
+          type:
+          - string
+          - 'null'
+        freightSSCCBarcodeNo:
+          type:
+          - string
+          - 'null'
+        uniShipDataMatrixContent:
+          type:
+          - string
+          - 'null'
+        serviceField1:
+          type:
+          - string
+          - 'null'
+        serviceField2:
+          type:
+          - string
+          - 'null'
+        serviceField3:
+          type:
+          - string
+          - 'null'
+        serviceField4:
+          type:
+          - string
+          - 'null'
+        serviceField5:
+          type:
+          - string
+          - 'null'
+        serviceField6:
+          type:
+          - string
+          - 'null'
+        serviceField7:
+          type:
+          - string
+          - 'null'
+        serviceField8:
+          type:
+          - string
+          - 'null'
+        packagingName:
+          type:
+          - string
+          - 'null'
+        custNo:
+          type:
+          - string
+          - 'null'
+        contactId:
+          type:
+          - string
+          - 'null'
+        gdprLine1:
+          type:
+          - string
+          - 'null'
+        gdprLine2:
+          type:
+          - string
+          - 'null'
+        gdprLine3:
+          type:
+          - string
+          - 'null'
+        gdprLine4:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    InboundCreateShopReturnRequest_2:
+      required:
+      - password
+      - username
+      type: object
+      properties:
+        username:
+          maxLength: 70
+          minLength: 1
+          type: string
+        password:
+          maxLength: 20
+          minLength: 1
+          type: string
+          writeOnly: true
+        shippingSystemName:
+          type:
+          - string
+          - 'null'
+        shippingSystemVersion:
+          type:
+          - string
+          - 'null'
+        shiptype:
+          $ref: '#/components/schemas/ShipType'
+        incoterm:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        customerNo:
+          maxLength: 8
+          minLength: 7
+          type:
+          - string
+          - 'null'
+        customerSubjectName:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+        reference:
+          maxLength: 20
+          type:
+          - string
+          - 'null'
+        trackingLinkType:
+          $ref: '#/components/schemas/TrackingLinkType'
+        units:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Unit'
+        labelType:
+          $ref: '#/components/schemas/LabelResultType'
+        labelA4StartPosition:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        labelA4MoveXMm:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        labelA4MoveYMm:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        addresses:
+          $ref: '#/components/schemas/PickupAddresses'
+        returnReason:
+          type:
+          - string
+          - 'null'
+        sendLabelsByEmail:
+          type: boolean
+      additionalProperties: false
+x-refined-from:
+- gls-netherlands-label-api-openapi.yml
+- gls-netherlands-label-api-test-openapi.yml

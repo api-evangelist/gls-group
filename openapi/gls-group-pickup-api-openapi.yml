@@ -1,0 +1,2598 @@
+openapi: 3.2.0
+info:
+  title: Gls Group Pickup API
+  version: v1
+  description: 'Operations tagged Pickup across 2 of this provider''s published API definitions: gls-netherlands-label-api-openapi.yml, gls-netherlands-label-api-test-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.gls.nl/v1
+- url: https://api.gls.nl/test/v1
+tags:
+- name: Pickup
+paths:
+  /api/Pickup/Create:
+    post:
+      tags:
+      - Pickup
+      summary: CreatePickup
+      operationId: CreatePickup
+      parameters:
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/InboundCreatePickupRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InboundCreatePickupRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InboundCreatePickupRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InboundCreatePickupRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiCreatePickupResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: {}
+                transactionId: string
+                shipmentTrackingLink: string
+                units:
+                - {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: {}
+                transactionId: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: {}
+                transactionId: string
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: {}
+                transactionId: string
+        '424':
+          description: Failed Dependency
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: {}
+                transactionId: string
+    servers:
+    - url: https://api.gls.nl/v1
+  /api/Pickup/Delete:
+    post:
+      tags:
+      - Pickup
+      summary: DeletePickup
+      operationId: DeletePickup
+      parameters:
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/InboundDeleteRequest'
+            example:
+              username: string
+              password: string
+              shippingSystemName: string
+              shippingSystemVersion: string
+              shiptype: p
+              unitNo: string
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InboundDeleteRequest'
+            example:
+              username: string
+              password: string
+              shippingSystemName: string
+              shippingSystemVersion: string
+              shiptype: p
+              unitNo: string
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InboundDeleteRequest'
+            example:
+              username: string
+              password: string
+              shippingSystemName: string
+              shippingSystemVersion: string
+              shiptype: p
+              unitNo: string
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InboundDeleteRequest'
+            example:
+              username: string
+              password: string
+              shippingSystemName: string
+              shippingSystemVersion: string
+              shiptype: p
+              unitNo: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiDeleteLabelResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: {}
+                transactionId: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: {}
+                transactionId: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: {}
+                transactionId: string
+        '424':
+          description: Failed Dependency
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: {}
+                transactionId: string
+    servers:
+    - url: https://api.gls.nl/v1
+components:
+  schemas:
+    ParameterAttributes:
+      enum:
+      - none
+      - in
+      - out
+      - lcid
+      - retval
+      - optional
+      - hasDefault
+      - hasFieldMarshal
+      - reserved3
+      - reserved4
+      - reservedMask
+      type: string
+    ApiUnit:
+      type: object
+      additionalProperties: false
+    ErrorContext:
+      type: object
+      properties:
+        error:
+          $ref: '#/components/schemas/Exception'
+        originalObject:
+          readOnly: true
+        member:
+          readOnly: true
+        path:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        handled:
+          type: boolean
+      additionalProperties: false
+    ApiDeleteLabelResponseObject:
+      type: object
+      properties:
+        error:
+          type: boolean
+          readOnly: true
+        status:
+          type:
+          - string
+          - 'null'
+        message:
+          type:
+          - string
+          - 'null'
+        errors:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type:
+            - array
+            - 'null'
+            items:
+              type: string
+        transactionId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+      additionalProperties: false
+    PropertyInfo:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        declaringType:
+          $ref: '#/components/schemas/Type'
+        reflectedType:
+          $ref: '#/components/schemas/Type'
+        module:
+          $ref: '#/components/schemas/Module'
+        customAttributes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          readOnly: true
+        isCollectible:
+          type: boolean
+          readOnly: true
+        metadataToken:
+          type: integer
+          format: int32
+          readOnly: true
+        memberType:
+          $ref: '#/components/schemas/MemberTypes'
+        propertyType:
+          $ref: '#/components/schemas/Type'
+        attributes:
+          $ref: '#/components/schemas/PropertyAttributes'
+        isSpecialName:
+          type: boolean
+          readOnly: true
+        canRead:
+          type: boolean
+          readOnly: true
+        canWrite:
+          type: boolean
+          readOnly: true
+        getMethod:
+          $ref: '#/components/schemas/MethodInfo'
+        setMethod:
+          $ref: '#/components/schemas/MethodInfo'
+      additionalProperties: false
+    MethodInfo:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        declaringType:
+          $ref: '#/components/schemas/Type'
+        reflectedType:
+          $ref: '#/components/schemas/Type'
+        module:
+          $ref: '#/components/schemas/Module'
+        customAttributes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          readOnly: true
+        isCollectible:
+          type: boolean
+          readOnly: true
+        metadataToken:
+          type: integer
+          format: int32
+          readOnly: true
+        attributes:
+          $ref: '#/components/schemas/MethodAttributes'
+        methodImplementationFlags:
+          $ref: '#/components/schemas/MethodImplAttributes'
+        callingConvention:
+          $ref: '#/components/schemas/CallingConventions'
+        isAbstract:
+          type: boolean
+          readOnly: true
+        isConstructor:
+          type: boolean
+          readOnly: true
+        isFinal:
+          type: boolean
+          readOnly: true
+        isHideBySig:
+          type: boolean
+          readOnly: true
+        isSpecialName:
+          type: boolean
+          readOnly: true
+        isStatic:
+          type: boolean
+          readOnly: true
+        isVirtual:
+          type: boolean
+          readOnly: true
+        isAssembly:
+          type: boolean
+          readOnly: true
+        isFamily:
+          type: boolean
+          readOnly: true
+        isFamilyAndAssembly:
+          type: boolean
+          readOnly: true
+        isFamilyOrAssembly:
+          type: boolean
+          readOnly: true
+        isPrivate:
+          type: boolean
+          readOnly: true
+        isPublic:
+          type: boolean
+          readOnly: true
+        isConstructedGenericMethod:
+          type: boolean
+          readOnly: true
+        isGenericMethod:
+          type: boolean
+          readOnly: true
+        isGenericMethodDefinition:
+          type: boolean
+          readOnly: true
+        containsGenericParameters:
+          type: boolean
+          readOnly: true
+        methodHandle:
+          $ref: '#/components/schemas/RuntimeMethodHandle'
+        isSecurityCritical:
+          type: boolean
+          readOnly: true
+        isSecuritySafeCritical:
+          type: boolean
+          readOnly: true
+        isSecurityTransparent:
+          type: boolean
+          readOnly: true
+        memberType:
+          $ref: '#/components/schemas/MemberTypes'
+        returnParameter:
+          $ref: '#/components/schemas/ParameterInfo'
+        returnType:
+          $ref: '#/components/schemas/Type'
+        returnTypeCustomAttributes:
+          $ref: '#/components/schemas/ICustomAttributeProvider'
+      additionalProperties: false
+    TrackingLinkType:
+      enum:
+      - u
+      - s
+      type: string
+    ApiResponseObject:
+      type: object
+      properties:
+        error:
+          type: boolean
+          readOnly: true
+        status:
+          type:
+          - string
+          - 'null'
+        message:
+          type:
+          - string
+          - 'null'
+        errors:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type:
+            - array
+            - 'null'
+            items:
+              type: string
+        transactionId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+      additionalProperties: false
+    LayoutKind:
+      enum:
+      - sequential
+      - explicit
+      - auto
+      type: string
+    ShipType:
+      enum:
+      - p
+      - f
+      type: string
+    TypeInfo:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        customAttributes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          readOnly: true
+        isCollectible:
+          type: boolean
+          readOnly: true
+        metadataToken:
+          type: integer
+          format: int32
+          readOnly: true
+        isInterface:
+          type: boolean
+          readOnly: true
+        memberType:
+          $ref: '#/components/schemas/MemberTypes'
+        namespace:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        assemblyQualifiedName:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        fullName:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        assembly:
+          $ref: '#/components/schemas/Assembly'
+        module:
+          $ref: '#/components/schemas/Module'
+        isNested:
+          type: boolean
+          readOnly: true
+        declaringType:
+          $ref: '#/components/schemas/Type'
+        declaringMethod:
+          $ref: '#/components/schemas/MethodBase'
+        reflectedType:
+          $ref: '#/components/schemas/Type'
+        underlyingSystemType:
+          $ref: '#/components/schemas/Type'
+        isTypeDefinition:
+          type: boolean
+          readOnly: true
+        isArray:
+          type: boolean
+          readOnly: true
+        isByRef:
+          type: boolean
+          readOnly: true
+        isPointer:
+          type: boolean
+          readOnly: true
+        isConstructedGenericType:
+          type: boolean
+          readOnly: true
+        isGenericParameter:
+          type: boolean
+          readOnly: true
+        isGenericTypeParameter:
+          type: boolean
+          readOnly: true
+        isGenericMethodParameter:
+          type: boolean
+          readOnly: true
+        isGenericType:
+          type: boolean
+          readOnly: true
+        isGenericTypeDefinition:
+          type: boolean
+          readOnly: true
+        isSZArray:
+          type: boolean
+          readOnly: true
+        isVariableBoundArray:
+          type: boolean
+          readOnly: true
+        isByRefLike:
+          type: boolean
+          readOnly: true
+        isFunctionPointer:
+          type: boolean
+          readOnly: true
+        isUnmanagedFunctionPointer:
+          type: boolean
+          readOnly: true
+        hasElementType:
+          type: boolean
+          readOnly: true
+        genericTypeArguments:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Type'
+          readOnly: true
+        genericParameterPosition:
+          type: integer
+          format: int32
+          readOnly: true
+        genericParameterAttributes:
+          $ref: '#/components/schemas/GenericParameterAttributes'
+        attributes:
+          $ref: '#/components/schemas/TypeAttributes'
+        isAbstract:
+          type: boolean
+          readOnly: true
+        isImport:
+          type: boolean
+          readOnly: true
+        isSealed:
+          type: boolean
+          readOnly: true
+        isSpecialName:
+          type: boolean
+          readOnly: true
+        isClass:
+          type: boolean
+          readOnly: true
+        isNestedAssembly:
+          type: boolean
+          readOnly: true
+        isNestedFamANDAssem:
+          type: boolean
+          readOnly: true
+        isNestedFamily:
+          type: boolean
+          readOnly: true
+        isNestedFamORAssem:
+          type: boolean
+          readOnly: true
+        isNestedPrivate:
+          type: boolean
+          readOnly: true
+        isNestedPublic:
+          type: boolean
+          readOnly: true
+        isNotPublic:
+          type: boolean
+          readOnly: true
+        isPublic:
+          type: boolean
+          readOnly: true
+        isAutoLayout:
+          type: boolean
+          readOnly: true
+        isExplicitLayout:
+          type: boolean
+          readOnly: true
+        isLayoutSequential:
+          type: boolean
+          readOnly: true
+        isAnsiClass:
+          type: boolean
+          readOnly: true
+        isAutoClass:
+          type: boolean
+          readOnly: true
+        isUnicodeClass:
+          type: boolean
+          readOnly: true
+        isCOMObject:
+          type: boolean
+          readOnly: true
+        isContextful:
+          type: boolean
+          readOnly: true
+        isEnum:
+          type: boolean
+          readOnly: true
+        isMarshalByRef:
+          type: boolean
+          readOnly: true
+        isPrimitive:
+          type: boolean
+          readOnly: true
+        isValueType:
+          type: boolean
+          readOnly: true
+        isSignatureType:
+          type: boolean
+          readOnly: true
+        isSecurityCritical:
+          type: boolean
+          readOnly: true
+        isSecuritySafeCritical:
+          type: boolean
+          readOnly: true
+        isSecurityTransparent:
+          type: boolean
+          readOnly: true
+        structLayoutAttribute:
+          $ref: '#/components/schemas/StructLayoutAttribute'
+        typeInitializer:
+          $ref: '#/components/schemas/ConstructorInfo'
+        typeHandle:
+          $ref: '#/components/schemas/RuntimeTypeHandle'
+        guid:
+          type: string
+          format: uuid
+          readOnly: true
+        baseType:
+          $ref: '#/components/schemas/Type'
+        isSerializable:
+          type: boolean
+          readOnly: true
+          deprecated: true
+        containsGenericParameters:
+          type: boolean
+          readOnly: true
+        isVisible:
+          type: boolean
+          readOnly: true
+        genericTypeParameters:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Type'
+          readOnly: true
+        declaredConstructors:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ConstructorInfo'
+          readOnly: true
+        declaredEvents:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/EventInfo'
+          readOnly: true
+        declaredFields:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/FieldInfo'
+          readOnly: true
+        declaredMembers:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/MemberInfo'
+          readOnly: true
+        declaredMethods:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/MethodInfo'
+          readOnly: true
+        declaredNestedTypes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TypeInfo'
+          readOnly: true
+        declaredProperties:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PropertyInfo'
+          readOnly: true
+        implementedInterfaces:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Type'
+          readOnly: true
+      additionalProperties: false
+    Assembly:
+      type: object
+      properties:
+        definedTypes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TypeInfo'
+          readOnly: true
+        exportedTypes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Type'
+          readOnly: true
+        codeBase:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          deprecated: true
+        entryPoint:
+          $ref: '#/components/schemas/MethodInfo'
+        fullName:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        imageRuntimeVersion:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        isDynamic:
+          type: boolean
+          readOnly: true
+        location:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        reflectionOnly:
+          type: boolean
+          readOnly: true
+        isCollectible:
+          type: boolean
+          readOnly: true
+        isFullyTrusted:
+          type: boolean
+          readOnly: true
+        customAttributes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          readOnly: true
+        escapedCodeBase:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          deprecated: true
+        manifestModule:
+          $ref: '#/components/schemas/Module'
+        modules:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Module'
+          readOnly: true
+        globalAssemblyCache:
+          type: boolean
+          readOnly: true
+          deprecated: true
+        hostContext:
+          type: integer
+          format: int64
+          readOnly: true
+        securityRuleSet:
+          $ref: '#/components/schemas/SecurityRuleSet'
+      additionalProperties: false
+    ConstructorInfo:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        declaringType:
+          $ref: '#/components/schemas/Type'
+        reflectedType:
+          $ref: '#/components/schemas/Type'
+        module:
+          $ref: '#/components/schemas/Module'
+        customAttributes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          readOnly: true
+        isCollectible:
+          type: boolean
+          readOnly: true
+        metadataToken:
+          type: integer
+          format: int32
+          readOnly: true
+        attributes:
+          $ref: '#/components/schemas/MethodAttributes'
+        methodImplementationFlags:
+          $ref: '#/components/schemas/MethodImplAttributes'
+        callingConvention:
+          $ref: '#/components/schemas/CallingConventions'
+        isAbstract:
+          type: boolean
+          readOnly: true
+        isConstructor:
+          type: boolean
+          readOnly: true
+        isFinal:
+          type: boolean
+          readOnly: true
+        isHideBySig:
+          type: boolean
+          readOnly: true
+        isSpecialName:
+          type: boolean
+          readOnly: true
+        isStatic:
+          type: boolean
+          readOnly: true
+        isVirtual:
+          type: boolean
+          readOnly: true
+        isAssembly:
+          type: boolean
+          readOnly: true
+        isFamily:
+          type: boolean
+          readOnly: true
+        isFamilyAndAssembly:
+          type: boolean
+          readOnly: true
+        isFamilyOrAssembly:
+          type: boolean
+          readOnly: true
+        isPrivate:
+          type: boolean
+          readOnly: true
+        isPublic:
+          type: boolean
+          readOnly: true
+        isConstructedGenericMethod:
+          type: boolean
+          readOnly: true
+        isGenericMethod:
+          type: boolean
+          readOnly: true
+        isGenericMethodDefinition:
+          type: boolean
+          readOnly: true
+        containsGenericParameters:
+          type: boolean
+          readOnly: true
+        methodHandle:
+          $ref: '#/components/schemas/RuntimeMethodHandle'
+        isSecurityCritical:
+          type: boolean
+          readOnly: true
+        isSecuritySafeCritical:
+          type: boolean
+          readOnly: true
+        isSecurityTransparent:
+          type: boolean
+          readOnly: true
+        memberType:
+          $ref: '#/components/schemas/MemberTypes'
+      additionalProperties: false
+    MemberTypes:
+      enum:
+      - constructor
+      - event
+      - field
+      - method
+      - property
+      - typeInfo
+      - custom
+      - nestedType
+      - all
+      type: string
+    Exception:
+      type: object
+      properties:
+        targetSite:
+          $ref: '#/components/schemas/MethodBase'
+        message:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        data:
+          type:
+          - object
+          - 'null'
+          additionalProperties: {}
+          readOnly: true
+        innerException:
+          $ref: '#/components/schemas/Exception'
+        helpLink:
+          type:
+          - string
+          - 'null'
+        source:
+          type:
+          - string
+          - 'null'
+        hResult:
+          type: integer
+          format: int32
+        stackTrace:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+      additionalProperties: false
+    FieldAttributes:
+      enum:
+      - privateScope
+      - private
+      - famANDAssem
+      - assembly
+      - family
+      - famORAssem
+      - public
+      - fieldAccessMask
+      - static
+      - initOnly
+      - literal
+      - notSerialized
+      - hasFieldRVA
+      - specialName
+      - rtSpecialName
+      - hasFieldMarshal
+      - pinvokeImpl
+      - hasDefault
+      - reservedMask
+      type: string
+    SecurityRuleSet:
+      enum:
+      - none
+      - level1
+      - level2
+      type: string
+    UnitType:
+      enum:
+      - co
+      - lg
+      - mp
+      - bp
+      - xl
+      - pl
+      - rl
+      type: string
+    Module:
+      type: object
+      properties:
+        assembly:
+          $ref: '#/components/schemas/Assembly'
+        fullyQualifiedName:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        name:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        mdStreamVersion:
+          type: integer
+          format: int32
+          readOnly: true
+        moduleVersionId:
+          type: string
+          format: uuid
+          readOnly: true
+        scopeName:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        moduleHandle:
+          $ref: '#/components/schemas/ModuleHandle'
+        customAttributes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          readOnly: true
+        metadataToken:
+          type: integer
+          format: int32
+          readOnly: true
+      additionalProperties: false
+    FieldInfo:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        declaringType:
+          $ref: '#/components/schemas/Type'
+        reflectedType:
+          $ref: '#/components/schemas/Type'
+        module:
+          $ref: '#/components/schemas/Module'
+        customAttributes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          readOnly: true
+        isCollectible:
+          type: boolean
+          readOnly: true
+        metadataToken:
+          type: integer
+          format: int32
+          readOnly: true
+        memberType:
+          $ref: '#/components/schemas/MemberTypes'
+        attributes:
+          $ref: '#/components/schemas/FieldAttributes'
+        fieldType:
+          $ref: '#/components/schemas/Type'
+        isInitOnly:
+          type: boolean
+          readOnly: true
+        isLiteral:
+          type: boolean
+          readOnly: true
+        isNotSerialized:
+          type: boolean
+          readOnly: true
+          deprecated: true
+        isPinvokeImpl:
+          type: boolean
+          readOnly: true
+        isSpecialName:
+          type: boolean
+          readOnly: true
+        isStatic:
+          type: boolean
+          readOnly: true
+        isAssembly:
+          type: boolean
+          readOnly: true
+        isFamily:
+          type: boolean
+          readOnly: true
+        isFamilyAndAssembly:
+          type: boolean
+          readOnly: true
+        isFamilyOrAssembly:
+          type: boolean
+          readOnly: true
+        isPrivate:
+          type: boolean
+          readOnly: true
+        isPublic:
+          type: boolean
+          readOnly: true
+        isSecurityCritical:
+          type: boolean
+          readOnly: true
+        isSecuritySafeCritical:
+          type: boolean
+          readOnly: true
+        isSecurityTransparent:
+          type: boolean
+          readOnly: true
+        fieldHandle:
+          $ref: '#/components/schemas/RuntimeFieldHandle'
+      additionalProperties: false
+    MethodAttributes:
+      enum:
+      - privateScope
+      - private
+      - famANDAssem
+      - assembly
+      - family
+      - famORAssem
+      - public
+      - memberAccessMask
+      - unmanagedExport
+      - static
+      - final
+      - virtual
+      - hideBySig
+      - newSlot
+      - checkAccessOnOverride
+      - abstract
+      - specialName
+      - rtSpecialName
+      - pinvokeImpl
+      - hasSecurity
+      - requireSecObject
+      - reservedMask
+      type: string
+    MethodImplAttributes:
+      enum:
+      - il
+      - native
+      - optil
+      - codeTypeMask
+      - managedMask
+      - noInlining
+      - forwardRef
+      - synchronized
+      - noOptimization
+      - preserveSig
+      - aggressiveInlining
+      - aggressiveOptimization
+      - internalCall
+      - maxMethodImplVal
+      type: string
+    EventAttributes:
+      enum:
+      - none
+      - specialName
+      - rtSpecialName
+      type: string
+    CustomAttributeData:
+      type: object
+      properties:
+        attributeType:
+          $ref: '#/components/schemas/Type'
+        constructor:
+          $ref: '#/components/schemas/ConstructorInfo'
+        constructorArguments:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CustomAttributeTypedArgument'
+          readOnly: true
+        namedArguments:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CustomAttributeNamedArgument'
+          readOnly: true
+      additionalProperties: false
+    ApiCreatePickupResponseObject:
+      type: object
+      properties:
+        error:
+          type: boolean
+          readOnly: true
+        status:
+          type:
+          - string
+          - 'null'
+        message:
+          type:
+          - string
+          - 'null'
+        errors:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type:
+            - array
+            - 'null'
+            items:
+              type: string
+        transactionId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        shipmentTrackingLink:
+          type:
+          - string
+          - 'null'
+        units:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ApiUnit'
+      additionalProperties: false
+    RuntimeFieldHandle:
+      type: object
+      properties:
+        value:
+          $ref: '#/components/schemas/IntPtr'
+      additionalProperties: false
+    MethodBase:
+      type: object
+      properties:
+        memberType:
+          $ref: '#/components/schemas/MemberTypes'
+        name:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        declaringType:
+          $ref: '#/components/schemas/Type'
+        reflectedType:
+          $ref: '#/components/schemas/Type'
+        module:
+          $ref: '#/components/schemas/Module'
+        customAttributes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          readOnly: true
+        isCollectible:
+          type: boolean
+          readOnly: true
+        metadataToken:
+          type: integer
+          format: int32
+          readOnly: true
+        attributes:
+          $ref: '#/components/schemas/MethodAttributes'
+        methodImplementationFlags:
+          $ref: '#/components/schemas/MethodImplAttributes'
+        callingConvention:
+          $ref: '#/components/schemas/CallingConventions'
+        isAbstract:
+          type: boolean
+          readOnly: true
+        isConstructor:
+          type: boolean
+          readOnly: true
+        isFinal:
+          type: boolean
+          readOnly: true
+        isHideBySig:
+          type: boolean
+          readOnly: true
+        isSpecialName:
+          type: boolean
+          readOnly: true
+        isStatic:
+          type: boolean
+          readOnly: true
+        isVirtual:
+          type: boolean
+          readOnly: true
+        isAssembly:
+          type: boolean
+          readOnly: true
+        isFamily:
+          type: boolean
+          readOnly: true
+        isFamilyAndAssembly:
+          type: boolean
+          readOnly: true
+        isFamilyOrAssembly:
+          type: boolean
+          readOnly: true
+        isPrivate:
+          type: boolean
+          readOnly: true
+        isPublic:
+          type: boolean
+          readOnly: true
+        isConstructedGenericMethod:
+          type: boolean
+          readOnly: true
+        isGenericMethod:
+          type: boolean
+          readOnly: true
+        isGenericMethodDefinition:
+          type: boolean
+          readOnly: true
+        containsGenericParameters:
+          type: boolean
+          readOnly: true
+        methodHandle:
+          $ref: '#/components/schemas/RuntimeMethodHandle'
+        isSecurityCritical:
+          type: boolean
+          readOnly: true
+        isSecuritySafeCritical:
+          type: boolean
+          readOnly: true
+        isSecurityTransparent:
+          type: boolean
+          readOnly: true
+      additionalProperties: false
+    TypeAttributes:
+      enum:
+      - notPublic
+      - public
+      - nestedPublic
+      - nestedPrivate
+      - nestedFamily
+      - nestedAssembly
+      - nestedFamANDAssem
+      - visibilityMask
+      - sequentialLayout
+      - explicitLayout
+      - layoutMask
+      - interface
+      - abstract
+      - sealed
+      - specialName
+      - rtSpecialName
+      - import
+      - serializable
+      - windowsRuntime
+      - unicodeClass
+      - autoClass
+      - stringFormatMask
+      - hasSecurity
+      - reservedMask
+      - beforeFieldInit
+      - customFormatMask
+      type: string
+    ParameterInfo:
+      type: object
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ParameterAttributes'
+        member:
+          $ref: '#/components/schemas/MemberInfo'
+        name:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        parameterType:
+          $ref: '#/components/schemas/Type'
+        position:
+          type: integer
+          format: int32
+          readOnly: true
+        isIn:
+          type: boolean
+          readOnly: true
+        isLcid:
+          type: boolean
+          readOnly: true
+        isOptional:
+          type: boolean
+          readOnly: true
+        isOut:
+          type: boolean
+          readOnly: true
+        isRetval:
+          type: boolean
+          readOnly: true
+        defaultValue:
+          readOnly: true
+        rawDefaultValue:
+          readOnly: true
+        hasDefaultValue:
+          type: boolean
+          readOnly: true
+        customAttributes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          readOnly: true
+        metadataToken:
+          type: integer
+          format: int32
+          readOnly: true
+      additionalProperties: false
+    CallingConventions:
+      enum:
+      - standard
+      - varArgs
+      - any
+      - hasThis
+      - explicitThis
+      type: string
+    IntPtr:
+      type: object
+      additionalProperties: false
+    CustomAttributeNamedArgument:
+      type: object
+      properties:
+        memberInfo:
+          $ref: '#/components/schemas/MemberInfo'
+        typedValue:
+          $ref: '#/components/schemas/CustomAttributeTypedArgument'
+        memberName:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        isField:
+          type: boolean
+          readOnly: true
+      additionalProperties: false
+    PickupAddresses:
+      type: object
+      properties:
+        pickupAddress:
+          $ref: '#/components/schemas/PickupAddress'
+        deliveryAddress:
+          $ref: '#/components/schemas/DeliveryAddress'
+        requesterAddress:
+          $ref: '#/components/schemas/RequesterAddress'
+      additionalProperties: false
+    InboundDeleteRequest:
+      required:
+      - password
+      - unitNo
+      - username
+      type: object
+      properties:
+        username:
+          maxLength: 70
+          minLength: 1
+          type: string
+        password:
+          maxLength: 20
+          minLength: 1
+          type: string
+          writeOnly: true
+        shippingSystemName:
+          type:
+          - string
+          - 'null'
+        shippingSystemVersion:
+          type:
+          - string
+          - 'null'
+        shiptype:
+          $ref: '#/components/schemas/ShipType'
+        unitNo:
+          maxLength: 14
+          minLength: 1
+          type: string
+      additionalProperties: false
+    StructLayoutAttribute:
+      type: object
+      properties:
+        typeId:
+          readOnly: true
+        value:
+          $ref: '#/components/schemas/LayoutKind'
+      additionalProperties: false
+    InboundCreatePickupRequest:
+      required:
+      - password
+      - pickupDate
+      - username
+      type: object
+      properties:
+        username:
+          maxLength: 70
+          minLength: 1
+          type: string
+        password:
+          maxLength: 20
+          minLength: 1
+          type: string
+          writeOnly: true
+        shippingSystemName:
+          type:
+          - string
+          - 'null'
+        shippingSystemVersion:
+          type:
+          - string
+          - 'null'
+        shiptype:
+          $ref: '#/components/schemas/ShipType'
+        customerNo:
+          maxLength: 8
+          minLength: 7
+          type:
+          - string
+          - 'null'
+        customerSubjectName:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+        reference:
+          maxLength: 20
+          type:
+          - string
+          - 'null'
+        trackingLinkType:
+          $ref: '#/components/schemas/TrackingLinkType'
+        units:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Unit'
+        pickupDate:
+          type: string
+          format: date-time
+        addresses:
+          $ref: '#/components/schemas/PickupAddresses'
+        jSonErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ErrorContext'
+          readOnly: true
+      additionalProperties: false
+    RuntimeMethodHandle:
+      type: object
+      properties:
+        value:
+          $ref: '#/components/schemas/IntPtr'
+      additionalProperties: false
+    MemberInfo:
+      type: object
+      properties:
+        memberType:
+          $ref: '#/components/schemas/MemberTypes'
+        name:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        declaringType:
+          $ref: '#/components/schemas/Type'
+        reflectedType:
+          $ref: '#/components/schemas/Type'
+        module:
+          $ref: '#/components/schemas/Module'
+        customAttributes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          readOnly: true
+        isCollectible:
+          type: boolean
+          readOnly: true
+        metadataToken:
+          type: integer
+          format: int32
+          readOnly: true
+      additionalProperties: false
+    Type:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        customAttributes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          readOnly: true
+        isCollectible:
+          type: boolean
+          readOnly: true
+        metadataToken:
+          type: integer
+          format: int32
+          readOnly: true
+        isInterface:
+          type: boolean
+          readOnly: true
+        memberType:
+          $ref: '#/components/schemas/MemberTypes'
+        namespace:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        assemblyQualifiedName:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        fullName:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        assembly:
+          $ref: '#/components/schemas/Assembly'
+        module:
+          $ref: '#/components/schemas/Module'
+        isNested:
+          type: boolean
+          readOnly: true
+        declaringType:
+          $ref: '#/components/schemas/Type'
+        declaringMethod:
+          $ref: '#/components/schemas/MethodBase'
+        reflectedType:
+          $ref: '#/components/schemas/Type'
+        underlyingSystemType:
+          $ref: '#/components/schemas/Type'
+        isTypeDefinition:
+          type: boolean
+          readOnly: true
+        isArray:
+          type: boolean
+          readOnly: true
+        isByRef:
+          type: boolean
+          readOnly: true
+        isPointer:
+          type: boolean
+          readOnly: true
+        isConstructedGenericType:
+          type: boolean
+          readOnly: true
+        isGenericParameter:
+          type: boolean
+          readOnly: true
+        isGenericTypeParameter:
+          type: boolean
+          readOnly: true
+        isGenericMethodParameter:
+          type: boolean
+          readOnly: true
+        isGenericType:
+          type: boolean
+          readOnly: true
+        isGenericTypeDefinition:
+          type: boolean
+          readOnly: true
+        isSZArray:
+          type: boolean
+          readOnly: true
+        isVariableBoundArray:
+          type: boolean
+          readOnly: true
+        isByRefLike:
+          type: boolean
+          readOnly: true
+        isFunctionPointer:
+          type: boolean
+          readOnly: true
+        isUnmanagedFunctionPointer:
+          type: boolean
+          readOnly: true
+        hasElementType:
+          type: boolean
+          readOnly: true
+        genericTypeArguments:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Type'
+          readOnly: true
+        genericParameterPosition:
+          type: integer
+          format: int32
+          readOnly: true
+        genericParameterAttributes:
+          $ref: '#/components/schemas/GenericParameterAttributes'
+        attributes:
+          $ref: '#/components/schemas/TypeAttributes'
+        isAbstract:
+          type: boolean
+          readOnly: true
+        isImport:
+          type: boolean
+          readOnly: true
+        isSealed:
+          type: boolean
+          readOnly: true
+        isSpecialName:
+          type: boolean
+          readOnly: true
+        isClass:
+          type: boolean
+          readOnly: true
+        isNestedAssembly:
+          type: boolean
+          readOnly: true
+        isNestedFamANDAssem:
+          type: boolean
+          readOnly: true
+        isNestedFamily:
+          type: boolean
+          readOnly: true
+        isNestedFamORAssem:
+          type: boolean
+          readOnly: true
+        isNestedPrivate:
+          type: boolean
+          readOnly: true
+        isNestedPublic:
+          type: boolean
+          readOnly: true
+        isNotPublic:
+          type: boolean
+          readOnly: true
+        isPublic:
+          type: boolean
+          readOnly: true
+        isAutoLayout:
+          type: boolean
+          readOnly: true
+        isExplicitLayout:
+          type: boolean
+          readOnly: true
+        isLayoutSequential:
+          type: boolean
+          readOnly: true
+        isAnsiClass:
+          type: boolean
+          readOnly: true
+        isAutoClass:
+          type: boolean
+          readOnly: true
+        isUnicodeClass:
+          type: boolean
+          readOnly: true
+        isCOMObject:
+          type: boolean
+          readOnly: true
+        isContextful:
+          type: boolean
+          readOnly: true
+        isEnum:
+          type: boolean
+          readOnly: true
+        isMarshalByRef:
+          type: boolean
+          readOnly: true
+        isPrimitive:
+          type: boolean
+          readOnly: true
+        isValueType:
+          type: boolean
+          readOnly: true
+        isSignatureType:
+          type: boolean
+          readOnly: true
+        isSecurityCritical:
+          type: boolean
+          readOnly: true
+        isSecuritySafeCritical:
+          type: boolean
+          readOnly: true
+        isSecurityTransparent:
+          type: boolean
+          readOnly: true
+        structLayoutAttribute:
+          $ref: '#/components/schemas/StructLayoutAttribute'
+        typeInitializer:
+          $ref: '#/components/schemas/ConstructorInfo'
+        typeHandle:
+          $ref: '#/components/schemas/RuntimeTypeHandle'
+        guid:
+          type: string
+          format: uuid
+          readOnly: true
+        baseType:
+          $ref: '#/components/schemas/Type'
+        isSerializable:
+          type: boolean
+          readOnly: true
+          deprecated: true
+        containsGenericParameters:
+          type: boolean
+          readOnly: true
+        isVisible:
+          type: boolean
+          readOnly: true
+      additionalProperties: false
+    Dimensions:
+      type: object
+      properties:
+        length:
+          type: integer
+          format: int32
+        width:
+          type: integer
+          format: int32
+        height:
+          type: integer
+          format: int32
+      additionalProperties: false
+    EventInfo:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        declaringType:
+          $ref: '#/components/schemas/Type'
+        reflectedType:
+          $ref: '#/components/schemas/Type'
+        module:
+          $ref: '#/components/schemas/Module'
+        customAttributes:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          readOnly: true
+        isCollectible:
+          type: boolean
+          readOnly: true
+        metadataToken:
+          type: integer
+          format: int32
+          readOnly: true
+        memberType:
+          $ref: '#/components/schemas/MemberTypes'
+        attributes:
+          $ref: '#/components/schemas/EventAttributes'
+        isSpecialName:
+          type: boolean
+          readOnly: true
+        addMethod:
+          $ref: '#/components/schemas/MethodInfo'
+        removeMethod:
+          $ref: '#/components/schemas/MethodInfo'
+        raiseMethod:
+          $ref: '#/components/schemas/MethodInfo'
+        isMulticast:
+          type: boolean
+          readOnly: true
+        eventHandlerType:
+          $ref: '#/components/schemas/Type'
+      additionalProperties: false
+    Unit:
+      required:
+      - unitId
+      - weight
+      type: object
+      properties:
+        unitId:
+          maxLength: 50
+          minLength: 1
+          type: string
+        unitType:
+          $ref: '#/components/schemas/UnitType'
+        customerUnitReference:
+          maxLength: 35
+          type:
+          - string
+          - 'null'
+        weight:
+          type: number
+          format: float
+        dimensions:
+          $ref: '#/components/schemas/Dimensions'
+        additionalInfo1:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        additionalInfo2:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ModuleHandle:
+      type: object
+      properties:
+        mdStreamVersion:
+          type: integer
+          format: int32
+          readOnly: true
+      additionalProperties: false
+    CustomAttributeTypedArgument:
+      type: object
+      properties:
+        argumentType:
+          $ref: '#/components/schemas/Type'
+        value: {}
+      additionalProperties: false
+    DeliveryAddress:
+      required:
+      - city
+      - countryCode
+      - name1
+      - street
+      - zipCode
+      type: object
+      properties:
+        name1:
+          maxLength: 30
+          minLength: 1
+          type: string
+        name2:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        name3:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        street:
+          maxLength: 40
+          minLength: 1
+          type: string
+        houseNo:
+          maxLength: 5
+          type:
+          - string
+          - 'null'
+        houseNoExt:
+          maxLength: 5
+          type:
+          - string
+          - 'null'
+        zipCode:
+          maxLength: 8
+          minLength: 1
+          type: string
+        city:
+          maxLength: 30
+          minLength: 1
+          type: string
+        countryCode:
+          maxLength: 2
+          minLength: 1
+          type: string
+        contact:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        phone:
+          maxLength: 25
+          type:
+          - string
+          - 'null'
+        email:
+          maxLength: 320
+          type:
+          - string
+          - 'null'
+        addresseeType:
+          $ref: '#/components/schemas/AdresseeType'
+      additionalProperties: false
+    ICustomAttributeProvider:
+      type: object
+      additionalProperties: false
+    PropertyAttributes:
+      enum:
+      - none
+      - specialName
+      - rtSpecialName
+      - hasDefault
+      - reserved2
+      - reserved3
+      - reserved4
+      - reservedMask
+      type: string
+    AdresseeType:
+      enum:
+      - b
+      - p
+      type: string
+    PickupAddress:
+      required:
+      - city
+      - countryCode
+      - name1
+      - street
+      - zipCode
+      type: object
+      properties:
+        name1:
+          maxLength: 30
+          minLength: 1
+          type: string
+        name2:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        name3:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        street:
+          maxLength: 40
+          minLength: 1
+          type: string
+        houseNo:
+          maxLength: 5
+          type:
+          - string
+          - 'null'
+        houseNoExt:
+          maxLength: 5
+          type:
+          - string
+          - 'null'
+        zipCode:
+          maxLength: 8
+          minLength: 1
+          type: string
+        city:
+          maxLength: 30
+          minLength: 1
+          type: string
+        countryCode:
+          maxLength: 2
+          minLength: 1
+          type: string
+        contact:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        phone:
+          maxLength: 25
+          type:
+          - string
+          - 'null'
+        email:
+          maxLength: 320
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    RuntimeTypeHandle:
+      type: object
+      properties:
+        value:
+          $ref: '#/components/schemas/IntPtr'
+      additionalProperties: false
+    GenericParameterAttributes:
+      enum:
+      - none
+      - covariant
+      - contravariant
+      - varianceMask
+      - referenceTypeConstraint
+      - notNullableValueTypeConstraint
+      - defaultConstructorConstraint
+      - specialConstraintMask
+      type: string
+    RequesterAddress:
+      required:
+      - city
+      - countryCode
+      - name1
+      - street
+      - zipCode
+      type: object
+      properties:
+        name1:
+          maxLength: 30
+          minLength: 1
+          type: string
+        name2:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        name3:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        street:
+          maxLength: 40
+          minLength: 1
+          type: string
+        houseNo:
+          maxLength: 5
+          type:
+          - string
+          - 'null'
+        houseNoExt:
+          maxLength: 5
+          type:
+          - string
+          - 'null'
+        zipCode:
+          maxLength: 8
+          minLength: 1
+          type: string
+        city:
+          maxLength: 30
+          minLength: 1
+          type: string
+        countryCode:
+          maxLength: 2
+          minLength: 1
+          type: string
+        contact:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        phone:
+          maxLength: 25
+          type:
+          - string
+          - 'null'
+        email:
+          maxLength: 320
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ApiUnit_2:
+      type: object
+      properties:
+        unitId:
+          type:
+          - string
+          - 'null'
+        unitNo:
+          type:
+          - string
+          - 'null'
+        uniqueNo:
+          type:
+          - string
+          - 'null'
+        gpNo:
+          type:
+          - string
+          - 'null'
+        isEmergencyLabel:
+          type:
+          - boolean
+          - 'null'
+        label:
+          type:
+          - string
+          - 'null'
+        unitNoShopReturn:
+          type:
+          - string
+          - 'null'
+        uniqueNoShopReturn:
+          type:
+          - string
+          - 'null'
+        gpNoShopReturn:
+          type:
+          - string
+          - 'null'
+        labelShopReturn:
+          type:
+          - string
+          - 'null'
+        qrCodeShopReturn:
+          type:
+          - string
+          - 'null'
+        unitTrackingLink:
+          type:
+          - string
+          - 'null'
+        customerUnitReference:
+          type:
+          - string
+          - 'null'
+        routingData:
+          $ref: '#/components/schemas/RoutingDataBase'
+      additionalProperties: false
+    RoutingDataBase:
+      type: object
+      properties:
+        outboundSortFlag:
+          type:
+          - string
+          - 'null'
+        inboundSortFlag:
+          type:
+          - string
+          - 'null'
+        finalCountry:
+          type:
+          - string
+          - 'null'
+        finalLocation:
+          type:
+          - string
+          - 'null'
+        tourNo:
+          type:
+          - string
+          - 'null'
+        geoTour:
+          type:
+          - string
+          - 'null'
+        loadingArea:
+          type:
+          - string
+          - 'null'
+        dispositionFlag:
+          type:
+          - string
+          - 'null'
+        zipCode:
+          type:
+          - string
+          - 'null'
+        handlingInfo1:
+          type:
+          - string
+          - 'null'
+        handlingInfo2:
+          type:
+          - string
+          - 'null'
+        handlingInfo3:
+          type:
+          - string
+          - 'null'
+        handlingInfo4:
+          type:
+          - string
+          - 'null'
+        handlingInfo5:
+          type:
+          - string
+          - 'null'
+        originLocation:
+          type:
+          - string
+          - 'null'
+        stationId:
+          type:
+          - string
+          - 'null'
+        printDateTime:
+          type:
+          - string
+          - 'null'
+        unitSequenceNo:
+          type:
+          - string
+          - 'null'
+        totalUnitCount:
+          type:
+          - string
+          - 'null'
+        routingInfo:
+          type:
+          - string
+          - 'null'
+        applicationName:
+          type:
+          - string
+          - 'null'
+        applicationVersion:
+          type:
+          - string
+          - 'null'
+        primaryDataMatrixContent:
+          type:
+          - string
+          - 'null'
+        secondaryDataMatrixContent:
+          type:
+          - string
+          - 'null'
+        gpNo:
+          type:
+          - string
+          - 'null'
+        gpNoText:
+          type:
+          - string
+          - 'null'
+        chNdiNo:
+          type:
+          - string
+          - 'null'
+        chNdiNoText:
+          type:
+          - string
+          - 'null'
+        gbNdiNo:
+          type:
+          - string
+          - 'null'
+        gbProductIdentifier:
+          type:
+          - string
+          - 'null'
+        gbZipcode:
+          type:
+          - string
+          - 'null'
+        gbPostOffice:
+          type:
+          - string
+          - 'null'
+        noNdiNo:
+          type:
+          - string
+          - 'null'
+        seNdiNo:
+          type:
+          - string
+          - 'null'
+        itNdiNo:
+          type:
+          - string
+          - 'null'
+        itDataMatrixContent:
+          type:
+          - string
+          - 'null'
+        itDepot:
+          type:
+          - string
+          - 'null'
+        itTour:
+          type:
+          - string
+          - 'null'
+        freightBarcodeNo:
+          type:
+          - string
+          - 'null'
+        freightSSCCBarcodeNo:
+          type:
+          - string
+          - 'null'
+        uniShipDataMatrixContent:
+          type:
+          - string
+          - 'null'
+        serviceField1:
+          type:
+          - string
+          - 'null'
+        serviceField2:
+          type:
+          - string
+          - 'null'
+        serviceField3:
+          type:
+          - string
+          - 'null'
+        serviceField4:
+          type:
+          - string
+          - 'null'
+        serviceField5:
+          type:
+          - string
+          - 'null'
+        serviceField6:
+          type:
+          - string
+          - 'null'
+        serviceField7:
+          type:
+          - string
+          - 'null'
+        serviceField8:
+          type:
+          - string
+          - 'null'
+        packagingName:
+          type:
+          - string
+          - 'null'
+        custNo:
+          type:
+          - string
+          - 'null'
+        contactId:
+          type:
+          - string
+          - 'null'
+        gdprLine1:
+          type:
+          - string
+          - 'null'
+        gdprLine2:
+          type:
+          - string
+          - 'null'
+        gdprLine3:
+          type:
+          - string
+          - 'null'
+        gdprLine4:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    InboundDeleteRequest_2:
+      required:
+      - password
+      - unitNo
+      - username
+      type: object
+      properties:
+        username:
+          maxLength: 70
+          minLength: 1
+          type: string
+        password:
+          maxLength: 20
+          minLength: 1
+          type: string
+          writeOnly: true
+        shippingSystemName:
+          type:
+          - string
+          - 'null'
+        shippingSystemVersion:
+          type:
+          - string
+          - 'null'
+        shiptype:
+          $ref: '#/components/schemas/ShipType'
+        incoterm:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        unitNo:
+          maxLength: 14
+          minLength: 1
+          type: string
+      additionalProperties: false
+    InboundCreatePickupRequest_2:
+      required:
+      - password
+      - pickupDate
+      - username
+      type: object
+      properties:
+        username:
+          maxLength: 70
+          minLength: 1
+          type: string
+        password:
+          maxLength: 20
+          minLength: 1
+          type: string
+          writeOnly: true
+        shippingSystemName:
+          type:
+          - string
+          - 'null'
+        shippingSystemVersion:
+          type:
+          - string
+          - 'null'
+        shiptype:
+          $ref: '#/components/schemas/ShipType'
+        incoterm:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        customerNo:
+          maxLength: 8
+          minLength: 7
+          type:
+          - string
+          - 'null'
+        customerSubjectName:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+        reference:
+          maxLength: 20
+          type:
+          - string
+          - 'null'
+        trackingLinkType:
+          $ref: '#/components/schemas/TrackingLinkType'
+        units:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Unit'
+        pickupDate:
+          type: string
+          format: date-time
+        addresses:
+          $ref: '#/components/schemas/PickupAddresses'
+        jSonErrors:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ErrorContext'
+          readOnly: true
+      additionalProperties: false
+x-refined-from:
+- gls-netherlands-label-api-openapi.yml
+- gls-netherlands-label-api-test-openapi.yml

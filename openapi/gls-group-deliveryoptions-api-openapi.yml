@@ -1,0 +1,268 @@
+openapi: 3.2.0
+info:
+  title: Gls Group Delivery Options API
+  version: v1
+  description: 'Operations tagged DeliveryOptions across 2 of this provider''s published API definitions: gls-netherlands-label-api-openapi.yml, gls-netherlands-label-api-test-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.gls.nl/v1
+- url: https://api.gls.nl/test/v1
+tags:
+- name: DeliveryOptions
+paths:
+  /api/DeliveryOptions/GetDeliveryOptions:
+    post:
+      tags:
+      - DeliveryOptions
+      summary: GetDeliveryOptions
+      operationId: GetDeliveryOptions
+      parameters:
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/InboundGetDeliveryOptionsRequest'
+            example:
+              username: string
+              password: string
+              countryCode: string
+              langCode: nl
+              zipCode: string
+              shippingDate: string
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InboundGetDeliveryOptionsRequest'
+            example:
+              username: string
+              password: string
+              countryCode: string
+              langCode: nl
+              zipCode: string
+              shippingDate: string
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InboundGetDeliveryOptionsRequest'
+            example:
+              username: string
+              password: string
+              countryCode: string
+              langCode: nl
+              zipCode: string
+              shippingDate: string
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InboundGetDeliveryOptionsRequest'
+            example:
+              username: string
+              password: string
+              countryCode: string
+              langCode: nl
+              zipCode: string
+              shippingDate: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiGetDeliveryOptionsResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: {}
+                transactionId: string
+                deliveryOptions:
+                - service: string
+                  title: string
+                  expectedDeliveryDate: string
+                  expectedDeliveryTime: string
+                  subDeliveryOptions:
+                  - service: string
+                    title: string
+                    expectedDeliveryDate: string
+                    expectedDeliveryTime: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: {}
+                transactionId: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: {}
+                transactionId: string
+    servers:
+    - url: https://api.gls.nl/v1
+components:
+  schemas:
+    LangCode:
+      enum:
+      - nl
+      - en
+      type: string
+    DeliveryOption:
+      type: object
+      properties:
+        service:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        expectedDeliveryDate:
+          type:
+          - string
+          - 'null'
+        expectedDeliveryTime:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ApiResponseObject:
+      type: object
+      properties:
+        error:
+          type: boolean
+          readOnly: true
+        status:
+          type:
+          - string
+          - 'null'
+        message:
+          type:
+          - string
+          - 'null'
+        errors:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type:
+            - array
+            - 'null'
+            items:
+              type: string
+        transactionId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+      additionalProperties: false
+    DeliveryOptions:
+      type: object
+      properties:
+        service:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        expectedDeliveryDate:
+          type:
+          - string
+          - 'null'
+        expectedDeliveryTime:
+          type:
+          - string
+          - 'null'
+        subDeliveryOptions:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DeliveryOption'
+      additionalProperties: false
+    InboundGetDeliveryOptionsRequest:
+      required:
+      - countryCode
+      - password
+      - username
+      - zipCode
+      type: object
+      properties:
+        username:
+          maxLength: 70
+          minLength: 1
+          type: string
+        password:
+          maxLength: 20
+          minLength: 1
+          type: string
+          writeOnly: true
+        countryCode:
+          maxLength: 2
+          minLength: 2
+          type: string
+        langCode:
+          $ref: '#/components/schemas/LangCode'
+        zipCode:
+          maxLength: 8
+          minLength: 1
+          type: string
+        shippingDate:
+          type: string
+          format: date-time
+      additionalProperties: false
+    ApiGetDeliveryOptionsResponseObject:
+      type: object
+      properties:
+        error:
+          type: boolean
+          readOnly: true
+        status:
+          type:
+          - string
+          - 'null'
+        message:
+          type:
+          - string
+          - 'null'
+        errors:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type:
+            - array
+            - 'null'
+            items:
+              type: string
+        transactionId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        deliveryOptions:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DeliveryOptions'
+      additionalProperties: false
+x-refined-from:
+- gls-netherlands-label-api-openapi.yml
+- gls-netherlands-label-api-test-openapi.yml

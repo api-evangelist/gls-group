@@ -1,0 +1,174 @@
+openapi: 3.2.0
+info:
+  title: Gls Group Pod API
+  version: '1.0'
+  description: 'Operations tagged Pod across 2 of this provider''s published API definitions: gls-track-and-trace-api-openapi.yml, gls-track-and-trace-api-test-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.gls.nl/tt/V1
+- url: http://api.gls.nl/tt-test
+- url: https://api.gls.nl/tt-test
+tags:
+- name: Pod
+paths:
+  /api/pod/v1:
+    post:
+      tags:
+      - Pod
+      summary: /api/pod/v1 - POST
+      operationId: post-api-pod-v1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetPodsRequestDto'
+            example:
+              userName: string
+              password: string
+              parcelNumbers:
+              - string
+          text/json:
+            schema:
+              $ref: '#/components/schemas/GetPodsRequestDto'
+            example:
+              userName: string
+              password: string
+              parcelNumbers:
+              - string
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/GetPodsRequestDto'
+            example:
+              userName: string
+              password: string
+              parcelNumbers:
+              - string
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PodsResponseDto'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PodsResponseDto'
+              example:
+                pods:
+                - parcelNumber: string
+                  podBlob: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PodsResponseDto'
+              example:
+                pods:
+                - parcelNumber: string
+                  podBlob: string
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              examples:
+                default:
+                  value: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: string
+                title: string
+                status: 0
+                detail: string
+                instance: string
+    servers:
+    - url: https://api.gls.nl/tt/V1
+components:
+  schemas:
+    PodsResponseDto:
+      required:
+      - pods
+      type: object
+      properties:
+        pods:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Pod'
+      additionalProperties: false
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        status:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        detail:
+          type:
+          - string
+          - 'null'
+        instance:
+          type:
+          - string
+          - 'null'
+      additionalProperties: {}
+    Pod:
+      required:
+      - parcelNumber
+      type: object
+      properties:
+        parcelNumber:
+          type:
+          - string
+          - 'null'
+        podBlob:
+          type:
+          - string
+          - 'null'
+          format: byte
+      additionalProperties: false
+    GetPodsRequestDto:
+      required:
+      - parcelNumbers
+      - password
+      - userName
+      type: object
+      properties:
+        userName:
+          minLength: 1
+          type: string
+        password:
+          minLength: 1
+          type: string
+        parcelNumbers:
+          type: array
+          items:
+            type: string
+      additionalProperties: false
+x-refined-from:
+- gls-track-and-trace-api-openapi.yml
+- gls-track-and-trace-api-test-openapi.yml

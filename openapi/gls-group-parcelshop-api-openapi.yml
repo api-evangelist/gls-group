@@ -1,0 +1,498 @@
+openapi: 3.2.0
+info:
+  title: Gls Group Parcel Shop API
+  version: v1
+  description: 'Operations tagged ParcelShop across 2 of this provider''s published API definitions: gls-netherlands-label-api-openapi.yml, gls-netherlands-label-api-test-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.gls.nl/v1
+- url: https://api.gls.nl/test/v1
+tags:
+- name: ParcelShop
+paths:
+  /api/ParcelShop/GetParcelShops:
+    post:
+      tags:
+      - ParcelShop
+      summary: GetParcelShops
+      operationId: GetParcelShops
+      parameters:
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/InboundGetParcelShopsRequest'
+            example:
+              username: string
+              password: string
+              countryCode: string
+              zipCode: string
+              street: string
+              houseNo: string
+              city: string
+              amountOfShops: 0
+              shippingDate: string
+              langCode: nl
+              glsPointType: all
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InboundGetParcelShopsRequest'
+            example:
+              username: string
+              password: string
+              countryCode: string
+              zipCode: string
+              street: string
+              houseNo: string
+              city: string
+              amountOfShops: 0
+              shippingDate: string
+              langCode: nl
+              glsPointType: all
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InboundGetParcelShopsRequest'
+            example:
+              username: string
+              password: string
+              countryCode: string
+              zipCode: string
+              street: string
+              houseNo: string
+              city: string
+              amountOfShops: 0
+              shippingDate: string
+              langCode: nl
+              glsPointType: all
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InboundGetParcelShopsRequest'
+            example:
+              username: string
+              password: string
+              countryCode: string
+              zipCode: string
+              street: string
+              houseNo: string
+              city: string
+              amountOfShops: 0
+              shippingDate: string
+              langCode: nl
+              glsPointType: all
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiGetParcelShopsResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: {}
+                transactionId: string
+                parcelShops:
+                - parcelShopId: string
+                  name: string
+                  street: string
+                  houseNo: string
+                  zipcode: string
+                  city: string
+                  countryCode: string
+                  webSite: string
+                  info1: string
+                  info2: string
+                  mapsUrl: string
+                  geoCoordinates:
+                    lat: 0
+                    lng: 0
+                  businessHours:
+                  - dayOfWeek: string
+                    openTime: string
+                    breakStartTime: string
+                    breakEndTime: string
+                    secondBreakStartTime: string
+                    secondBreakEndTime: string
+                    closedTime: string
+                  distanceMeters: 0
+                  distanceMinutes: 0
+                  vacations:
+                  - start: string
+                    end: string
+                  deliveryOptions:
+                  - service: string
+                    title: string
+                    expectedDeliveryDate: string
+                    expectedDeliveryTime: string
+                    subDeliveryOptions:
+                    - service: string
+                      title: string
+                      expectedDeliveryDate: string
+                      expectedDeliveryTime: string
+                  type: parcelShop
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: {}
+                transactionId: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: {}
+                transactionId: string
+        '424':
+          description: Failed Dependency
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: {}
+                transactionId: string
+    servers:
+    - url: https://api.gls.nl/v1
+components:
+  schemas:
+    ApiGetParcelShopsResponseObject:
+      type: object
+      properties:
+        error:
+          type: boolean
+          readOnly: true
+        status:
+          type:
+          - string
+          - 'null'
+        message:
+          type:
+          - string
+          - 'null'
+        errors:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type:
+            - array
+            - 'null'
+            items:
+              type: string
+        transactionId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        parcelShops:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/GlsPoint'
+      additionalProperties: false
+    GlsPointsRequestType:
+      enum:
+      - all
+      - parcelShops
+      - parcelLockers
+      type: string
+    GlsPointType:
+      enum:
+      - parcelShop
+      - parcelLocker
+      type: string
+    InboundGetParcelShopsRequest:
+      required:
+      - amountOfShops
+      - password
+      - username
+      - zipCode
+      type: object
+      properties:
+        username:
+          maxLength: 70
+          minLength: 1
+          type: string
+        password:
+          maxLength: 20
+          minLength: 1
+          type: string
+          writeOnly: true
+        countryCode:
+          maxLength: 2
+          minLength: 2
+          type:
+          - string
+          - 'null'
+        zipCode:
+          maxLength: 8
+          minLength: 1
+          type: string
+        street:
+          type:
+          - string
+          - 'null'
+        houseNo:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        amountOfShops:
+          maximum: 10
+          minimum: 1
+          type: integer
+          format: int32
+        shippingDate:
+          type: string
+          format: date-time
+        langCode:
+          $ref: '#/components/schemas/LangCode'
+        glsPointType:
+          $ref: '#/components/schemas/GlsPointsRequestType'
+      additionalProperties: false
+    GlsPoint:
+      type: object
+      properties:
+        parcelShopId:
+          type:
+          - string
+          - 'null'
+        name:
+          type:
+          - string
+          - 'null'
+        street:
+          type:
+          - string
+          - 'null'
+        houseNo:
+          type:
+          - string
+          - 'null'
+        zipcode:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        countryCode:
+          type:
+          - string
+          - 'null'
+        webSite:
+          type:
+          - string
+          - 'null'
+        info1:
+          type:
+          - string
+          - 'null'
+        info2:
+          type:
+          - string
+          - 'null'
+        mapsUrl:
+          type:
+          - string
+          - 'null'
+          readOnly: true
+        geoCoordinates:
+          $ref: '#/components/schemas/GeoCoordinates'
+        businessHours:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/GlsPointBusinessHours'
+        distanceMeters:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        distanceMinutes:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        vacations:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/GlsPointVacation'
+        deliveryOptions:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DeliveryOptions'
+        type:
+          $ref: '#/components/schemas/GlsPointType'
+      additionalProperties: false
+    DeliveryOption:
+      type: object
+      properties:
+        service:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        expectedDeliveryDate:
+          type:
+          - string
+          - 'null'
+        expectedDeliveryTime:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    GlsPointVacation:
+      type: object
+      properties:
+        start:
+          type:
+          - string
+          - 'null'
+        end:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ApiResponseObject:
+      type: object
+      properties:
+        error:
+          type: boolean
+          readOnly: true
+        status:
+          type:
+          - string
+          - 'null'
+        message:
+          type:
+          - string
+          - 'null'
+        errors:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type:
+            - array
+            - 'null'
+            items:
+              type: string
+        transactionId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+      additionalProperties: false
+    DeliveryOptions:
+      type: object
+      properties:
+        service:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        expectedDeliveryDate:
+          type:
+          - string
+          - 'null'
+        expectedDeliveryTime:
+          type:
+          - string
+          - 'null'
+        subDeliveryOptions:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DeliveryOption'
+      additionalProperties: false
+    LangCode:
+      enum:
+      - nl
+      - en
+      type: string
+    GeoCoordinates:
+      type: object
+      properties:
+        lat:
+          type: number
+          format: double
+          readOnly: true
+        lng:
+          type: number
+          format: double
+          readOnly: true
+      additionalProperties: false
+    GlsPointBusinessHours:
+      type: object
+      properties:
+        dayOfWeek:
+          type:
+          - string
+          - 'null'
+        openTime:
+          type:
+          - string
+          - 'null'
+        breakStartTime:
+          type:
+          - string
+          - 'null'
+        breakEndTime:
+          type:
+          - string
+          - 'null'
+        secondBreakStartTime:
+          type:
+          - string
+          - 'null'
+        secondBreakEndTime:
+          type:
+          - string
+          - 'null'
+        closedTime:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+x-refined-from:
+- gls-netherlands-label-api-openapi.yml
+- gls-netherlands-label-api-test-openapi.yml

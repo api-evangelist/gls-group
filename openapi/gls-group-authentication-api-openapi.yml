@@ -1,0 +1,140 @@
+openapi: 3.2.0
+info:
+  title: Gls Group Authentication API
+  version: v1
+  description: 'Operations tagged Authentication across 2 of this provider''s published API definitions: gls-netherlands-label-api-openapi.yml, gls-netherlands-label-api-test-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.gls.nl/v1
+- url: https://api.gls.nl/test/v1
+tags:
+- name: Authentication
+paths:
+  /api/Authentication/ValidateLogin:
+    post:
+      tags:
+      - Authentication
+      summary: ValidateLogin
+      operationId: ValidateLogin
+      parameters:
+      - name: api-version
+        in: query
+        description: The requested API version
+        schema:
+          type: string
+          default: '1.0'
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/InboundLoginRequest'
+            example:
+              username: string
+              password: string
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InboundLoginRequest'
+            example:
+              username: string
+              password: string
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InboundLoginRequest'
+            example:
+              username: string
+              password: string
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InboundLoginRequest'
+            example:
+              username: string
+              password: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: {}
+                transactionId: string
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: {}
+                transactionId: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseObject'
+              example:
+                error: true
+                status: string
+                message: string
+                errors: {}
+                transactionId: string
+    servers:
+    - url: https://api.gls.nl/v1
+components:
+  schemas:
+    InboundLoginRequest:
+      required:
+      - password
+      - username
+      type: object
+      properties:
+        username:
+          maxLength: 70
+          minLength: 1
+          type: string
+        password:
+          maxLength: 20
+          minLength: 1
+          type: string
+          writeOnly: true
+      additionalProperties: false
+    ApiResponseObject:
+      type: object
+      properties:
+        error:
+          type: boolean
+          readOnly: true
+        status:
+          type:
+          - string
+          - 'null'
+        message:
+          type:
+          - string
+          - 'null'
+        errors:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type:
+            - array
+            - 'null'
+            items:
+              type: string
+        transactionId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+      additionalProperties: false
+x-refined-from:
+- gls-netherlands-label-api-openapi.yml
+- gls-netherlands-label-api-test-openapi.yml
