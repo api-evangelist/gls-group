@@ -11,7 +11,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 2
+edge_count: 4
 edges:
 - tag: Parcel
   spec_file: gls-group-parcel-api-openapi.yml
@@ -23,6 +23,17 @@ edges:
     Eta, ParcelDetailsResponseDto; POST /api/parcel/v1/search
   reason: Track-and-trace parcel search and detail retrieval with parcel events and ETA is shipment status
     resolution and tracking, not order or capacity management.
+- tag: Delivery
+  spec_file: gls-group-delivery-api-openapi.yml
+  capability_id: BC-520.50
+  capability_id_l1: BC-520
+  capability_name: Logistics Operations Management
+  confidence: 0.8
+  evidence: 'POST /api/Label/Create  CreateLabel ... schemas: InboundCreateDeliveryRequest, DeliveryAddresses,
+    ShipType'
+  reason: Creating, confirming and deleting parcel shipment labels with delivery addresses and ship types
+    is parcel dispatch execution — logistics operations for this carrier.
+  recovered_from: vertical-automotive-mobility-edges.json
 - tag: Pickup
   spec_file: gls-group-pickup-api-openapi.yml
   capability_id: BC-2420.30
@@ -32,3 +43,12 @@ edges:
   evidence: POST /api/Pickup/Create  CreatePickup; POST /api/Pickup/Delete  DeletePickup
   reason: Creating and cancelling parcel pickups from shippers is first-mile pickup operations for a road
     parcel carrier.
+- tag: Pod
+  spec_file: gls-group-pod-api-openapi.yml
+  capability_id: BC-520.50
+  capability_id_l1: BC-520
+  capability_name: Logistics Operations Management
+  confidence: 0.7
+  evidence: 'POST /api/pod/v1 ... schemas: PodsResponseDto, Pod, GetPodsRequestDto'
+  reason: Proof-of-delivery retrieval for parcels is a delivery-execution artefact within logistics operations.
+  recovered_from: vertical-automotive-mobility-edges.json
