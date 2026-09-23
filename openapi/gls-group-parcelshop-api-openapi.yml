@@ -1,11 +1,10 @@
 openapi: 3.2.0
 info:
-  title: Gls Group Parcel Shop API
+  title: GLS Netherlands LabelApi - Production Parcel Shop API
+  description: GLS Label API Production environment
   version: v1
-  description: 'Operations tagged ParcelShop across 2 of this provider''s published API definitions: gls-netherlands-label-api-openapi.yml, gls-netherlands-label-api-test-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.gls.nl/v1
-- url: https://api.gls.nl/test/v1
 tags:
 - name: ParcelShop
 paths:
@@ -172,11 +171,9 @@ paths:
                 message: string
                 errors: {}
                 transactionId: string
-    servers:
-    - url: https://api.gls.nl/v1
 components:
   schemas:
-    ApiGetParcelShopsResponseObject:
+    ApiResponseObject:
       type: object
       properties:
         error:
@@ -205,75 +202,6 @@ components:
           - string
           - 'null'
           format: uuid
-        parcelShops:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/GlsPoint'
-      additionalProperties: false
-    GlsPointsRequestType:
-      enum:
-      - all
-      - parcelShops
-      - parcelLockers
-      type: string
-    GlsPointType:
-      enum:
-      - parcelShop
-      - parcelLocker
-      type: string
-    InboundGetParcelShopsRequest:
-      required:
-      - amountOfShops
-      - password
-      - username
-      - zipCode
-      type: object
-      properties:
-        username:
-          maxLength: 70
-          minLength: 1
-          type: string
-        password:
-          maxLength: 20
-          minLength: 1
-          type: string
-          writeOnly: true
-        countryCode:
-          maxLength: 2
-          minLength: 2
-          type:
-          - string
-          - 'null'
-        zipCode:
-          maxLength: 8
-          minLength: 1
-          type: string
-        street:
-          type:
-          - string
-          - 'null'
-        houseNo:
-          type:
-          - string
-          - 'null'
-        city:
-          type:
-          - string
-          - 'null'
-        amountOfShops:
-          maximum: 10
-          minimum: 1
-          type: integer
-          format: int32
-        shippingDate:
-          type: string
-          format: date-time
-        langCode:
-          $ref: '#/components/schemas/LangCode'
-        glsPointType:
-          $ref: '#/components/schemas/GlsPointsRequestType'
       additionalProperties: false
     GlsPoint:
       type: object
@@ -356,6 +284,38 @@ components:
         type:
           $ref: '#/components/schemas/GlsPointType'
       additionalProperties: false
+    GlsPointsRequestType:
+      enum:
+      - all
+      - parcelShops
+      - parcelLockers
+      type: string
+    DeliveryOptions:
+      type: object
+      properties:
+        service:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        expectedDeliveryDate:
+          type:
+          - string
+          - 'null'
+        expectedDeliveryTime:
+          type:
+          - string
+          - 'null'
+        subDeliveryOptions:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DeliveryOption'
+      additionalProperties: false
     DeliveryOption:
       type: object
       properties:
@@ -376,19 +336,7 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    GlsPointVacation:
-      type: object
-      properties:
-        start:
-          type:
-          - string
-          - 'null'
-        end:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    ApiResponseObject:
+    ApiGetParcelShopsResponseObject:
       type: object
       properties:
         error:
@@ -417,49 +365,12 @@ components:
           - string
           - 'null'
           format: uuid
-      additionalProperties: false
-    DeliveryOptions:
-      type: object
-      properties:
-        service:
-          type:
-          - string
-          - 'null'
-        title:
-          type:
-          - string
-          - 'null'
-        expectedDeliveryDate:
-          type:
-          - string
-          - 'null'
-        expectedDeliveryTime:
-          type:
-          - string
-          - 'null'
-        subDeliveryOptions:
+        parcelShops:
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/DeliveryOption'
-      additionalProperties: false
-    LangCode:
-      enum:
-      - nl
-      - en
-      type: string
-    GeoCoordinates:
-      type: object
-      properties:
-        lat:
-          type: number
-          format: double
-          readOnly: true
-        lng:
-          type: number
-          format: double
-          readOnly: true
+            $ref: '#/components/schemas/GlsPoint'
       additionalProperties: false
     GlsPointBusinessHours:
       type: object
@@ -493,6 +404,89 @@ components:
           - string
           - 'null'
       additionalProperties: false
-x-refined-from:
-- gls-netherlands-label-api-openapi.yml
-- gls-netherlands-label-api-test-openapi.yml
+    GlsPointVacation:
+      type: object
+      properties:
+        start:
+          type:
+          - string
+          - 'null'
+        end:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    InboundGetParcelShopsRequest:
+      required:
+      - amountOfShops
+      - password
+      - username
+      - zipCode
+      type: object
+      properties:
+        username:
+          maxLength: 70
+          minLength: 1
+          type: string
+        password:
+          maxLength: 20
+          minLength: 1
+          type: string
+          writeOnly: true
+        countryCode:
+          maxLength: 2
+          minLength: 2
+          type:
+          - string
+          - 'null'
+        zipCode:
+          maxLength: 8
+          minLength: 1
+          type: string
+        street:
+          type:
+          - string
+          - 'null'
+        houseNo:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        amountOfShops:
+          maximum: 10
+          minimum: 1
+          type: integer
+          format: int32
+        shippingDate:
+          type: string
+          format: date-time
+        langCode:
+          $ref: '#/components/schemas/LangCode'
+        glsPointType:
+          $ref: '#/components/schemas/GlsPointsRequestType'
+      additionalProperties: false
+    GeoCoordinates:
+      type: object
+      properties:
+        lat:
+          type: number
+          format: double
+          readOnly: true
+        lng:
+          type: number
+          format: double
+          readOnly: true
+      additionalProperties: false
+    LangCode:
+      enum:
+      - nl
+      - en
+      type: string
+    GlsPointType:
+      enum:
+      - parcelShop
+      - parcelLocker
+      type: string

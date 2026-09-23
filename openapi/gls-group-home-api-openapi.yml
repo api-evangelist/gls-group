@@ -1,12 +1,10 @@
 openapi: 3.2.0
 info:
-  title: Gls Group Home API
-  version: '1.0'
-  description: 'Operations tagged Home across 2 of this provider''s published API definitions: gls-track-and-trace-api-openapi.yml, gls-track-and-trace-api-test-openapi.yml. Each path carries the servers of the definition it was published in.'
+  title: GLS T&T Api - Production Home API
+  description: GLS Track & Trace API Production environment
+  version: V1
 servers:
 - url: https://api.gls.nl/tt/V1
-- url: http://api.gls.nl/tt-test
-- url: https://api.gls.nl/tt-test
 tags:
 - name: Home
 paths:
@@ -19,8 +17,3 @@ paths:
       responses:
         '200':
           description: OK
-    servers:
-    - url: https://api.gls.nl/tt/V1
-x-refined-from:
-- gls-track-and-trace-api-openapi.yml
-- gls-track-and-trace-api-test-openapi.yml

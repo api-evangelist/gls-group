@@ -1,0 +1,53 @@
+{
+  "provider": "gls-group",
+  "sources": [
+    "_original/gls-netherlands-label-api-openapi.yml",
+    "_original/gls-track-and-trace-api-openapi.yml"
+  ],
+  "outputs": [
+    "gls-group-authentication-api-openapi.yml",
+    "gls-group-delivery-api-openapi.yml",
+    "gls-group-deliveryoptions-api-openapi.yml",
+    "gls-group-monitor-api-openapi.yml",
+    "gls-group-parcelshop-api-openapi.yml",
+    "gls-group-pickup-api-openapi.yml",
+    "gls-group-shopreturn-api-openapi.yml",
+    "gls-group-home-api-openapi.yml",
+    "gls-group-parcel-api-openapi.yml",
+    "gls-group-pod-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "2 archived document(s) dropped as subsets of other archived documents",
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "gls-netherlands-label-api-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "gls-netherlands-label-api-openapi.yml: declared missing tag: Authentication",
+    "gls-netherlands-label-api-openapi.yml: declared missing tag: Delivery",
+    "gls-netherlands-label-api-openapi.yml: declared missing tag: DeliveryOptions",
+    "gls-netherlands-label-api-openapi.yml: declared missing tag: Monitor",
+    "gls-netherlands-label-api-openapi.yml: declared missing tag: ParcelShop",
+    "gls-netherlands-label-api-openapi.yml: declared missing tag: Pickup",
+    "gls-netherlands-label-api-openapi.yml: declared missing tag: ShopReturn",
+    "gls-track-and-trace-api-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "gls-track-and-trace-api-openapi.yml: declared missing tag: Home",
+    "gls-track-and-trace-api-openapi.yml: declared missing tag: Parcel",
+    "gls-track-and-trace-api-openapi.yml: declared missing tag: Pod",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "_original/gls-track-and-trace-api-test-openapi.yml: archived document superseded by a larger archived document",
+    "_original/gls-netherlands-label-api-test-openapi.yml: archived document superseded by a larger archived document",
+    "gls-group-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gls-group-delivery-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gls-group-deliveryoptions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gls-group-home-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gls-group-monitor-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gls-group-parcel-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gls-group-parcelshop-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gls-group-pickup-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gls-group-pod-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "gls-group-shopreturn-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
+}
