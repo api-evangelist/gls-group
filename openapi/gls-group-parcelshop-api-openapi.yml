@@ -173,6 +173,153 @@ paths:
                 transactionId: string
 components:
   schemas:
+    InboundGetParcelShopsRequest:
+      required:
+      - amountOfShops
+      - password
+      - username
+      - zipCode
+      type: object
+      properties:
+        username:
+          maxLength: 70
+          minLength: 1
+          type: string
+        password:
+          maxLength: 20
+          minLength: 1
+          type: string
+          writeOnly: true
+        countryCode:
+          maxLength: 2
+          minLength: 2
+          type:
+          - string
+          - 'null'
+        zipCode:
+          maxLength: 8
+          minLength: 1
+          type: string
+        street:
+          type:
+          - string
+          - 'null'
+        houseNo:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        amountOfShops:
+          maximum: 10
+          minimum: 1
+          type: integer
+          format: int32
+        shippingDate:
+          type: string
+          format: date-time
+        langCode:
+          $ref: '#/components/schemas/LangCode'
+        glsPointType:
+          $ref: '#/components/schemas/GlsPointsRequestType'
+      additionalProperties: false
+    GlsPointVacation:
+      type: object
+      properties:
+        start:
+          type:
+          - string
+          - 'null'
+        end:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    GlsPointBusinessHours:
+      type: object
+      properties:
+        dayOfWeek:
+          type:
+          - string
+          - 'null'
+        openTime:
+          type:
+          - string
+          - 'null'
+        breakStartTime:
+          type:
+          - string
+          - 'null'
+        breakEndTime:
+          type:
+          - string
+          - 'null'
+        secondBreakStartTime:
+          type:
+          - string
+          - 'null'
+        secondBreakEndTime:
+          type:
+          - string
+          - 'null'
+        closedTime:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    DeliveryOptions:
+      type: object
+      properties:
+        service:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        expectedDeliveryDate:
+          type:
+          - string
+          - 'null'
+        expectedDeliveryTime:
+          type:
+          - string
+          - 'null'
+        subDeliveryOptions:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DeliveryOption'
+      additionalProperties: false
+    DeliveryOption:
+      type: object
+      properties:
+        service:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        expectedDeliveryDate:
+          type:
+          - string
+          - 'null'
+        expectedDeliveryTime:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    GlsPointType:
+      enum:
+      - parcelShop
+      - parcelLocker
+      type: string
     ApiResponseObject:
       type: object
       properties:
@@ -284,57 +431,22 @@ components:
         type:
           $ref: '#/components/schemas/GlsPointType'
       additionalProperties: false
-    GlsPointsRequestType:
+    LangCode:
       enum:
-      - all
-      - parcelShops
-      - parcelLockers
+      - nl
+      - en
       type: string
-    DeliveryOptions:
+    GeoCoordinates:
       type: object
       properties:
-        service:
-          type:
-          - string
-          - 'null'
-        title:
-          type:
-          - string
-          - 'null'
-        expectedDeliveryDate:
-          type:
-          - string
-          - 'null'
-        expectedDeliveryTime:
-          type:
-          - string
-          - 'null'
-        subDeliveryOptions:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/DeliveryOption'
-      additionalProperties: false
-    DeliveryOption:
-      type: object
-      properties:
-        service:
-          type:
-          - string
-          - 'null'
-        title:
-          type:
-          - string
-          - 'null'
-        expectedDeliveryDate:
-          type:
-          - string
-          - 'null'
-        expectedDeliveryTime:
-          type:
-          - string
-          - 'null'
+        lat:
+          type: number
+          format: double
+          readOnly: true
+        lng:
+          type: number
+          format: double
+          readOnly: true
       additionalProperties: false
     ApiGetParcelShopsResponseObject:
       type: object
@@ -372,121 +484,9 @@ components:
           items:
             $ref: '#/components/schemas/GlsPoint'
       additionalProperties: false
-    GlsPointBusinessHours:
-      type: object
-      properties:
-        dayOfWeek:
-          type:
-          - string
-          - 'null'
-        openTime:
-          type:
-          - string
-          - 'null'
-        breakStartTime:
-          type:
-          - string
-          - 'null'
-        breakEndTime:
-          type:
-          - string
-          - 'null'
-        secondBreakStartTime:
-          type:
-          - string
-          - 'null'
-        secondBreakEndTime:
-          type:
-          - string
-          - 'null'
-        closedTime:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    GlsPointVacation:
-      type: object
-      properties:
-        start:
-          type:
-          - string
-          - 'null'
-        end:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    InboundGetParcelShopsRequest:
-      required:
-      - amountOfShops
-      - password
-      - username
-      - zipCode
-      type: object
-      properties:
-        username:
-          maxLength: 70
-          minLength: 1
-          type: string
-        password:
-          maxLength: 20
-          minLength: 1
-          type: string
-          writeOnly: true
-        countryCode:
-          maxLength: 2
-          minLength: 2
-          type:
-          - string
-          - 'null'
-        zipCode:
-          maxLength: 8
-          minLength: 1
-          type: string
-        street:
-          type:
-          - string
-          - 'null'
-        houseNo:
-          type:
-          - string
-          - 'null'
-        city:
-          type:
-          - string
-          - 'null'
-        amountOfShops:
-          maximum: 10
-          minimum: 1
-          type: integer
-          format: int32
-        shippingDate:
-          type: string
-          format: date-time
-        langCode:
-          $ref: '#/components/schemas/LangCode'
-        glsPointType:
-          $ref: '#/components/schemas/GlsPointsRequestType'
-      additionalProperties: false
-    GeoCoordinates:
-      type: object
-      properties:
-        lat:
-          type: number
-          format: double
-          readOnly: true
-        lng:
-          type: number
-          format: double
-          readOnly: true
-      additionalProperties: false
-    LangCode:
+    GlsPointsRequestType:
       enum:
-      - nl
-      - en
-      type: string
-    GlsPointType:
-      enum:
-      - parcelShop
-      - parcelLocker
+      - all
+      - parcelShops
+      - parcelLockers
       type: string

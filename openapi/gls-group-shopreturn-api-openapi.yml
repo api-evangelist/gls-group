@@ -374,22 +374,7 @@ paths:
                 transactionId: string
 components:
   schemas:
-    ShipType:
-      enum:
-      - p
-      - f
-      type: string
-    UnitType:
-      enum:
-      - co
-      - lg
-      - mp
-      - bp
-      - xl
-      - pl
-      - rl
-      type: string
-    ApiResponseObject:
+    ApiCreateLabelResponseObject:
       type: object
       properties:
         error:
@@ -418,7 +403,104 @@ components:
           - string
           - 'null'
           format: uuid
+        shipmentTrackingLink:
+          type:
+          - string
+          - 'null'
+        labels:
+          type:
+          - string
+          - 'null'
+        units:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ApiUnit'
       additionalProperties: false
+    PickupAddress:
+      required:
+      - city
+      - countryCode
+      - name1
+      - street
+      - zipCode
+      type: object
+      properties:
+        name1:
+          maxLength: 30
+          minLength: 1
+          type: string
+        name2:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        name3:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        street:
+          maxLength: 40
+          minLength: 1
+          type: string
+        houseNo:
+          maxLength: 5
+          type:
+          - string
+          - 'null'
+        houseNoExt:
+          maxLength: 5
+          type:
+          - string
+          - 'null'
+        zipCode:
+          maxLength: 8
+          minLength: 1
+          type: string
+        city:
+          maxLength: 30
+          minLength: 1
+          type: string
+        countryCode:
+          maxLength: 2
+          minLength: 1
+          type: string
+        contact:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        phone:
+          maxLength: 25
+          type:
+          - string
+          - 'null'
+        email:
+          maxLength: 320
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    LabelResultType:
+      enum:
+      - zpl
+      - zplUtf8
+      - zpl300
+      - zpl300Utf8
+      - pdf
+      - pdfRoutingOnly
+      - zplRoutingOnly
+      - zplUtf8RoutingOnly
+      - zpl300RoutingOnly
+      - zpl300Utf8RoutingOnly
+      - pdfA6U
+      - pdfA6S
+      - pdf2A4
+      - pdf4A4
+      - none
+      type: string
     InboundCreateShopReturnRequest:
       required:
       - password
@@ -494,7 +576,73 @@ components:
         sendLabelsByEmail:
           type: boolean
       additionalProperties: false
-    ApiCreateLabelResponseObject:
+    Unit:
+      required:
+      - unitId
+      - weight
+      type: object
+      properties:
+        unitId:
+          maxLength: 50
+          minLength: 1
+          type: string
+        unitType:
+          $ref: '#/components/schemas/UnitType'
+        customerUnitReference:
+          maxLength: 35
+          type:
+          - string
+          - 'null'
+        weight:
+          type: number
+          format: float
+        dimensions:
+          $ref: '#/components/schemas/Dimensions'
+        additionalInfo1:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        additionalInfo2:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    TrackingLinkType:
+      enum:
+      - u
+      - s
+      type: string
+    ApiUnit:
+      type: object
+      additionalProperties: false
+    UnitType:
+      enum:
+      - co
+      - lg
+      - mp
+      - bp
+      - xl
+      - pl
+      - rl
+      type: string
+    PickupAddresses:
+      type: object
+      properties:
+        pickupAddress:
+          $ref: '#/components/schemas/PickupAddress'
+        deliveryAddress:
+          $ref: '#/components/schemas/DeliveryAddress'
+        requesterAddress:
+          $ref: '#/components/schemas/RequesterAddress'
+      additionalProperties: false
+    ShipType:
+      enum:
+      - p
+      - f
+      type: string
+    ApiResponseObject:
       type: object
       properties:
         error:
@@ -523,51 +671,6 @@ components:
           - string
           - 'null'
           format: uuid
-        shipmentTrackingLink:
-          type:
-          - string
-          - 'null'
-        labels:
-          type:
-          - string
-          - 'null'
-        units:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ApiUnit'
-      additionalProperties: false
-    PickupAddresses:
-      type: object
-      properties:
-        pickupAddress:
-          $ref: '#/components/schemas/PickupAddress'
-        deliveryAddress:
-          $ref: '#/components/schemas/DeliveryAddress'
-        requesterAddress:
-          $ref: '#/components/schemas/RequesterAddress'
-      additionalProperties: false
-    LabelResultType:
-      enum:
-      - zpl
-      - zplUtf8
-      - zpl300
-      - zpl300Utf8
-      - pdf
-      - pdfRoutingOnly
-      - zplRoutingOnly
-      - zplUtf8RoutingOnly
-      - zpl300RoutingOnly
-      - zpl300Utf8RoutingOnly
-      - pdfA6U
-      - pdfA6S
-      - pdf2A4
-      - pdf4A4
-      - none
-      type: string
-    ApiUnit:
-      type: object
       additionalProperties: false
     DeliveryAddress:
       required:
@@ -635,117 +738,6 @@ components:
           - 'null'
         addresseeType:
           $ref: '#/components/schemas/AdresseeType'
-      additionalProperties: false
-    PickupAddress:
-      required:
-      - city
-      - countryCode
-      - name1
-      - street
-      - zipCode
-      type: object
-      properties:
-        name1:
-          maxLength: 30
-          minLength: 1
-          type: string
-        name2:
-          maxLength: 30
-          type:
-          - string
-          - 'null'
-        name3:
-          maxLength: 30
-          type:
-          - string
-          - 'null'
-        street:
-          maxLength: 40
-          minLength: 1
-          type: string
-        houseNo:
-          maxLength: 5
-          type:
-          - string
-          - 'null'
-        houseNoExt:
-          maxLength: 5
-          type:
-          - string
-          - 'null'
-        zipCode:
-          maxLength: 8
-          minLength: 1
-          type: string
-        city:
-          maxLength: 30
-          minLength: 1
-          type: string
-        countryCode:
-          maxLength: 2
-          minLength: 1
-          type: string
-        contact:
-          maxLength: 30
-          type:
-          - string
-          - 'null'
-        phone:
-          maxLength: 25
-          type:
-          - string
-          - 'null'
-        email:
-          maxLength: 320
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Unit:
-      required:
-      - unitId
-      - weight
-      type: object
-      properties:
-        unitId:
-          maxLength: 50
-          minLength: 1
-          type: string
-        unitType:
-          $ref: '#/components/schemas/UnitType'
-        customerUnitReference:
-          maxLength: 35
-          type:
-          - string
-          - 'null'
-        weight:
-          type: number
-          format: float
-        dimensions:
-          $ref: '#/components/schemas/Dimensions'
-        additionalInfo1:
-          maxLength: 30
-          type:
-          - string
-          - 'null'
-        additionalInfo2:
-          maxLength: 30
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Dimensions:
-      type: object
-      properties:
-        length:
-          type: integer
-          format: int32
-        width:
-          type: integer
-          format: int32
-        height:
-          type: integer
-          format: int32
       additionalProperties: false
     RequesterAddress:
       required:
@@ -817,8 +809,16 @@ components:
       - b
       - p
       type: string
-    TrackingLinkType:
-      enum:
-      - u
-      - s
-      type: string
+    Dimensions:
+      type: object
+      properties:
+        length:
+          type: integer
+          format: int32
+        width:
+          type: integer
+          format: int32
+        height:
+          type: integer
+          format: int32
+      additionalProperties: false

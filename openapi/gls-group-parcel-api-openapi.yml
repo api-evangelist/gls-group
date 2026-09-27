@@ -339,30 +339,6 @@ paths:
                 instance: string
 components:
   schemas:
-    Ndi:
-      type: object
-      properties:
-        type:
-          type:
-          - string
-          - 'null'
-        number:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    SearchParcelResponseDto:
-      required:
-      - parcels
-      type: object
-      properties:
-        parcels:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ParcelInfo'
-      additionalProperties: false
     ParcelModel:
       type: object
       properties:
@@ -500,6 +476,47 @@ components:
           type: integer
           format: int64
       additionalProperties: false
+    Eta:
+      type: object
+      properties:
+        startTime:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        endTime:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        stops:
+          type:
+          - integer
+          - 'null'
+          format: int32
+        latitude:
+          type:
+          - number
+          - 'null'
+          format: double
+        longitude:
+          type:
+          - number
+          - 'null'
+          format: double
+      additionalProperties: false
+    ParcelDetailsResponseDto:
+      required:
+      - parcels
+      type: object
+      properties:
+        parcels:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ParcelModel'
+      additionalProperties: false
     GetParcelsDetailsRequestDto:
       required:
       - parcelNumbers
@@ -518,152 +535,17 @@ components:
           items:
             type: string
       additionalProperties: false
-    SearchParcelsRequestDto:
+    SearchParcelResponseDto:
       required:
-      - password
-      - userName
+      - parcels
       type: object
       properties:
-        userName:
-          minLength: 3
-          type: string
-        password:
-          minLength: 3
-          type: string
-        customerRef:
+        parcels:
           type:
-          - string
+          - array
           - 'null'
-        from:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        to:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        since:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        state:
-          type:
-          - string
-          - 'null'
-        country:
-          type:
-          - string
-          - 'null'
-        name:
-          type:
-          - string
-          - 'null'
-        zipCode:
-          type:
-          - string
-          - 'null'
-        ndi:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    ParcelEvent:
-      type: object
-      properties:
-        eventId:
-          type:
-          - string
-          - 'null'
-        eventNo:
-          type: integer
-          format: int32
-        reasonNo:
-          type: integer
-          format: int32
-        descriptionNL:
-          type:
-          - string
-          - 'null'
-        descriptionEN:
-          type:
-          - string
-          - 'null'
-        country:
-          type:
-          - string
-          - 'null'
-        countryName:
-          type:
-          - string
-          - 'null'
-        depot:
-          type:
-          - string
-          - 'null'
-        depotName:
-          type:
-          - string
-          - 'null'
-        details:
-          type:
-          - string
-          - 'null'
-        date:
-          type: string
-          format: date-time
-        isPhysical:
-          type: boolean
-      additionalProperties: false
-    Address:
-      type: object
-      properties:
-        addressType:
-          type:
-          - string
-          - 'null'
-        email:
-          type:
-          - string
-          - 'null'
-        city:
-          type:
-          - string
-          - 'null'
-        street:
-          type:
-          - string
-          - 'null'
-        zipCode:
-          type:
-          - string
-          - 'null'
-        country:
-          type:
-          - string
-          - 'null'
-        houseNumber:
-          type:
-          - string
-          - 'null'
-        houseNumberAddition:
-          type:
-          - string
-          - 'null'
-        name1:
-          type:
-          - string
-          - 'null'
-        name2:
-          type:
-          - string
-          - 'null'
-        name3:
-          type:
-          - string
-          - 'null'
+          items:
+            $ref: '#/components/schemas/ParcelInfo'
       additionalProperties: false
     ParcelInfo:
       type: object
@@ -727,35 +609,6 @@ components:
             type: string
           readOnly: true
       additionalProperties: false
-    Eta:
-      type: object
-      properties:
-        startTime:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        endTime:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        stops:
-          type:
-          - integer
-          - 'null'
-          format: int32
-        latitude:
-          type:
-          - number
-          - 'null'
-          format: double
-        longitude:
-          type:
-          - number
-          - 'null'
-          format: double
-      additionalProperties: false
     ProblemDetails:
       type: object
       properties:
@@ -781,15 +634,162 @@ components:
           - string
           - 'null'
       additionalProperties: {}
-    ParcelDetailsResponseDto:
-      required:
-      - parcels
+    Ndi:
       type: object
       properties:
-        parcels:
+        type:
           type:
-          - array
+          - string
           - 'null'
-          items:
-            $ref: '#/components/schemas/ParcelModel'
+        number:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Address:
+      type: object
+      properties:
+        addressType:
+          type:
+          - string
+          - 'null'
+        email:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        street:
+          type:
+          - string
+          - 'null'
+        zipCode:
+          type:
+          - string
+          - 'null'
+        country:
+          type:
+          - string
+          - 'null'
+        houseNumber:
+          type:
+          - string
+          - 'null'
+        houseNumberAddition:
+          type:
+          - string
+          - 'null'
+        name1:
+          type:
+          - string
+          - 'null'
+        name2:
+          type:
+          - string
+          - 'null'
+        name3:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ParcelEvent:
+      type: object
+      properties:
+        eventId:
+          type:
+          - string
+          - 'null'
+        eventNo:
+          type: integer
+          format: int32
+        reasonNo:
+          type: integer
+          format: int32
+        descriptionNL:
+          type:
+          - string
+          - 'null'
+        descriptionEN:
+          type:
+          - string
+          - 'null'
+        country:
+          type:
+          - string
+          - 'null'
+        countryName:
+          type:
+          - string
+          - 'null'
+        depot:
+          type:
+          - string
+          - 'null'
+        depotName:
+          type:
+          - string
+          - 'null'
+        details:
+          type:
+          - string
+          - 'null'
+        date:
+          type: string
+          format: date-time
+        isPhysical:
+          type: boolean
+      additionalProperties: false
+    SearchParcelsRequestDto:
+      required:
+      - password
+      - userName
+      type: object
+      properties:
+        userName:
+          minLength: 3
+          type: string
+        password:
+          minLength: 3
+          type: string
+        customerRef:
+          type:
+          - string
+          - 'null'
+        from:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        to:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        since:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        state:
+          type:
+          - string
+          - 'null'
+        country:
+          type:
+          - string
+          - 'null'
+        name:
+          type:
+          - string
+          - 'null'
+        zipCode:
+          type:
+          - string
+          - 'null'
+        ndi:
+          type:
+          - string
+          - 'null'
       additionalProperties: false

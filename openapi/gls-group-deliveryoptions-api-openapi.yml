@@ -112,36 +112,6 @@ paths:
                 transactionId: string
 components:
   schemas:
-    ApiResponseObject:
-      type: object
-      properties:
-        error:
-          type: boolean
-          readOnly: true
-        status:
-          type:
-          - string
-          - 'null'
-        message:
-          type:
-          - string
-          - 'null'
-        errors:
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            type:
-            - array
-            - 'null'
-            items:
-              type: string
-        transactionId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-      additionalProperties: false
     InboundGetDeliveryOptionsRequest:
       required:
       - countryCode
@@ -199,6 +169,41 @@ components:
           items:
             $ref: '#/components/schemas/DeliveryOption'
       additionalProperties: false
+    ApiResponseObject:
+      type: object
+      properties:
+        error:
+          type: boolean
+          readOnly: true
+        status:
+          type:
+          - string
+          - 'null'
+        message:
+          type:
+          - string
+          - 'null'
+        errors:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type:
+            - array
+            - 'null'
+            items:
+              type: string
+        transactionId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+      additionalProperties: false
+    LangCode:
+      enum:
+      - nl
+      - en
+      type: string
     DeliveryOption:
       type: object
       properties:
@@ -255,8 +260,3 @@ components:
           items:
             $ref: '#/components/schemas/DeliveryOptions'
       additionalProperties: false
-    LangCode:
-      enum:
-      - nl
-      - en
-      type: string

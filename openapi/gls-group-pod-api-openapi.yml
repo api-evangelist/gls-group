@@ -107,6 +107,24 @@ components:
           items:
             $ref: '#/components/schemas/Pod'
       additionalProperties: false
+    GetPodsRequestDto:
+      required:
+      - parcelNumbers
+      - password
+      - userName
+      type: object
+      properties:
+        userName:
+          minLength: 1
+          type: string
+        password:
+          minLength: 1
+          type: string
+        parcelNumbers:
+          type: array
+          items:
+            type: string
+      additionalProperties: false
     Pod:
       required:
       - parcelNumber
@@ -147,21 +165,3 @@ components:
           - string
           - 'null'
       additionalProperties: {}
-    GetPodsRequestDto:
-      required:
-      - parcelNumbers
-      - password
-      - userName
-      type: object
-      properties:
-        userName:
-          minLength: 1
-          type: string
-        password:
-          minLength: 1
-          type: string
-        parcelNumbers:
-          type: array
-          items:
-            type: string
-      additionalProperties: false
