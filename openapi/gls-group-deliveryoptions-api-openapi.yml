@@ -112,36 +112,25 @@ paths:
                 transactionId: string
 components:
   schemas:
-    InboundGetDeliveryOptionsRequest:
-      required:
-      - countryCode
-      - password
-      - username
-      - zipCode
+    DeliveryOption:
       type: object
       properties:
-        username:
-          maxLength: 70
-          minLength: 1
-          type: string
-        password:
-          maxLength: 20
-          minLength: 1
-          type: string
-          writeOnly: true
-        countryCode:
-          maxLength: 2
-          minLength: 2
-          type: string
-        langCode:
-          $ref: '#/components/schemas/LangCode'
-        zipCode:
-          maxLength: 8
-          minLength: 1
-          type: string
-        shippingDate:
-          type: string
-          format: date-time
+        service:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        expectedDeliveryDate:
+          type:
+          - string
+          - 'null'
+        expectedDeliveryTime:
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     DeliveryOptions:
       type: object
@@ -169,6 +158,11 @@ components:
           items:
             $ref: '#/components/schemas/DeliveryOption'
       additionalProperties: false
+    LangCode:
+      enum:
+      - nl
+      - en
+      type: string
     ApiResponseObject:
       type: object
       properties:
@@ -198,31 +192,6 @@ components:
           - string
           - 'null'
           format: uuid
-      additionalProperties: false
-    LangCode:
-      enum:
-      - nl
-      - en
-      type: string
-    DeliveryOption:
-      type: object
-      properties:
-        service:
-          type:
-          - string
-          - 'null'
-        title:
-          type:
-          - string
-          - 'null'
-        expectedDeliveryDate:
-          type:
-          - string
-          - 'null'
-        expectedDeliveryTime:
-          type:
-          - string
-          - 'null'
       additionalProperties: false
     ApiGetDeliveryOptionsResponseObject:
       type: object
@@ -259,4 +228,35 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/DeliveryOptions'
+      additionalProperties: false
+    InboundGetDeliveryOptionsRequest:
+      required:
+      - countryCode
+      - password
+      - username
+      - zipCode
+      type: object
+      properties:
+        username:
+          maxLength: 70
+          minLength: 1
+          type: string
+        password:
+          maxLength: 20
+          minLength: 1
+          type: string
+          writeOnly: true
+        countryCode:
+          maxLength: 2
+          minLength: 2
+          type: string
+        langCode:
+          $ref: '#/components/schemas/LangCode'
+        zipCode:
+          maxLength: 8
+          minLength: 1
+          type: string
+        shippingDate:
+          type: string
+          format: date-time
       additionalProperties: false
