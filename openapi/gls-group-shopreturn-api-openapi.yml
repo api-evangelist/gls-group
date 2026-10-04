@@ -374,62 +374,103 @@ paths:
                 transactionId: string
 components:
   schemas:
-    Dimensions:
+    RequesterAddress:
+      required:
+      - city
+      - countryCode
+      - name1
+      - street
+      - zipCode
       type: object
       properties:
-        length:
-          type: integer
-          format: int32
-        width:
-          type: integer
-          format: int32
-        height:
-          type: integer
-          format: int32
+        name1:
+          maxLength: 30
+          minLength: 1
+          type: string
+        name2:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        name3:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        street:
+          maxLength: 40
+          minLength: 1
+          type: string
+        houseNo:
+          maxLength: 5
+          type:
+          - string
+          - 'null'
+        houseNoExt:
+          maxLength: 5
+          type:
+          - string
+          - 'null'
+        zipCode:
+          maxLength: 8
+          minLength: 1
+          type: string
+        city:
+          maxLength: 30
+          minLength: 1
+          type: string
+        countryCode:
+          maxLength: 2
+          minLength: 1
+          type: string
+        contact:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        phone:
+          maxLength: 25
+          type:
+          - string
+          - 'null'
+        email:
+          maxLength: 320
+          type:
+          - string
+          - 'null'
       additionalProperties: false
-    ApiCreateLabelResponseObject:
+    Unit:
+      required:
+      - unitId
+      - weight
       type: object
       properties:
-        error:
-          type: boolean
-          readOnly: true
-        status:
+        unitId:
+          maxLength: 50
+          minLength: 1
+          type: string
+        unitType:
+          $ref: '#/components/schemas/UnitType'
+        customerUnitReference:
+          maxLength: 35
           type:
           - string
           - 'null'
-        message:
+        weight:
+          type: number
+          format: float
+        dimensions:
+          $ref: '#/components/schemas/Dimensions'
+        additionalInfo1:
+          maxLength: 30
           type:
           - string
           - 'null'
-        errors:
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            type:
-            - array
-            - 'null'
-            items:
-              type: string
-        transactionId:
+        additionalInfo2:
+          maxLength: 30
           type:
           - string
           - 'null'
-          format: uuid
-        shipmentTrackingLink:
-          type:
-          - string
-          - 'null'
-        labels:
-          type:
-          - string
-          - 'null'
-        units:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ApiUnit'
       additionalProperties: false
     DeliveryAddress:
       required:
@@ -498,50 +539,15 @@ components:
         addresseeType:
           $ref: '#/components/schemas/AdresseeType'
       additionalProperties: false
-    Unit:
-      required:
-      - unitId
-      - weight
-      type: object
-      properties:
-        unitId:
-          maxLength: 50
-          minLength: 1
-          type: string
-        unitType:
-          $ref: '#/components/schemas/UnitType'
-        customerUnitReference:
-          maxLength: 35
-          type:
-          - string
-          - 'null'
-        weight:
-          type: number
-          format: float
-        dimensions:
-          $ref: '#/components/schemas/Dimensions'
-        additionalInfo1:
-          maxLength: 30
-          type:
-          - string
-          - 'null'
-        additionalInfo2:
-          maxLength: 30
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    ShipType:
-      enum:
-      - p
-      - f
-      type: string
     TrackingLinkType:
       enum:
       - u
       - s
       type: string
-    ApiResponseObject:
+    ApiUnit:
+      type: object
+      additionalProperties: false
+    ApiCreateLabelResponseObject:
       type: object
       properties:
         error:
@@ -570,117 +576,20 @@ components:
           - string
           - 'null'
           format: uuid
-      additionalProperties: false
-    ApiUnit:
-      type: object
-      additionalProperties: false
-    LabelResultType:
-      enum:
-      - zpl
-      - zplUtf8
-      - zpl300
-      - zpl300Utf8
-      - pdf
-      - pdfRoutingOnly
-      - zplRoutingOnly
-      - zplUtf8RoutingOnly
-      - zpl300RoutingOnly
-      - zpl300Utf8RoutingOnly
-      - pdfA6U
-      - pdfA6S
-      - pdf2A4
-      - pdf4A4
-      - none
-      type: string
-    PickupAddresses:
-      type: object
-      properties:
-        pickupAddress:
-          $ref: '#/components/schemas/PickupAddress'
-        deliveryAddress:
-          $ref: '#/components/schemas/DeliveryAddress'
-        requesterAddress:
-          $ref: '#/components/schemas/RequesterAddress'
-      additionalProperties: false
-    UnitType:
-      enum:
-      - co
-      - lg
-      - mp
-      - bp
-      - xl
-      - pl
-      - rl
-      type: string
-    AdresseeType:
-      enum:
-      - b
-      - p
-      type: string
-    PickupAddress:
-      required:
-      - city
-      - countryCode
-      - name1
-      - street
-      - zipCode
-      type: object
-      properties:
-        name1:
-          maxLength: 30
-          minLength: 1
-          type: string
-        name2:
-          maxLength: 30
+        shipmentTrackingLink:
           type:
           - string
           - 'null'
-        name3:
-          maxLength: 30
+        labels:
           type:
           - string
           - 'null'
-        street:
-          maxLength: 40
-          minLength: 1
-          type: string
-        houseNo:
-          maxLength: 5
+        units:
           type:
-          - string
+          - array
           - 'null'
-        houseNoExt:
-          maxLength: 5
-          type:
-          - string
-          - 'null'
-        zipCode:
-          maxLength: 8
-          minLength: 1
-          type: string
-        city:
-          maxLength: 30
-          minLength: 1
-          type: string
-        countryCode:
-          maxLength: 2
-          minLength: 1
-          type: string
-        contact:
-          maxLength: 30
-          type:
-          - string
-          - 'null'
-        phone:
-          maxLength: 25
-          type:
-          - string
-          - 'null'
-        email:
-          maxLength: 320
-          type:
-          - string
-          - 'null'
+          items:
+            $ref: '#/components/schemas/ApiUnit'
       additionalProperties: false
     InboundCreateShopReturnRequest:
       required:
@@ -757,7 +666,7 @@ components:
         sendLabelsByEmail:
           type: boolean
       additionalProperties: false
-    RequesterAddress:
+    PickupAddress:
       required:
       - city
       - countryCode
@@ -821,4 +730,95 @@ components:
           type:
           - string
           - 'null'
+      additionalProperties: false
+    LabelResultType:
+      enum:
+      - zpl
+      - zplUtf8
+      - zpl300
+      - zpl300Utf8
+      - pdf
+      - pdfRoutingOnly
+      - zplRoutingOnly
+      - zplUtf8RoutingOnly
+      - zpl300RoutingOnly
+      - zpl300Utf8RoutingOnly
+      - pdfA6U
+      - pdfA6S
+      - pdf2A4
+      - pdf4A4
+      - none
+      type: string
+    ApiResponseObject:
+      type: object
+      properties:
+        error:
+          type: boolean
+          readOnly: true
+        status:
+          type:
+          - string
+          - 'null'
+        message:
+          type:
+          - string
+          - 'null'
+        errors:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type:
+            - array
+            - 'null'
+            items:
+              type: string
+        transactionId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+      additionalProperties: false
+    AdresseeType:
+      enum:
+      - b
+      - p
+      type: string
+    PickupAddresses:
+      type: object
+      properties:
+        pickupAddress:
+          $ref: '#/components/schemas/PickupAddress'
+        deliveryAddress:
+          $ref: '#/components/schemas/DeliveryAddress'
+        requesterAddress:
+          $ref: '#/components/schemas/RequesterAddress'
+      additionalProperties: false
+    ShipType:
+      enum:
+      - p
+      - f
+      type: string
+    UnitType:
+      enum:
+      - co
+      - lg
+      - mp
+      - bp
+      - xl
+      - pl
+      - rl
+      type: string
+    Dimensions:
+      type: object
+      properties:
+        length:
+          type: integer
+          format: int32
+        width:
+          type: integer
+          format: int32
+        height:
+          type: integer
+          format: int32
       additionalProperties: false

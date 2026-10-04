@@ -112,6 +112,77 @@ paths:
                 transactionId: string
 components:
   schemas:
+    LangCode:
+      enum:
+      - nl
+      - en
+      type: string
+    ApiGetDeliveryOptionsResponseObject:
+      type: object
+      properties:
+        error:
+          type: boolean
+          readOnly: true
+        status:
+          type:
+          - string
+          - 'null'
+        message:
+          type:
+          - string
+          - 'null'
+        errors:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type:
+            - array
+            - 'null'
+            items:
+              type: string
+        transactionId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        deliveryOptions:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DeliveryOptions'
+      additionalProperties: false
+    ApiResponseObject:
+      type: object
+      properties:
+        error:
+          type: boolean
+          readOnly: true
+        status:
+          type:
+          - string
+          - 'null'
+        message:
+          type:
+          - string
+          - 'null'
+        errors:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type:
+            - array
+            - 'null'
+            items:
+              type: string
+        transactionId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+      additionalProperties: false
     DeliveryOption:
       type: object
       properties:
@@ -157,77 +228,6 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/DeliveryOption'
-      additionalProperties: false
-    LangCode:
-      enum:
-      - nl
-      - en
-      type: string
-    ApiResponseObject:
-      type: object
-      properties:
-        error:
-          type: boolean
-          readOnly: true
-        status:
-          type:
-          - string
-          - 'null'
-        message:
-          type:
-          - string
-          - 'null'
-        errors:
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            type:
-            - array
-            - 'null'
-            items:
-              type: string
-        transactionId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-      additionalProperties: false
-    ApiGetDeliveryOptionsResponseObject:
-      type: object
-      properties:
-        error:
-          type: boolean
-          readOnly: true
-        status:
-          type:
-          - string
-          - 'null'
-        message:
-          type:
-          - string
-          - 'null'
-        errors:
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            type:
-            - array
-            - 'null'
-            items:
-              type: string
-        transactionId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-        deliveryOptions:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/DeliveryOptions'
       additionalProperties: false
     InboundGetDeliveryOptionsRequest:
       required:

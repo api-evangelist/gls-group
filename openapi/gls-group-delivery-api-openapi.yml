@@ -726,7 +726,92 @@ paths:
                 transactionId: string
 components:
   schemas:
-    ApiCreateLabelResponseObject:
+    DeliveryAddress:
+      required:
+      - city
+      - countryCode
+      - name1
+      - street
+      - zipCode
+      type: object
+      properties:
+        name1:
+          maxLength: 30
+          minLength: 1
+          type: string
+        name2:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        name3:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        street:
+          maxLength: 40
+          minLength: 1
+          type: string
+        houseNo:
+          maxLength: 5
+          type:
+          - string
+          - 'null'
+        houseNoExt:
+          maxLength: 5
+          type:
+          - string
+          - 'null'
+        zipCode:
+          maxLength: 8
+          minLength: 1
+          type: string
+        city:
+          maxLength: 30
+          minLength: 1
+          type: string
+        countryCode:
+          maxLength: 2
+          minLength: 1
+          type: string
+        contact:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        phone:
+          maxLength: 25
+          type:
+          - string
+          - 'null'
+        email:
+          maxLength: 320
+          type:
+          - string
+          - 'null'
+        addresseeType:
+          $ref: '#/components/schemas/AdresseeType'
+      additionalProperties: false
+    LabelResultType:
+      enum:
+      - zpl
+      - zplUtf8
+      - zpl300
+      - zpl300Utf8
+      - pdf
+      - pdfRoutingOnly
+      - zplRoutingOnly
+      - zplUtf8RoutingOnly
+      - zpl300RoutingOnly
+      - zpl300Utf8RoutingOnly
+      - pdfA6U
+      - pdfA6S
+      - pdf2A4
+      - pdf4A4
+      - none
+      type: string
+    ApiResponseObject:
       type: object
       properties:
         error:
@@ -755,20 +840,176 @@ components:
           - string
           - 'null'
           format: uuid
-        shipmentTrackingLink:
+      additionalProperties: false
+    Dimensions:
+      type: object
+      properties:
+        length:
+          type: integer
+          format: int32
+        width:
+          type: integer
+          format: int32
+        height:
+          type: integer
+          format: int32
+      additionalProperties: false
+    Services:
+      type: object
+      properties:
+        addresseeOnlyService:
+          type:
+          - boolean
+          - 'null'
+        expressService:
+          $ref: '#/components/schemas/ExpressServiceType'
+        expressConfirmSMS:
           type:
           - string
           - 'null'
-        labels:
+        economyParcel:
+          type:
+          - boolean
+          - 'null'
+        letterBoxParcel:
+          type:
+          - boolean
+          - 'null'
+        shopDeliveryService:
+          type:
+          - boolean
+          - 'null'
+        shopDeliveryParcelShopId:
           type:
           - string
           - 'null'
-        units:
+        shopDeliveryPlusService:
           type:
-          - array
+          - boolean
           - 'null'
-          items:
-            $ref: '#/components/schemas/ApiUnit'
+        shopReturnService:
+          type:
+          - boolean
+          - 'null'
+        saturdayService:
+          type:
+          - boolean
+          - 'null'
+      additionalProperties: false
+    ApiDeleteLabelResponseObject:
+      type: object
+      properties:
+        error:
+          type: boolean
+          readOnly: true
+        status:
+          type:
+          - string
+          - 'null'
+        message:
+          type:
+          - string
+          - 'null'
+        errors:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type:
+            - array
+            - 'null'
+            items:
+              type: string
+        transactionId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+      additionalProperties: false
+    DeliveryAddresses:
+      type: object
+      properties:
+        pickupAddress:
+          $ref: '#/components/schemas/PickupAddress'
+        deliveryAddress:
+          $ref: '#/components/schemas/DeliveryAddress'
+      additionalProperties: false
+    ShipType:
+      enum:
+      - p
+      - f
+      type: string
+    Unit:
+      required:
+      - unitId
+      - weight
+      type: object
+      properties:
+        unitId:
+          maxLength: 50
+          minLength: 1
+          type: string
+        unitType:
+          $ref: '#/components/schemas/UnitType'
+        customerUnitReference:
+          maxLength: 35
+          type:
+          - string
+          - 'null'
+        weight:
+          type: number
+          format: float
+        dimensions:
+          $ref: '#/components/schemas/Dimensions'
+        additionalInfo1:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        additionalInfo2:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    InboundDeleteRequest:
+      required:
+      - password
+      - unitNo
+      - username
+      type: object
+      properties:
+        username:
+          maxLength: 70
+          minLength: 1
+          type: string
+        password:
+          maxLength: 20
+          minLength: 1
+          type: string
+          writeOnly: true
+        shippingSystemName:
+          type:
+          - string
+          - 'null'
+        shippingSystemVersion:
+          type:
+          - string
+          - 'null'
+        shiptype:
+          $ref: '#/components/schemas/ShipType'
+        unitNo:
+          maxLength: 14
+          minLength: 1
+          type: string
+      additionalProperties: false
+    TrackingLinkType:
+      enum:
+      - u
+      - s
+      type: string
+    ApiUnit:
+      type: object
       additionalProperties: false
     InboundCreateDeliveryRequest:
       required:
@@ -850,143 +1091,6 @@ components:
         services:
           $ref: '#/components/schemas/Services'
       additionalProperties: false
-    ShipType:
-      enum:
-      - p
-      - f
-      type: string
-    ApiDeleteLabelResponseObject:
-      type: object
-      properties:
-        error:
-          type: boolean
-          readOnly: true
-        status:
-          type:
-          - string
-          - 'null'
-        message:
-          type:
-          - string
-          - 'null'
-        errors:
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            type:
-            - array
-            - 'null'
-            items:
-              type: string
-        transactionId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-      additionalProperties: false
-    ApiResponseObject:
-      type: object
-      properties:
-        error:
-          type: boolean
-          readOnly: true
-        status:
-          type:
-          - string
-          - 'null'
-        message:
-          type:
-          - string
-          - 'null'
-        errors:
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            type:
-            - array
-            - 'null'
-            items:
-              type: string
-        transactionId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-      additionalProperties: false
-    LabelResultType:
-      enum:
-      - zpl
-      - zplUtf8
-      - zpl300
-      - zpl300Utf8
-      - pdf
-      - pdfRoutingOnly
-      - zplRoutingOnly
-      - zplUtf8RoutingOnly
-      - zpl300RoutingOnly
-      - zpl300Utf8RoutingOnly
-      - pdfA6U
-      - pdfA6S
-      - pdf2A4
-      - pdf4A4
-      - none
-      type: string
-    UnitType:
-      enum:
-      - co
-      - lg
-      - mp
-      - bp
-      - xl
-      - pl
-      - rl
-      type: string
-    InboundDeleteRequest:
-      required:
-      - password
-      - unitNo
-      - username
-      type: object
-      properties:
-        username:
-          maxLength: 70
-          minLength: 1
-          type: string
-        password:
-          maxLength: 20
-          minLength: 1
-          type: string
-          writeOnly: true
-        shippingSystemName:
-          type:
-          - string
-          - 'null'
-        shippingSystemVersion:
-          type:
-          - string
-          - 'null'
-        shiptype:
-          $ref: '#/components/schemas/ShipType'
-        unitNo:
-          maxLength: 14
-          minLength: 1
-          type: string
-      additionalProperties: false
-    Dimensions:
-      type: object
-      properties:
-        length:
-          type: integer
-          format: int32
-        width:
-          type: integer
-          format: int32
-        height:
-          type: integer
-          format: int32
-      additionalProperties: false
     ApiConfirmLabelResponseObject:
       type: object
       properties:
@@ -1017,97 +1121,18 @@ components:
           - 'null'
           format: uuid
       additionalProperties: false
-    DeliveryAddresses:
-      type: object
-      properties:
-        pickupAddress:
-          $ref: '#/components/schemas/PickupAddress'
-        deliveryAddress:
-          $ref: '#/components/schemas/DeliveryAddress'
-      additionalProperties: false
-    InboundConfirmRequest:
-      required:
-      - password
-      - unitNo
-      - username
-      type: object
-      properties:
-        username:
-          maxLength: 70
-          minLength: 1
-          type: string
-        password:
-          maxLength: 20
-          minLength: 1
-          type: string
-          writeOnly: true
-        shippingSystemName:
-          type:
-          - string
-          - 'null'
-        shippingSystemVersion:
-          type:
-          - string
-          - 'null'
-        shiptype:
-          $ref: '#/components/schemas/ShipType'
-        unitNo:
-          maxLength: 14
-          minLength: 1
-          type: string
-        shippingDate:
-          type:
-          - string
-          - 'null'
-          format: date-time
-      additionalProperties: false
-    AdresseeType:
+    ExpressServiceType:
       enum:
-      - b
-      - p
+      - none
+      - t9
+      - t10
+      - t12
+      - t17
+      - s9
+      - s10
+      - s12
+      - s17
       type: string
-    Services:
-      type: object
-      properties:
-        addresseeOnlyService:
-          type:
-          - boolean
-          - 'null'
-        expressService:
-          $ref: '#/components/schemas/ExpressServiceType'
-        expressConfirmSMS:
-          type:
-          - string
-          - 'null'
-        economyParcel:
-          type:
-          - boolean
-          - 'null'
-        letterBoxParcel:
-          type:
-          - boolean
-          - 'null'
-        shopDeliveryService:
-          type:
-          - boolean
-          - 'null'
-        shopDeliveryParcelShopId:
-          type:
-          - string
-          - 'null'
-        shopDeliveryPlusService:
-          type:
-          - boolean
-          - 'null'
-        shopReturnService:
-          type:
-          - boolean
-          - 'null'
-        saturdayService:
-          type:
-          - boolean
-          - 'null'
-      additionalProperties: false
     InboundConfirmMultipleRequest:
       required:
       - password
@@ -1143,116 +1168,6 @@ components:
           - string
           - 'null'
           format: date-time
-      additionalProperties: false
-    DeliveryAddress:
-      required:
-      - city
-      - countryCode
-      - name1
-      - street
-      - zipCode
-      type: object
-      properties:
-        name1:
-          maxLength: 30
-          minLength: 1
-          type: string
-        name2:
-          maxLength: 30
-          type:
-          - string
-          - 'null'
-        name3:
-          maxLength: 30
-          type:
-          - string
-          - 'null'
-        street:
-          maxLength: 40
-          minLength: 1
-          type: string
-        houseNo:
-          maxLength: 5
-          type:
-          - string
-          - 'null'
-        houseNoExt:
-          maxLength: 5
-          type:
-          - string
-          - 'null'
-        zipCode:
-          maxLength: 8
-          minLength: 1
-          type: string
-        city:
-          maxLength: 30
-          minLength: 1
-          type: string
-        countryCode:
-          maxLength: 2
-          minLength: 1
-          type: string
-        contact:
-          maxLength: 30
-          type:
-          - string
-          - 'null'
-        phone:
-          maxLength: 25
-          type:
-          - string
-          - 'null'
-        email:
-          maxLength: 320
-          type:
-          - string
-          - 'null'
-        addresseeType:
-          $ref: '#/components/schemas/AdresseeType'
-      additionalProperties: false
-    NotificationEmail:
-      type: object
-      properties:
-        sendMail:
-          type:
-          - boolean
-          - 'null'
-        senderName:
-          maxLength: 30
-          type:
-          - string
-          - 'null'
-        senderReplyAddress:
-          maxLength: 320
-          type:
-          - string
-          - 'null'
-        senderContactName:
-          maxLength: 30
-          type:
-          - string
-          - 'null'
-        senderPhoneNo:
-          maxLength: 25
-          type:
-          - string
-          - 'null'
-        emailSubject:
-          maxLength: 50
-          type:
-          - string
-          - 'null'
-        emailAddressCC:
-          maxLength: 320
-          type:
-          - string
-          - 'null'
-        emailAddressBCC:
-          maxLength: 320
-          type:
-          - string
-          - 'null'
       additionalProperties: false
     PickupAddress:
       required:
@@ -1319,56 +1234,141 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    Unit:
+    UnitType:
+      enum:
+      - co
+      - lg
+      - mp
+      - bp
+      - xl
+      - pl
+      - rl
+      type: string
+    InboundConfirmRequest:
       required:
-      - unitId
-      - weight
+      - password
+      - unitNo
+      - username
       type: object
       properties:
-        unitId:
-          maxLength: 50
+        username:
+          maxLength: 70
           minLength: 1
           type: string
-        unitType:
-          $ref: '#/components/schemas/UnitType'
-        customerUnitReference:
-          maxLength: 35
+        password:
+          maxLength: 20
+          minLength: 1
+          type: string
+          writeOnly: true
+        shippingSystemName:
           type:
           - string
           - 'null'
-        weight:
-          type: number
-          format: float
-        dimensions:
-          $ref: '#/components/schemas/Dimensions'
-        additionalInfo1:
-          maxLength: 30
+        shippingSystemVersion:
           type:
           - string
           - 'null'
-        additionalInfo2:
-          maxLength: 30
+        shiptype:
+          $ref: '#/components/schemas/ShipType'
+        unitNo:
+          maxLength: 14
+          minLength: 1
+          type: string
+        shippingDate:
           type:
           - string
           - 'null'
+          format: date-time
       additionalProperties: false
-    TrackingLinkType:
-      enum:
-      - u
-      - s
-      type: string
-    ApiUnit:
+    ApiCreateLabelResponseObject:
       type: object
+      properties:
+        error:
+          type: boolean
+          readOnly: true
+        status:
+          type:
+          - string
+          - 'null'
+        message:
+          type:
+          - string
+          - 'null'
+        errors:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type:
+            - array
+            - 'null'
+            items:
+              type: string
+        transactionId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+        shipmentTrackingLink:
+          type:
+          - string
+          - 'null'
+        labels:
+          type:
+          - string
+          - 'null'
+        units:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ApiUnit'
       additionalProperties: false
-    ExpressServiceType:
+    AdresseeType:
       enum:
-      - none
-      - t9
-      - t10
-      - t12
-      - t17
-      - s9
-      - s10
-      - s12
-      - s17
+      - b
+      - p
       type: string
+    NotificationEmail:
+      type: object
+      properties:
+        sendMail:
+          type:
+          - boolean
+          - 'null'
+        senderName:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        senderReplyAddress:
+          maxLength: 320
+          type:
+          - string
+          - 'null'
+        senderContactName:
+          maxLength: 30
+          type:
+          - string
+          - 'null'
+        senderPhoneNo:
+          maxLength: 25
+          type:
+          - string
+          - 'null'
+        emailSubject:
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+        emailAddressCC:
+          maxLength: 320
+          type:
+          - string
+          - 'null'
+        emailAddressBCC:
+          maxLength: 320
+          type:
+          - string
+          - 'null'
+      additionalProperties: false

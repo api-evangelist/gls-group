@@ -86,6 +86,22 @@ paths:
                 transactionId: string
 components:
   schemas:
+    InboundLoginRequest:
+      required:
+      - password
+      - username
+      type: object
+      properties:
+        username:
+          maxLength: 70
+          minLength: 1
+          type: string
+        password:
+          maxLength: 20
+          minLength: 1
+          type: string
+          writeOnly: true
+      additionalProperties: false
     ApiResponseObject:
       type: object
       properties:
@@ -115,20 +131,4 @@ components:
           - string
           - 'null'
           format: uuid
-      additionalProperties: false
-    InboundLoginRequest:
-      required:
-      - password
-      - username
-      type: object
-      properties:
-        username:
-          maxLength: 70
-          minLength: 1
-          type: string
-        password:
-          maxLength: 20
-          minLength: 1
-          type: string
-          writeOnly: true
       additionalProperties: false

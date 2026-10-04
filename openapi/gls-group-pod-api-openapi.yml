@@ -95,6 +95,51 @@ paths:
                 instance: string
 components:
   schemas:
+    PodsResponseDto:
+      required:
+      - pods
+      type: object
+      properties:
+        pods:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Pod'
+      additionalProperties: false
+    Pod:
+      required:
+      - parcelNumber
+      type: object
+      properties:
+        parcelNumber:
+          type:
+          - string
+          - 'null'
+        podBlob:
+          type:
+          - string
+          - 'null'
+          format: byte
+      additionalProperties: false
+    GetPodsRequestDto:
+      required:
+      - parcelNumbers
+      - password
+      - userName
+      type: object
+      properties:
+        userName:
+          minLength: 1
+          type: string
+        password:
+          minLength: 1
+          type: string
+        parcelNumbers:
+          type: array
+          items:
+            type: string
+      additionalProperties: false
     ProblemDetails:
       type: object
       properties:
@@ -120,48 +165,3 @@ components:
           - string
           - 'null'
       additionalProperties: {}
-    PodsResponseDto:
-      required:
-      - pods
-      type: object
-      properties:
-        pods:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Pod'
-      additionalProperties: false
-    GetPodsRequestDto:
-      required:
-      - parcelNumbers
-      - password
-      - userName
-      type: object
-      properties:
-        userName:
-          minLength: 1
-          type: string
-        password:
-          minLength: 1
-          type: string
-        parcelNumbers:
-          type: array
-          items:
-            type: string
-      additionalProperties: false
-    Pod:
-      required:
-      - parcelNumber
-      type: object
-      properties:
-        parcelNumber:
-          type:
-          - string
-          - 'null'
-        podBlob:
-          type:
-          - string
-          - 'null'
-          format: byte
-      additionalProperties: false
