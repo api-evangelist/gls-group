@@ -18,9 +18,9 @@
     value: gls_us
     property: components.schemas.CarriersEnum
     detected_by: detect-carrier-edges.py
-    detected: '2026-10-12'
+    detected: '2026-10-13'
     spec_url: https://docs.goshippo.com/spec/shippoapi/public-api.yaml
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: gls-group-karrio
   label: karrio
@@ -37,8 +37,8 @@
     value: gls
     property: schemas.TrackingData.carrier_name
     detected_by: detect-carrier-edges.py
-    detected: '2026-10-12'
-  status: pending-generation
+    detected: '2026-10-13'
+  status: not-a-workflow
   arazzo: null
 - slug: gls-group-shipcloud
   label: shipcloud
@@ -55,6 +55,6 @@
     value: gls
     property: components.schemas.carrier_shipping
     detected_by: detect-carrier-edges.py
-    detected: '2026-10-12'
-  status: pending-generation
+    detected: '2026-10-13'
+  status: not-a-workflow
   arazzo: null
