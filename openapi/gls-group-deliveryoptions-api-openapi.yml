@@ -112,11 +112,36 @@ paths:
                 transactionId: string
 components:
   schemas:
-    LangCode:
-      enum:
-      - nl
-      - en
-      type: string
+    ApiResponseObject:
+      type: object
+      properties:
+        error:
+          type: boolean
+          readOnly: true
+        status:
+          type:
+          - string
+          - 'null'
+        message:
+          type:
+          - string
+          - 'null'
+        errors:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            type:
+            - array
+            - 'null'
+            items:
+              type: string
+        transactionId:
+          type:
+          - string
+          - 'null'
+          format: uuid
+      additionalProperties: false
     ApiGetDeliveryOptionsResponseObject:
       type: object
       properties:
@@ -153,82 +178,11 @@ components:
           items:
             $ref: '#/components/schemas/DeliveryOptions'
       additionalProperties: false
-    ApiResponseObject:
-      type: object
-      properties:
-        error:
-          type: boolean
-          readOnly: true
-        status:
-          type:
-          - string
-          - 'null'
-        message:
-          type:
-          - string
-          - 'null'
-        errors:
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            type:
-            - array
-            - 'null'
-            items:
-              type: string
-        transactionId:
-          type:
-          - string
-          - 'null'
-          format: uuid
-      additionalProperties: false
-    DeliveryOption:
-      type: object
-      properties:
-        service:
-          type:
-          - string
-          - 'null'
-        title:
-          type:
-          - string
-          - 'null'
-        expectedDeliveryDate:
-          type:
-          - string
-          - 'null'
-        expectedDeliveryTime:
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    DeliveryOptions:
-      type: object
-      properties:
-        service:
-          type:
-          - string
-          - 'null'
-        title:
-          type:
-          - string
-          - 'null'
-        expectedDeliveryDate:
-          type:
-          - string
-          - 'null'
-        expectedDeliveryTime:
-          type:
-          - string
-          - 'null'
-        subDeliveryOptions:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/DeliveryOption'
-      additionalProperties: false
+    LangCode:
+      enum:
+      - nl
+      - en
+      type: string
     InboundGetDeliveryOptionsRequest:
       required:
       - countryCode
@@ -259,4 +213,50 @@ components:
         shippingDate:
           type: string
           format: date-time
+      additionalProperties: false
+    DeliveryOptions:
+      type: object
+      properties:
+        service:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        expectedDeliveryDate:
+          type:
+          - string
+          - 'null'
+        expectedDeliveryTime:
+          type:
+          - string
+          - 'null'
+        subDeliveryOptions:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DeliveryOption'
+      additionalProperties: false
+    DeliveryOption:
+      type: object
+      properties:
+        service:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        expectedDeliveryDate:
+          type:
+          - string
+          - 'null'
+        expectedDeliveryTime:
+          type:
+          - string
+          - 'null'
       additionalProperties: false

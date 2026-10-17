@@ -107,21 +107,6 @@ components:
           items:
             $ref: '#/components/schemas/Pod'
       additionalProperties: false
-    Pod:
-      required:
-      - parcelNumber
-      type: object
-      properties:
-        parcelNumber:
-          type:
-          - string
-          - 'null'
-        podBlob:
-          type:
-          - string
-          - 'null'
-          format: byte
-      additionalProperties: false
     GetPodsRequestDto:
       required:
       - parcelNumbers
@@ -165,3 +150,18 @@ components:
           - string
           - 'null'
       additionalProperties: {}
+    Pod:
+      required:
+      - parcelNumber
+      type: object
+      properties:
+        parcelNumber:
+          type:
+          - string
+          - 'null'
+        podBlob:
+          type:
+          - string
+          - 'null'
+          format: byte
+      additionalProperties: false
