@@ -307,9 +307,10 @@ apis:
   humanURL: https://api-portal.gls.nl/api-details#api=gls-netherlands-labelapi-production
   baseURL: https://api.gls.nl/v1
   tags:
-  - POD
+  - Print on Demand
   tags_raw:
   - Pod
+  - POD
   properties:
   - type: OpenAPI
     url: openapi/gls-group-pod-api-openapi.yml
